@@ -1,4 +1,4 @@
-package outros;
+package others;
 
 public interface Funcao {
 	

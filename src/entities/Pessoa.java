@@ -1,6 +1,6 @@
-package entidades;
+package entities;
 
-import outros.Funcao;
+import others.Funcao;
 
 public class Pessoa {
 	
