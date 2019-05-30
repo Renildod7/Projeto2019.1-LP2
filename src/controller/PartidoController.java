@@ -2,9 +2,10 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
+
 import entities.Partido;
 import entities.Validacao;
 
@@ -19,8 +20,7 @@ public class PartidoController {
 	private Map<String, Partido> partidos;
 	
 	public PartidoController() {
-		this.partidos = new HashMap<>();
-		
+		this.partidos = new TreeMap<>();		
 	}
 	
 	/**
@@ -38,23 +38,16 @@ public class PartidoController {
 	}
 	
 	/**
-	 * metodo Onde Exibe os Partidos de Forma Ordenada.
-	 * @return Retorna uma uma String com os nomes dos partidos Existentes de forma ordenada
+	 * Metodo Onde Exibe os Partidos.
+	 * @return Retorna uma uma String com os Nomes dos Partidos Existentes de forma ordenada
 	 */
 	public String exibirBase() {
-		
-		Set<String> partidos = this.partidos.keySet();
-		ArrayList<String> partidosOrd = new ArrayList<>();
-		for(String w : partidos) {
-			partidosOrd.add(w);
-		}
-		
-			Collections.sort(partidosOrd);
+			
 			String retorno = "";
-			for (String w : partidosOrd) {
-				retorno += w + ",";
+			for (Partido w : partidos.values()) {
+				retorno += w.getNome() + ",";
 			}
-			if (partidosOrd.size() > 0) {
+			if (partidos.size() > 0) {
 				return retorno.substring(0, retorno.length() -1);
 			}
 				return retorno;
