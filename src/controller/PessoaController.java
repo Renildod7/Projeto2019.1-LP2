@@ -38,4 +38,15 @@ public class PessoaController {
 		}
 	}
 
+	public void cadastrarDeputado(String dni, String dataDeInicio) {
+		Validacao.validaString(dni, "Erro ao cadastrar pessoa: dni nao pode ser vazio ou nulo");
+		Validacao.validaDni(dni, "Erro ao cadastrar deputado: dni invalido");
+		
+		if(this.pessoas.containsKey(dni)) {
+			Validacao.validaString(dataDeInicio, "Erro ao cadastrar deputado: data nao pode ser vazio ou nulo");
+			Validacao.validaData(dataDeInicio, "Erro ao cadastrar deputado: ");
+			this.pessoas.get(dni).alteraFuncao(dataDeInicio);
+		}else throw new NullPointerException("Erro ao cadastrar deputado: pessoa nao encontrada");
+	}
+
 }

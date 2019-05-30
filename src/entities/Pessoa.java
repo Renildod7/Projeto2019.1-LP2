@@ -28,10 +28,18 @@ public class Pessoa {
 		Validacao.validaString(nome, "Erro ao cadastrar pessoa: nome nao pode ser vazio ou nulo");
 		Validacao.validaString(dni, "Erro ao cadastrar pessoa: dni nao pode ser vazio ou nulo");
 		Validacao.validaString(estado, "Erro ao cadastrar pessoa: estado nao pode ser vazio ou nulo");
-		if (!Validacao.ehInteiro(dni)) {
-			throw new IllegalArgumentException("Erro ao cadastrar pessoa: dni invalido");
-		}
+		Validacao.validaDni(dni, "Erro ao cadastrar pessoa: dni invalido");
 	}
+	
+	public void alteraFuncao(String dataDeInicio) {
+		Validacao.validaString(dataDeInicio, "Erro ao cadastrar deputado: data nao pode ser vazio ou nulo");
+		Validacao.validaData(dataDeInicio, "Erro ao cadastrar deputado: ");
+		if(!this.partido.equals("")) {
+			this.cargo = new Deputado(dataDeInicio);
+		}else throw new IllegalArgumentException("Erro ao cadastrar deputado: pessoa sem partido");
+		
+	}
+	
 	
 	@Override
 	public int hashCode() {
@@ -57,5 +65,6 @@ public class Pessoa {
 			return false;
 		return true;
 	}
+
 
 }

@@ -1,5 +1,13 @@
 package entities;
 
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 public class Validacao {
 	
 	public static void validaString(String atributo, String mensagem) {
@@ -8,7 +16,7 @@ public class Validacao {
 		}
 	}
 	
-	public static boolean ehInteiro(String s) {
+	public static void validaDni(String s, String msgErr) {
 		char[] c = s.toCharArray();
 		boolean result = true;		
 		
@@ -20,8 +28,25 @@ public class Validacao {
 		}	
 		if (c[9] != '-' || !Character.isDigit(c[10])) {
 			result = false;
-		} 		
-		return result;		
+		}
+		if(result == false) throw new IllegalArgumentException(msgErr);		
+	}
+	
+	public static void validaData(String data, String msgErr) {
+		DateFormat df = new SimpleDateFormat("ddMMyyy");
+		Date dateDf;
+		df.setLenient(false);
+		try {
+			dateDf = df.parse(data);
+		} catch (ParseException pe) {
+			throw new IllegalArgumentException(msgErr + "data invalida");
+		}
+		
+		Calendar dataAtual = GregorianCalendar.getInstance();
+		Calendar dataC = GregorianCalendar.getInstance();
+		dataC.setTime(dateDf);
+		
+		if(dataC.after(dataAtual)) throw new IllegalArgumentException(msgErr + "data futura");
 	}
 
 }

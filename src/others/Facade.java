@@ -15,7 +15,7 @@ public class Facade {
 	}
 	
 	public static void main(String[] args) {
-		args = new String[] {"others.Facade", "easyaccept/use_case_1.txt", "easyaccept/use_case_4.txt" };		
+		args = new String[] {"others.Facade", "easyaccept/use_case_1.txt", "easyaccept/use_case_2.txt", "easyaccept/use_case_4.txt" };		
 		EasyAccept.main(args);
 	}
 	
@@ -39,13 +39,15 @@ public class Facade {
 	}
 	
 	public void cadastrarPartido(String nome) {
-		pcc.cadastrarPartido(nome);
+		this.pcc.cadastrarPartido(nome);
 	}
 	
 	public String exibirBase() {
 		return pcc.exibirBase();
 	}
 	
-	
+	public void cadastrarDeputado(String dni, String dataDeInicio) {
+		this.pc.cadastrarDeputado(dni, dataDeInicio);
+	}
 
 }
