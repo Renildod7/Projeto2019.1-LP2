@@ -15,7 +15,7 @@ public class Facade {
 	}
 	
 	public static void main(String[] args) {
-		args = new String[] {"others.Facade", "easyaccept/use_case_1.txt", "easyaccept/use_case_2.txt", "easyaccept/use_case_4.txt" };		
+		args = new String[] {"others.Facade", "easyaccept/use_case_1.txt", "easyaccept/use_case_2.txt", "easyaccept/use_case_3.txt", "easyaccept/use_case_4.txt" };		
 		EasyAccept.main(args);
 	}
 	
@@ -48,6 +48,10 @@ public class Facade {
 	
 	public void cadastrarDeputado(String dni, String dataDeInicio) {
 		this.pc.cadastrarDeputado(dni, dataDeInicio);
+	}
+	
+	public String exibirPessoa(String dni) {
+		return this.pc.exibirPessoa(dni);
 	}
 
 }

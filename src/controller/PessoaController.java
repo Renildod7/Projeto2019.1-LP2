@@ -39,7 +39,7 @@ public class PessoaController {
 	}
 
 	public void cadastrarDeputado(String dni, String dataDeInicio) {
-		Validacao.validaString(dni, "Erro ao cadastrar pessoa: dni nao pode ser vazio ou nulo");
+		Validacao.validaString(dni, "Erro ao cadastrar deputado: dni nao pode ser vazio ou nulo");
 		Validacao.validaDni(dni, "Erro ao cadastrar deputado: dni invalido");
 		
 		if(this.pessoas.containsKey(dni)) {
@@ -47,6 +47,14 @@ public class PessoaController {
 			Validacao.validaData(dataDeInicio, "Erro ao cadastrar deputado: ");
 			this.pessoas.get(dni).alteraFuncao(dataDeInicio);
 		}else throw new NullPointerException("Erro ao cadastrar deputado: pessoa nao encontrada");
+	}
+
+	public String exibirPessoa(String dni) {
+		Validacao.validaString(dni, "Erro ao exibir pessoa: dni nao pode ser vazio ou nulo");
+		Validacao.validaDni(dni, "Erro ao exibir pessoa: dni invalido");
+		if(this.pessoas.containsKey(dni)) {
+			return this.pessoas.get(dni).toString();
+		}else throw new NullPointerException("Erro ao exibir pessoa: pessoa nao encontrada");
 	}
 
 }

@@ -1,6 +1,6 @@
 package others;
 
 public interface Funcao {
-	
-	public String gerarDetalhes();
+	public String getDataDeInicio();
+	public int getLeisAprovadas();
 }

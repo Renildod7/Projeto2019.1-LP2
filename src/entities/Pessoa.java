@@ -65,6 +65,20 @@ public class Pessoa {
 			return false;
 		return true;
 	}
+	
+	public String toString() {
+		String retorno = "";
+		if(this.cargo == null) {
+			retorno += this.nome + " - " + this.dni + " (" + this.estado + ")";
+			if(!this.partido.equals("")) retorno += " - " + this.partido;
+			if(!this.interesses.equals("")) retorno += " - Interesses: " + this.interesses;			
+		}else if(this.cargo.getClass() == Deputado.class) {
+			retorno += "POL: " + this.nome + " - " + this.dni + " (" + this.estado + ") - " + this.partido;
+			if(!this.interesses.equals("")) retorno += " - Interesses: " + this.interesses;
+			retorno += " - " + this.cargo.getDataDeInicio() + " - " + this.cargo.getLeisAprovadas() + " Leis";
+		}
+		return retorno;
+	}
 
 
 }
