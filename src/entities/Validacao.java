@@ -10,8 +10,8 @@ public class Validacao {
 	
 	public static boolean ehInteiro(String s) {
 		char[] c = s.toCharArray();
-		
 		boolean result = true;		
+		
 		for (int i = 0; i < 9; i++) {
 			if (!Character.isDigit(c[i])) {
 				result = false;
@@ -20,7 +20,7 @@ public class Validacao {
 		}	
 		if (c[9] != '-' || !Character.isDigit(c[10])) {
 			result = false;
-		}	
+		} 		
 		return result;		
 	}
 
