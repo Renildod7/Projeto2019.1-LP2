@@ -1,11 +1,7 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
-
 import entities.Partido;
 import entities.Validacao;
 
