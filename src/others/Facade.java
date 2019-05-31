@@ -27,17 +27,6 @@ public class Facade {
 		this.pc.cadastrarPessoa(nome, dni, estado, interesses);
 	}
 	
-	public void limparSistema() {		
-	}
-	
-	public void salvarSistema() {
-		
-	}
-	
-	public void carregarSistema() {
-		
-	}
-	
 	public void cadastrarPartido(String nome) {
 		this.pcc.cadastrarPartido(nome);
 	}
@@ -52,6 +41,15 @@ public class Facade {
 	
 	public String exibirPessoa(String dni) {
 		return this.pc.exibirPessoa(dni);
+	}
+	
+	public void limparSistema() {		
+	}
+	
+	public void salvarSistema() {		
+	}
+	
+	public void carregarSistema() {		
 	}
 
 }

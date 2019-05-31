@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"entities","l":"Deputado"},{"p":"others","l":"Facade"},{"p":"others","l":"Funcao"},{"p":"entities","l":"Partido"},{"p":"controller","l":"PartidoController"},{"p":"entities","l":"Pessoa"},{"p":"controller","l":"PessoaController"},{"p":"entities","l":"Validacao"}]
