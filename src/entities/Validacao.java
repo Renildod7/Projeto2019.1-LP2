@@ -54,6 +54,7 @@ public class Validacao {
 	 * @param msgErr A mensagem de erro caso a data seja invalida.
 	 */
 	public static void validaData(String data, String msgErr) {
+		if(data.length() != 8 ) throw new IllegalArgumentException(msgErr + "data invalida");
 		DateFormat df = new SimpleDateFormat("ddMMyyy");
 		Date dateDf;
 		df.setLenient(false);
