@@ -20,6 +20,7 @@ public class Partido implements Comparable<Partido> {
 	 * @param nome E o nome do Partido.
 	 */
 	public Partido(String nome) {
+		Validacao.validaString(nome, "Erro ao cadastrar partido: partido nao pode ser vazio ou nulo");
 		this.nome = nome;
 	}
 	

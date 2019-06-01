@@ -48,10 +48,10 @@ public class PartidoController {
 	 */
 	public String exibirBase() {		
 		String retorno = "";
-		for (Partido w : partidos.values()) {
+		for (Partido w : this.partidos.values()) {
 			retorno += w.getNome() + ",";
 		}
-		if (partidos.size() > 0) {
+		if (this.partidos.size() > 0) {
 			return retorno.substring(0, retorno.length() -1);
 		}
 		return retorno;
