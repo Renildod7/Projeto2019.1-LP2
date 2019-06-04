@@ -12,7 +12,7 @@ class PessoaTest {
 	void testConstrutorNomeNulo() {
 		try {
 			Pessoa p = new Pessoa(null, "000000000-0", "XX", "interesses");
-			fail();
+			fail("");
 		} catch (NullPointerException npe) {
 		}
 	}
@@ -21,7 +21,7 @@ class PessoaTest {
 	void testConstrutorNomeVazio() {
 		try {
 			Pessoa p = new Pessoa("", "000000000-0", "XX", "interesses");
-			fail();
+			fail("");
 		} catch (NullPointerException npe) {
 		}
 	}
@@ -30,7 +30,7 @@ class PessoaTest {
 	void testConstrutorNomeApenasEspacos() {
 		try {
 			Pessoa p = new Pessoa("   ", "000000000-0", "XX", "interesses");
-			fail();
+			fail("");
 		} catch (NullPointerException npe) {
 		}
 	}
@@ -41,7 +41,7 @@ class PessoaTest {
 	void testConstrutorDniNulo() {
 		try {
 			Pessoa p = new Pessoa("nome", null, "XX", "interesses");
-			fail();
+			fail("");
 		} catch (NullPointerException npe) {
 		}
 	}
@@ -50,7 +50,7 @@ class PessoaTest {
 	void testConstrutorDniVazio() {
 		try {
 			Pessoa p = new Pessoa("nome", "", "XX", "interesses");
-			fail();
+			fail("");
 		} catch (NullPointerException npe) {
 		}
 	}
@@ -59,7 +59,7 @@ class PessoaTest {
 	void testConstrutorDniApenasEspacos() {
 		try {
 			Pessoa p = new Pessoa("nome", "    ", "XX", "interesses");
-			fail();
+			fail("");
 		} catch (NullPointerException npe) {
 		}
 	}
@@ -68,7 +68,7 @@ class PessoaTest {
 	void testConstrutorDniInvalido() {
 		try {
 			Pessoa p = new Pessoa("nome", "A00000000-0", "XX", "interesses");
-			fail();
+			fail("");
 		} catch (IllegalArgumentException npe) {
 		}
 	}
@@ -79,7 +79,7 @@ class PessoaTest {
 	void testConstrutorEstadoNulo() {
 		try {
 			Pessoa p = new Pessoa("nome", "000000000-0", null, "interesses");
-			fail();
+			fail("");
 		} catch (NullPointerException npe) {
 		}
 	}
@@ -88,7 +88,7 @@ class PessoaTest {
 	void testConstrutorEstadoVazio() {
 		try {
 			Pessoa p = new Pessoa("nome", "000000000-0", "", "interesses");
-			fail();
+			fail("");
 		} catch (NullPointerException npe) {
 		}
 	}
@@ -97,7 +97,7 @@ class PessoaTest {
 	void testConstrutorEstadoApenasEspacos() {
 		try {
 			Pessoa p = new Pessoa("nome", "000000000-0", "    ", "interesses");
-			fail();
+			fail("");
 		} catch (NullPointerException npe) {
 		}
 	}
@@ -110,7 +110,7 @@ class PessoaTest {
 		Pessoa p = new Pessoa("nome", "000000000-0", "XX", "interesses", "YY");
 		try {
 			p.alteraFuncao(null);
-			fail();
+			fail("");
 		} catch (NullPointerException npe) {
 		}
 	}
@@ -120,7 +120,7 @@ class PessoaTest {
 		Pessoa p = new Pessoa("nome", "000000000-0", "XX", "interesses", "YY");
 		try {
 			p.alteraFuncao("");
-			fail();
+			fail("");
 		} catch (NullPointerException npe) {
 		}
 	}
@@ -130,7 +130,7 @@ class PessoaTest {
 		Pessoa p = new Pessoa("nome", "000000000-0", "XX", "interesses", "YY");
 		try {
 			p.alteraFuncao("  ");
-			fail();
+			fail("");
 		} catch (NullPointerException npe) {
 		}
 	}
@@ -140,7 +140,7 @@ class PessoaTest {
 		Pessoa p = new Pessoa("nome", "000000000-0", "XX", "interesses", "YY");
 		try {
 			p.alteraFuncao("31022001");
-			fail();
+			fail("");
 		} catch (IllegalArgumentException npe) {
 		}
 	}
@@ -150,7 +150,7 @@ class PessoaTest {
 		Pessoa p = new Pessoa("nome", "000000000-0", "XX", "interesses", "YY");
 		try {
 			p.alteraFuncao("01013001");
-			fail();
+			fail("");
 		} catch (IllegalArgumentException npe) {
 		}
 	}
@@ -160,7 +160,7 @@ class PessoaTest {
 		Pessoa p = new Pessoa("nome", "000000000-0", "XX", "interesses");
 		try {
 			p.alteraFuncao("01012001");
-			fail();
+			fail("");
 		} catch (IllegalArgumentException npe) {
 		}
 	}
