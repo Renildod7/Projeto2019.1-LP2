@@ -29,7 +29,7 @@ class DeputadoTest {
 	@Test
 	void testConstrutorDataDeInicioApenasEspacos() {
 		try {
-			Deputado d = new Deputado("");
+			Deputado d = new Deputado("    ");
 			fail("");
 		} catch (NullPointerException iae) {
 		}

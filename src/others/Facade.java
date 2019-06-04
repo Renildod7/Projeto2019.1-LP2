@@ -6,12 +6,12 @@ import easyaccept.EasyAccept;
 
 public class Facade {
 	
-	private PessoaController pc;
-	private PartidoController pcc;
+	private PessoaController pessoaCntrl;
+	private PartidoController partidoCntrl;
 	
 	public Facade() {
-		this.pc = new PessoaController();
-		this.pcc = new PartidoController();
+		this.pessoaCntrl = new PessoaController();
+		this.partidoCntrl = new PartidoController();
 	}
 	
 	public static void main(String[] args) {
@@ -20,27 +20,27 @@ public class Facade {
 	}
 	
 	public void cadastrarPessoa(String nome, String dni, String estado, String interesses, String partido) {
-		this.pc.cadastrarPessoa(nome, dni, estado, interesses, partido);
+		this.pessoaCntrl.cadastrarPessoa(nome, dni, estado, interesses, partido);
 	}
 	
 	public void cadastrarPessoa(String nome, String dni, String estado, String interesses) {
-		this.pc.cadastrarPessoa(nome, dni, estado, interesses);
+		this.pessoaCntrl.cadastrarPessoa(nome, dni, estado, interesses);
 	}
 	
 	public void cadastrarPartido(String nome) {
-		this.pcc.cadastrarPartido(nome);
+		this.partidoCntrl.cadastrarPartido(nome);
 	}
 	
 	public String exibirBase() {
-		return pcc.exibirBase();
+		return partidoCntrl.exibirBase();
 	}
 	
 	public void cadastrarDeputado(String dni, String dataDeInicio) {
-		this.pc.cadastrarDeputado(dni, dataDeInicio);
+		this.pessoaCntrl.cadastrarDeputado(dni, dataDeInicio);
 	}
 	
 	public String exibirPessoa(String dni) {
-		return this.pc.exibirPessoa(dni);
+		return this.pessoaCntrl.exibirPessoa(dni);
 	}
 	
 	public void limparSistema() {		
