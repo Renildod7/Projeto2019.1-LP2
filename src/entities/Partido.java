@@ -1,5 +1,7 @@
 package entities;
 
+import others.Validacao;
+
 /**
  * Representacao de Partido onde se tem nome.
  * 

@@ -1,6 +1,6 @@
 package entities;
 
-import others.Funcao;
+import others.Validacao;
 
 /**
  * Classe que representa uma pessoa.
@@ -35,11 +35,6 @@ public class Pessoa {
 	 * Partido da pessoa.
 	 */
 	private String partido;
-	
-	/**
-	 * Cargo exercido pela pessoa.
-	 */
-	private Funcao cargo;
 
 	/**
 	 * Construtor de principal de Pessoa.
@@ -83,20 +78,6 @@ public class Pessoa {
 		Validacao.validaString(dni, "Erro ao cadastrar pessoa: dni nao pode ser vazio ou nulo");
 		Validacao.validaString(estado, "Erro ao cadastrar pessoa: estado nao pode ser vazio ou nulo");
 		Validacao.validaDni(dni, "Erro ao cadastrar pessoa: dni invalido");
-	}
-	
-	/**
-	 * Metodo utilizado para alterar a funcao(cargo) de uma pessoa.
-	 * 
-	 * @param dataDeInicio	Data de inicio da funcao.
-	 */
-	public void alteraFuncao(String dataDeInicio) {
-		Validacao.validaString(dataDeInicio, "Erro ao cadastrar deputado: data nao pode ser vazio ou nulo");
-		Validacao.validaData(dataDeInicio, "Erro ao cadastrar deputado: ");
-		if(!this.partido.equals("")) {
-			this.cargo = new Deputado(dataDeInicio);
-		}else throw new IllegalArgumentException("Erro ao cadastrar deputado: pessoa sem partido");
-		
 	}	
 	
 	/**
@@ -135,18 +116,31 @@ public class Pessoa {
 	 */
 	public String toString() {
 		String retorno = "";
-		if(this.cargo == null) {
-			retorno += this.nome + " - " + this.dni + " (" + this.estado + ")";
-			if(!this.partido.equals("")) retorno += " - " + this.partido;
-			if(!this.interesses.equals("")) retorno += " - Interesses: " + this.interesses;			
-		}
-		else if(this.cargo.getClass() == Deputado.class) {
-			retorno += "POL: " + this.nome + " - " + this.dni + " (" + this.estado + ") - " + this.partido;
-			if(!this.interesses.equals("")) retorno += " - Interesses: " + this.interesses;
-			retorno += " - " + this.cargo.getDataDeInicio() + " - " + this.cargo.getLeisAprovadas() + " Leis";
-		}
+		
+		retorno += this.nome + " - " + this.dni + " (" + this.estado + ")";
+		if(!this.partido.equals("")) retorno += " - " + this.partido;
+		if(!this.interesses.equals("")) retorno += " - Interesses: " + this.interesses;
+	
 		return retorno;
 	}
 
+	public String getNome() {
+		return nome;
+	}
 
+	public String getDni() {
+		return dni;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public String getInteresses() {
+		return interesses;
+	}
+
+	public String getPartido() {
+		return partido;
+	}
 }

@@ -3,8 +3,9 @@ package controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import entities.Deputado;
 import entities.Pessoa;
-import entities.Validacao;
+import others.Validacao;
 
 /**
  * Classe que representa o Controlador de pessoas.
@@ -79,9 +80,11 @@ public class PessoaController {
 		Validacao.validaDni(dni, "Erro ao cadastrar deputado: dni invalido");
 		
 		if(this.pessoas.containsKey(dni)) {
+			if(this.pessoas.get(dni).getPartido().equals("")) throw new IllegalArgumentException("Erro ao cadastrar deputado: pessoa sem partido");
 			Validacao.validaString(dataDeInicio, "Erro ao cadastrar deputado: data nao pode ser vazio ou nulo");
 			Validacao.validaData(dataDeInicio, "Erro ao cadastrar deputado: ");
-			this.pessoas.get(dni).alteraFuncao(dataDeInicio);
+			Pessoa p = this.pessoas.get(dni);
+			this.pessoas.put(dni, new Deputado(p.getNome(), p.getDni(), p.getEstado(), p.getInteresses(), p.getPartido(), dataDeInicio));
 		}else throw new NullPointerException("Erro ao cadastrar deputado: pessoa nao encontrada");
 	}
 	

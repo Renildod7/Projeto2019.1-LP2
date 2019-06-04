@@ -102,69 +102,8 @@ class PessoaTest {
 		}
 	}
 	
-	
-	
-	
-	@Test
-	void testAlteraFuncaoDataDeInicioNula() {
-		Pessoa p = new Pessoa("nome", "000000000-0", "XX", "interesses", "YY");
-		try {
-			p.alteraFuncao(null);
-			fail("");
-		} catch (NullPointerException npe) {
-		}
-	}
-	
-	@Test
-	void testAlteraFuncaoDataDeInicioVazia() {
-		Pessoa p = new Pessoa("nome", "000000000-0", "XX", "interesses", "YY");
-		try {
-			p.alteraFuncao("");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
-	}
-	
-	@Test
-	void testAlteraFuncaoDataDeInicioApenasEspacos() {
-		Pessoa p = new Pessoa("nome", "000000000-0", "XX", "interesses", "YY");
-		try {
-			p.alteraFuncao("  ");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
-	}
-	
-	@Test
-	void testAlteraFuncaoDataDeInicioInvalida() {
-		Pessoa p = new Pessoa("nome", "000000000-0", "XX", "interesses", "YY");
-		try {
-			p.alteraFuncao("31022001");
-			fail("");
-		} catch (IllegalArgumentException npe) {
-		}
-	}
-	
-	@Test
-	void testAlteraFuncaoDataDeInicioFutura() {
-		Pessoa p = new Pessoa("nome", "000000000-0", "XX", "interesses", "YY");
-		try {
-			p.alteraFuncao("01013001");
-			fail("");
-		} catch (IllegalArgumentException npe) {
-		}
-	}
-	
-	@Test
-	void testAlteraFuncaoPessoaSemPartido() {
-		Pessoa p = new Pessoa("nome", "000000000-0", "XX", "interesses");
-		try {
-			p.alteraFuncao("01012001");
-			fail("");
-		} catch (IllegalArgumentException npe) {
-		}
-	}
-	
+		
+
 	
 	
 	@Test
@@ -189,20 +128,6 @@ class PessoaTest {
 	void testToStringPessoaComPartidoComInteresses() {
 		Pessoa p = new Pessoa("nome", "000000000-0", "XX", "interesses", "YY");
 		assertEquals("nome - 000000000-0 (XX) - YY - Interesses: interesses", p.toString());
-	}
-	
-	@Test
-	void testToStringDeputadoSemInteresses() {
-		Pessoa p = new Pessoa("nome", "000000000-0", "XX", "", "YY");
-		p.alteraFuncao("01012001");
-		assertEquals("POL: nome - 000000000-0 (XX) - YY - 01/01/2001 - 0 Leis", p.toString());
-	}
-	
-	@Test
-	void testToStringDeputadoComInteresses() {
-		Pessoa p = new Pessoa("nome", "000000000-0", "XX", "interesses", "YY");
-		p.alteraFuncao("01012001");
-		assertEquals("POL: nome - 000000000-0 (XX) - YY - Interesses: interesses - 01/01/2001 - 0 Leis", p.toString());
 	}
 	
 	

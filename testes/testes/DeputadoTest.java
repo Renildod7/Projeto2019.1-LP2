@@ -11,7 +11,7 @@ class DeputadoTest {
 	@Test
 	void testConstrutorDataDeInicioNula() {
 		try {
-			Deputado d = new Deputado(null);
+			Deputado d = new Deputado("nome", "000000000-0", "XX", "interesses", "YY", null);
 			fail("");
 		} catch (NullPointerException iae) {
 		}
@@ -20,7 +20,7 @@ class DeputadoTest {
 	@Test
 	void testConstrutorDataDeInicioVazia() {
 		try {
-			Deputado d = new Deputado("");
+			Deputado d = new Deputado("nome", "000000000-0", "XX", "interesses", "YY", "");
 			fail("");
 		} catch (NullPointerException iae) {
 		}
@@ -29,7 +29,7 @@ class DeputadoTest {
 	@Test
 	void testConstrutorDataDeInicioApenasEspacos() {
 		try {
-			Deputado d = new Deputado("    ");
+			Deputado d = new Deputado("nome", "000000000-0", "XX", "interesses", "YY", "    ");
 			fail("");
 		} catch (NullPointerException iae) {
 		}
@@ -38,7 +38,7 @@ class DeputadoTest {
 	@Test
 	void testConstrutorDataDeInicioInvalida() {
 		try {
-			Deputado d = new Deputado("31022001");
+			Deputado d = new Deputado("nome", "000000000-0", "XX", "interesses", "YY", "31022001");
 			fail("");
 		} catch (IllegalArgumentException iae) {
 		}
@@ -47,7 +47,7 @@ class DeputadoTest {
 	@Test
 	void testConstrutorDataDeInicioFutura() {
 		try {
-			Deputado d = new Deputado("01013001");
+			Deputado d = new Deputado("nome", "000000000-0", "XX", "interesses", "YY", "01013001");
 			fail("");
 		} catch (IllegalArgumentException iae) {
 		}
@@ -57,7 +57,7 @@ class DeputadoTest {
 	
 	@Test
 	void testGetDataDeInicio() {
-		Deputado d = new Deputado("01012001");
+		Deputado d = new Deputado("nome", "000000000-0", "XX", "interesses", "YY", "01012001");
 		assertEquals("01/01/2001", d.getDataDeInicio());
 	}
 

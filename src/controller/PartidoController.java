@@ -3,7 +3,7 @@ package controller;
 import java.util.Map;
 import java.util.TreeMap;
 import entities.Partido;
-import entities.Validacao;
+import others.Validacao;
 
 /**
  * Clase Partido Controller onde se opera sobre a Classe Partido.
