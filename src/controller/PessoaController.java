@@ -102,5 +102,9 @@ public class PessoaController {
 			return this.pessoas.get(dni).toString();
 		}else throw new NullPointerException("Erro ao exibir pessoa: pessoa nao encontrada");
 	}
+	
+	public boolean containsPessoa(String dni) {
+		return this.pessoas.containsKey(dni);
+	}
 
 }

@@ -1,17 +1,17 @@
 package others;
 
+import controller.ComissaoController;
 import controller.PartidoController;
 import controller.PessoaController;
+import controller.SystemController;
 import easyaccept.EasyAccept;
 
 public class Facade {
 	
-	private PessoaController pessoaCntrl;
-	private PartidoController partidoCntrl;
+	private SystemController systemCntrl;
 	
 	public Facade() {
-		this.pessoaCntrl = new PessoaController();
-		this.partidoCntrl = new PartidoController();
+		this.systemCntrl = new SystemController();
 	}
 	
 	public static void main(String[] args) {
@@ -20,27 +20,31 @@ public class Facade {
 	}
 	
 	public void cadastrarPessoa(String nome, String dni, String estado, String interesses, String partido) {
-		this.pessoaCntrl.cadastrarPessoa(nome, dni, estado, interesses, partido);
+		this.systemCntrl.cadastrarPessoa(nome, dni, estado, interesses, partido);
 	}
 	
 	public void cadastrarPessoa(String nome, String dni, String estado, String interesses) {
-		this.pessoaCntrl.cadastrarPessoa(nome, dni, estado, interesses);
+		this.systemCntrl.cadastrarPessoa(nome, dni, estado, interesses);
 	}
 	
 	public void cadastrarPartido(String nome) {
-		this.partidoCntrl.cadastrarPartido(nome);
+		this.systemCntrl.cadastrarPartido(nome);
 	}
 	
 	public String exibirBase() {
-		return partidoCntrl.exibirBase();
+		return systemCntrl.exibirBase();
 	}
 	
 	public void cadastrarDeputado(String dni, String dataDeInicio) {
-		this.pessoaCntrl.cadastrarDeputado(dni, dataDeInicio);
+		this.systemCntrl.cadastrarDeputado(dni, dataDeInicio);
 	}
 	
 	public String exibirPessoa(String dni) {
-		return this.pessoaCntrl.exibirPessoa(dni);
+		return this.systemCntrl.exibirPessoa(dni);
+	}
+	
+	public void cadastrarComissao(String tema, String politicos) {
+		this.systemCntrl.cadastrarComissao(tema, politicos);
 	}
 	
 	public void limparSistema() {		
