@@ -1,5 +1,6 @@
 package entities;
 
+import others.CargoPoliticoInteface;
 import others.Validacao;
 
 /**
@@ -35,6 +36,9 @@ public class Pessoa {
 	 * Partido da pessoa.
 	 */
 	private String partido;
+	
+	
+	private CargoPoliticoInteface cargoPolitico;
 
 	/**
 	 * Construtor de principal de Pessoa.
@@ -78,7 +82,11 @@ public class Pessoa {
 		Validacao.validaString(dni, "Erro ao cadastrar pessoa: dni nao pode ser vazio ou nulo");
 		Validacao.validaString(estado, "Erro ao cadastrar pessoa: estado nao pode ser vazio ou nulo");
 		Validacao.validaDni(dni, "Erro ao cadastrar pessoa: dni invalido");
-	}	
+	}
+	
+	public void alteraCargoPolitico(String dataDeInicio) {
+		this.cargoPolitico = new Deputado(dataDeInicio);
+	}
 	
 	/**
 	 * hashCode de Pessoa. Calculado a partir do DNI da pessoa.
@@ -114,33 +122,43 @@ public class Pessoa {
 	/**
 	 * Retorna a representacao em String de Pessoa.
 	 */
+	@Override
 	public String toString() {
+
+		String retorno = "";
+		
+		if(this.cargoPolitico == null) {
+			retorno = representacaoPessoaComum();
+			
+		}else if(this.cargoPolitico.getClass() == Deputado.class) {
+			retorno  = representacaoPessoaDeputado();
+		}
+	
+		return retorno;
+	}
+	
+	private String representacaoPessoaComum() {
 		String retorno = "";
 		
 		retorno += this.nome + " - " + this.dni + " (" + this.estado + ")";
 		if(!this.partido.equals("")) retorno += " - " + this.partido;
 		if(!this.interesses.equals("")) retorno += " - Interesses: " + this.interesses;
-	
+		
 		return retorno;
 	}
-
-	public String getNome() {
-		return nome;
+	
+	private String representacaoPessoaDeputado() {
+		String retorno = "";
+		
+		retorno += "POL: " + this.nome + " - " + this.dni + " (" + this.estado + ") - " + this.partido;
+		if(!this.interesses.equals("")) retorno += " - Interesses: " + this.interesses;
+		retorno += " - " + this.cargoPolitico.getDataDeInicio() + " - " + this.cargoPolitico.getLeisAprovadas() + " Leis";
+		
+		return retorno;
 	}
-
-	public String getDni() {
-		return dni;
-	}
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public String getInteresses() {
-		return interesses;
-	}
-
+	
 	public String getPartido() {
-		return partido;
+		return this.partido;
 	}
+
 }

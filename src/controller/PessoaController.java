@@ -83,8 +83,7 @@ public class PessoaController {
 			if(this.pessoas.get(dni).getPartido().equals("")) throw new IllegalArgumentException("Erro ao cadastrar deputado: pessoa sem partido");
 			Validacao.validaString(dataDeInicio, "Erro ao cadastrar deputado: data nao pode ser vazio ou nulo");
 			Validacao.validaData(dataDeInicio, "Erro ao cadastrar deputado: ");
-			Pessoa p = this.pessoas.get(dni);
-			this.pessoas.put(dni, new Deputado(p.getNome(), p.getDni(), p.getEstado(), p.getInteresses(), p.getPartido(), dataDeInicio));
+			this.pessoas.get(dni).alteraCargoPolitico(dataDeInicio);
 		}else throw new NullPointerException("Erro ao cadastrar deputado: pessoa nao encontrada");
 	}
 	
@@ -102,7 +101,7 @@ public class PessoaController {
 			return this.pessoas.get(dni).toString();
 		}else throw new NullPointerException("Erro ao exibir pessoa: pessoa nao encontrada");
 	}
-	
+
 	public boolean containsPessoa(String dni) {
 		return this.pessoas.containsKey(dni);
 	}

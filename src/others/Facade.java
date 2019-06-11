@@ -1,8 +1,5 @@
 package others;
 
-import controller.ComissaoController;
-import controller.PartidoController;
-import controller.PessoaController;
 import controller.SystemController;
 import easyaccept.EasyAccept;
 

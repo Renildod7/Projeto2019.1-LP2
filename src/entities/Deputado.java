@@ -1,5 +1,6 @@
 package entities;
 
+import others.CargoPoliticoInteface;
 import others.Validacao;
 
 /**
@@ -9,7 +10,7 @@ import others.Validacao;
  * @author Renildo Dantas Melo
  * @author Wander Medeiros de Brito Junior
  */
-public class Deputado extends Pessoa {
+public class Deputado implements CargoPoliticoInteface {
 	
 	/**
 	 * Data de inicio do mandato do deputado.
@@ -26,8 +27,7 @@ public class Deputado extends Pessoa {
 	 * 
 	 * @param dataDeInicio A data de inicio do mandato.
 	 */
-	public Deputado(String nome, String dni, String estado, String interesses, String partido, String dataDeInicio) {
-		super(nome, dni, estado, interesses, partido);
+	public Deputado(String dataDeInicio) {
 		Validacao.validaString(dataDeInicio, "Erro ao cadastrar deputado: data nao pode ser vazio ou nulo");
 		Validacao.validaData(dataDeInicio, "Erro ao cadastrar deputado: ");	
 		this.dataDeInicio = dataDeInicio;
@@ -48,16 +48,10 @@ public class Deputado extends Pessoa {
 		}
 		return retorno;
 	}
-	
+
 	@Override
-	public String toString() {
-		String retorno = "";
-		
-		retorno += "POL: " + this.getNome() + " - " + this.getDni() + " (" + this.getEstado() + ") - " + this.getPartido();
-		if(!this.getInteresses().equals("")) retorno += " - Interesses: " + this.getInteresses();
-		retorno += " - " + this.getDataDeInicio() + " - " + this.leisAprovadas + " Leis";
-		
-		return retorno;
+	public int getLeisAprovadas() {
+		return this.leisAprovadas;
 	}
 	
 }
