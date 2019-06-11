@@ -137,6 +137,11 @@ public class Pessoa {
 		return retorno;
 	}
 	
+	/**
+	 * Metodo auxiliar que retorna a representacao em String de uma pessoa comum.
+	 * 
+	 * @return A representacao em String da pessoa.
+	 */
 	private String representacaoPessoaComum() {
 		String retorno = "";
 		
@@ -147,6 +152,11 @@ public class Pessoa {
 		return retorno;
 	}
 	
+	/**
+	 * Metodo auxiliar que retorna a representacao em String de uma pessoa deputado.
+	 * 
+	 * @return A representacao em String da pessoa.
+	 */
 	private String representacaoPessoaDeputado() {
 		String retorno = "";
 		
@@ -157,8 +167,25 @@ public class Pessoa {
 		return retorno;
 	}
 	
+	/**
+	 * Metodo que retorna o partido de uma pessoa.
+	 * 
+	 * @return O partido da pessoa.
+	 */
 	public String getPartido() {
 		return this.partido;
+	}
+
+	/**
+	 * Metodo responsavel por identificar se uma pessoa tem o cargo politico de deputado.
+	 * 
+	 * @return true caso o cargo politico seja deputado e false caso contrario.
+	 */
+	public boolean ehDeputado() {
+		if (this.cargoPolitico == null) {
+			return false;			
+		}		
+		return true;
 	}
 
 }

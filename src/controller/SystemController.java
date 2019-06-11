@@ -42,15 +42,25 @@ public class SystemController {
 	}
 	
 	public void cadastrarComissao(String tema, String politicos) {
-		Validacao.validaString(tema, "");
-		Validacao.validaString(politicos, "");
-		Set<String> setPoliticos = new HashSet<>();
-		for (String dni : politicos.split(",")) {
-			if (pessoaCntrl.containsPessoa(dni)) {
-				setPoliticos.add(dni);
-			}			
+		Validacao.validaString(tema, "Erro ao cadastrar comissao: tema nao pode ser vazio ou nulo");
+		Validacao.validaString(politicos, "Erro ao cadastrar comissao: lista de politicos nao pode ser vazio ou nulo");
+		if (comissaoCntrl.containsComissao(tema)) {
+			throw new IllegalArgumentException("Erro ao cadastrar comissao: tema existente");
 		}
 		
+		Set<String> setPoliticos = new HashSet<>();	
+		for (String dni : politicos.split(",")) {		
+			Validacao.validaDni(dni, "Erro ao cadastrar comissao: dni invalido");
+			if (pessoaCntrl.containsPessoa(dni)) {			
+				if (pessoaCntrl.ehDeputado(dni)) {
+					setPoliticos.add(dni);
+				} else {
+					throw new IllegalArgumentException("Erro ao cadastrar comissao: pessoa nao eh deputado");	
+				}
+			} else {
+				throw new NullPointerException("Erro ao cadastrar comissao: pessoa inexistente");			
+			}
+		}		
 		this.comissaoCntrl.cadastrarComissao(tema, setPoliticos);
 	}
 

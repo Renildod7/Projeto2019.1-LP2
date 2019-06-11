@@ -23,8 +23,11 @@ public class Validacao {
 	 * @param mensagem	A mensagem de erro que sera lancada caso o atributo seja invalido.
 	 */
 	public static void validaString(String atributo, String mensagem) {
-		if (atributo == null || atributo.trim().equals("")) {
+		if (atributo == null) {
 			throw new NullPointerException(mensagem);
+		}
+		if (atributo.trim().equals("")) {
+			throw new IllegalArgumentException(mensagem);
 		}
 	}
 	

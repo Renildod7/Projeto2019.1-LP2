@@ -20,8 +20,7 @@ class PartidoControllerTest {
 		try {
 			this.cntrl.cadastrarPartido(null);
 			fail("");
-		} catch (NullPointerException npe) {
-		}
+		} catch (NullPointerException npe) { }
 	}
 	
 	@Test
@@ -29,8 +28,7 @@ class PartidoControllerTest {
 		try {
 			this.cntrl.cadastrarPartido("");
 			fail("");
-		} catch (NullPointerException npe) {
-		}
+		} catch (IllegalArgumentException iae) { }
 	}
 	
 	@Test
@@ -38,8 +36,7 @@ class PartidoControllerTest {
 		try {
 			this.cntrl.cadastrarPartido("  ");
 			fail("");
-		} catch (NullPointerException npe) {
-		}
+		} catch (IllegalArgumentException iae) { }
 	}
 	
 	@Test
@@ -48,12 +45,9 @@ class PartidoControllerTest {
 		try {
 			this.cntrl.cadastrarPartido("NOME");
 			fail("");
-		} catch (IllegalArgumentException npe) {
-		}
+		} catch (IllegalArgumentException npe) { }
 	}
 	
-	
-
 	@Test
 	void testExibiBaseNenhumPartidoCadastrado() {
 		assertEquals("", this.cntrl.exibirBase());

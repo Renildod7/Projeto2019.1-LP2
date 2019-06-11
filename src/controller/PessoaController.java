@@ -3,7 +3,6 @@ package controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import entities.Deputado;
 import entities.Pessoa;
 import others.Validacao;
 
@@ -101,9 +100,27 @@ public class PessoaController {
 			return this.pessoas.get(dni).toString();
 		}else throw new NullPointerException("Erro ao exibir pessoa: pessoa nao encontrada");
 	}
-
+	
+	/**
+	 * Metodo que identifica se uma pessoa esta cadastrada non sistema.
+	 * 
+	 * @param dni O dni da pessoa em questao.
+	 * 
+	 * @return true caso a pessoa esteja cadastrada e false caso contrario.
+	 */
 	public boolean containsPessoa(String dni) {
 		return this.pessoas.containsKey(dni);
+	}
+
+	/**
+	 * Metodo que identifica se o cargo politico de uma pessoa eh deputado.
+	 * 
+	 * @param dni O dni da pessoa em questao.
+	 * 
+	 * @return true caso o cargo politico seja deputado e false caso contrario.
+	 */
+	public boolean ehDeputado(String dni) {
+		return this.pessoas.get(dni).ehDeputado();
 	}
 
 }

@@ -20,27 +20,24 @@ class PessoaControllerTest {
 	void testCadastraPessoaNomeNulo() {
 		try {
 			this.cntrl.cadastrarPessoa(null, "000000000-0", "XX", "interesses");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (NullPointerException npe) { }
 	}
 	
 	@Test
 	void testCadastraPessoaNomeVazio() {
 		try {
 			this.cntrl.cadastrarPessoa("", "000000000-0", "XX", "interesses");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) { }
 	}
 	
 	@Test
 	void testCadastraPessoaNomeApenasEspacos() {
 		try {
 			this.cntrl.cadastrarPessoa("   ", "000000000-0", "XX", "interesses");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) { }	
 	}
 	
 	
@@ -48,27 +45,24 @@ class PessoaControllerTest {
 	void testCadastraPessoaDniNulo() {
 		try {
 			this.cntrl.cadastrarPessoa("nome", null, "XX", "interesses");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (NullPointerException npe) { }
 	}
 	
 	@Test
 	void testCadastraPessoaDniVazio() {
 		try {
 			this.cntrl.cadastrarPessoa("nome", "", "XX", "interesses");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) { }
 	}
 	
 	@Test
 	void testCadastraPessoaDniApenasEspacos() {
 		try {
 			this.cntrl.cadastrarPessoa("nome", "    ", "XX", "interesses");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) { }
 	}
 	
 	
@@ -76,9 +70,8 @@ class PessoaControllerTest {
 	void testCadastraPessoaEstadoNulo() {
 		try {
 			this.cntrl.cadastrarPessoa("nome", "000000000-0", null, "interesses");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (NullPointerException npe) { }
 	}
 	
 	@Test
@@ -86,19 +79,16 @@ class PessoaControllerTest {
 		try {
 			this.cntrl.cadastrarPessoa("nome", "000000000-0", "", "interesses");
 			fail("");
-		} catch (NullPointerException npe) {
-		}
+		} catch (IllegalArgumentException iae) { }
 	}
 	
 	@Test
 	void testCadastraPessoaEstadoApenasEspacos() {
 		try {
 			this.cntrl.cadastrarPessoa("nome", "000000000-0", "    ", "interesses");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) { }
 	}
-	
 	
 	@Test
 	void testCadastraPessoaPessoaJaCadastrada() {
@@ -106,20 +96,16 @@ class PessoaControllerTest {
 		try {
 			this.cntrl.cadastrarPessoa("nome", "000000000-0", "XX", "interesses");
 			fail("");
-		} catch (IllegalArgumentException npe) {
-		}
-	}
-
-	
+		} catch (IllegalArgumentException npe) { }
+	}	
 	
 	@Test
 	void testCadastraDeputadoDniNulo() {
 		this.cntrl.cadastrarPessoa("nome", "000000000-0", "XX", "interesses", "YY");
 		try {
 			this.cntrl.cadastrarDeputado(null, "01012001");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (NullPointerException npe) { }
 	}
 	
 	@Test
@@ -127,9 +113,8 @@ class PessoaControllerTest {
 		this.cntrl.cadastrarPessoa("nome", "000000000-0", "XX", "interesses", "YY");
 		try {
 			this.cntrl.cadastrarDeputado("", "01012001");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) { }
 	}
 	
 	@Test
@@ -138,8 +123,7 @@ class PessoaControllerTest {
 		try {
 			this.cntrl.cadastrarDeputado("    ", "01012001");
 			fail("");
-		} catch (NullPointerException npe) {
-		}
+		} catch (IllegalArgumentException iae) { }
 	}
 	
 	@Test
@@ -147,21 +131,17 @@ class PessoaControllerTest {
 		this.cntrl.cadastrarPessoa("nome", "000000000-0", "XX", "interesses", "YY");
 		try {
 			this.cntrl.cadastrarDeputado("A00000000-0", "01012001");
-			fail("");
-		} catch (IllegalArgumentException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) { }
 	}
-	
-	
 	
 	@Test
 	void testCadastraDeputadoDataDeInicioNula() {
 		this.cntrl.cadastrarPessoa("nome", "000000000-0", "XX", "interesses", "YY");
 		try {
 			this.cntrl.cadastrarDeputado("000000000-0", null);
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (NullPointerException npe) { }
 	}
 	
 	@Test
@@ -169,9 +149,8 @@ class PessoaControllerTest {
 		this.cntrl.cadastrarPessoa("nome", "000000000-0", "XX", "interesses", "YY");
 		try {
 			this.cntrl.cadastrarDeputado("000000000-0", "");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) { }
 	}
 	
 	@Test
@@ -179,9 +158,8 @@ class PessoaControllerTest {
 		this.cntrl.cadastrarPessoa("nome", "000000000-0", "XX", "interesses", "YY");
 		try {
 			this.cntrl.cadastrarDeputado("000000000-0", "   ");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) { }
 	}
 	
 	@Test
@@ -189,9 +167,8 @@ class PessoaControllerTest {
 		this.cntrl.cadastrarPessoa("nome", "000000000-0", "XX", "interesses", "YY");
 		try {
 			this.cntrl.cadastrarDeputado("000000000-0", "31022001");
-			fail("");
-		} catch (IllegalArgumentException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) { }
 	}
 	
 	@Test
@@ -199,30 +176,25 @@ class PessoaControllerTest {
 		this.cntrl.cadastrarPessoa("nome", "000000000-0", "XX", "interesses", "YY");
 		try {
 			this.cntrl.cadastrarDeputado("000000000-0", "01013005");
-			fail("");
-		} catch (IllegalArgumentException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) { }
 	}
 	
 	@Test
 	void testCadastraDeputadoPessoaNaoEncontrada() {
 		try {
 			this.cntrl.cadastrarDeputado("000000000-0", "01012001");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (NullPointerException npe) { }
 	}
-	
-	
 	
 	@Test
 	void testExibePessoaDniNulo() {
 		this.cntrl.cadastrarPessoa("nome", "000000000-0", "XX", "interesses", "YY");
 		try {
 			this.cntrl.exibirPessoa(null);
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (NullPointerException npe) { }
 	}
 	
 	@Test
@@ -231,8 +203,7 @@ class PessoaControllerTest {
 		try {
 			this.cntrl.exibirPessoa("");
 			fail("");
-		} catch (NullPointerException npe) {
-		}
+		} catch (IllegalArgumentException iae) { }
 	}
 	
 	@Test
@@ -240,9 +211,8 @@ class PessoaControllerTest {
 		this.cntrl.cadastrarPessoa("nome", "000000000-0", "XX", "interesses", "YY");
 		try {
 			this.cntrl.exibirPessoa("   ");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) { }
 	}
 	
 	@Test
@@ -250,18 +220,16 @@ class PessoaControllerTest {
 		this.cntrl.cadastrarPessoa("nome", "000000000-0", "XX", "interesses", "YY");
 		try {
 			this.cntrl.exibirPessoa("A00000000-0");
-			fail("");
-		} catch (IllegalArgumentException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) { }
 	}
 	
 	@Test
 	void testExibePessoaDniPessoaNaoEncontrada() {
 		try {
 			this.cntrl.exibirPessoa("000000000-0");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (NullPointerException npe) { }
 	}
 	
 	@Test

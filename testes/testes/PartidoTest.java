@@ -12,7 +12,7 @@ class PartidoTest {
 	void testConstrutorNomeNulo() {
 		try {
 			Partido p = new Partido(null);
-			fail("");
+			fail("Excecao nao lancada");
 		} catch (NullPointerException npe) {
 		}
 	}
@@ -21,8 +21,8 @@ class PartidoTest {
 	void testConstrutorNomeVazio() {
 		try {
 			Partido p = new Partido("");
-			fail("");
-		} catch (NullPointerException npe) {
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) {
 		}
 	}
 	
@@ -30,8 +30,8 @@ class PartidoTest {
 	void testConstrutorNomeApenasEspacos() {
 		try {
 			Partido p = new Partido("   ");
-			fail("");
-		} catch (NullPointerException npe) {
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) {
 		}
 	}
 	

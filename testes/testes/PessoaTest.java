@@ -12,100 +12,82 @@ class PessoaTest {
 	void testConstrutorNomeNulo() {
 		try {
 			Pessoa p = new Pessoa(null, "000000000-0", "XX", "interesses");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (NullPointerException npe) { }
 	}
 	
 	@Test
 	void testConstrutorNomeVazio() {
 		try {
 			Pessoa p = new Pessoa("", "000000000-0", "XX", "interesses");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");;
+		} catch (IllegalArgumentException iae) { }
 	}
 	
 	@Test
 	void testConstrutorNomeApenasEspacos() {
 		try {
 			Pessoa p = new Pessoa("   ", "000000000-0", "XX", "interesses");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) { }
 	}
-	
-	
 	
 	@Test
 	void testConstrutorDniNulo() {
 		try {
 			Pessoa p = new Pessoa("nome", null, "XX", "interesses");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (NullPointerException npe) { }
 	}
 	
 	@Test
 	void testConstrutorDniVazio() {
 		try {
 			Pessoa p = new Pessoa("nome", "", "XX", "interesses");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) { }
 	}
 	
 	@Test
 	void testConstrutorDniApenasEspacos() {
 		try {
 			Pessoa p = new Pessoa("nome", "    ", "XX", "interesses");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) { }
 	}
 	
 	@Test
 	void testConstrutorDniInvalido() {
 		try {
 			Pessoa p = new Pessoa("nome", "A00000000-0", "XX", "interesses");
-			fail("");
-		} catch (IllegalArgumentException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) { }
 	}
-	
-	
 	
 	@Test
 	void testConstrutorEstadoNulo() {
 		try {
 			Pessoa p = new Pessoa("nome", "000000000-0", null, "interesses");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (NullPointerException npe) { }
 	}
 	
 	@Test
 	void testConstrutorEstadoVazio() {
 		try {
 			Pessoa p = new Pessoa("nome", "000000000-0", "", "interesses");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) { }
 	}
 	
 	@Test
 	void testConstrutorEstadoApenasEspacos() {
 		try {
 			Pessoa p = new Pessoa("nome", "000000000-0", "    ", "interesses");
-			fail("");
-		} catch (NullPointerException npe) {
-		}
+			fail("Excecao nao lancada");
+		} catch (IllegalArgumentException iae) { }
 	}
-	
-		
 
-	
-	
 	@Test
 	void testToStringPessoaSemPartidoSemInteresses() {
 		Pessoa p = new Pessoa("nome", "000000000-0", "XX", "");

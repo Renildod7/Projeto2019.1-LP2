@@ -12,7 +12,11 @@ public class Facade {
 	}
 	
 	public static void main(String[] args) {
-		args = new String[] {"others.Facade", "easyaccept/use_case_1.txt", "easyaccept/use_case_2.txt", "easyaccept/use_case_3.txt", "easyaccept/use_case_4.txt" };		
+		args = new String[] {"others.Facade", "easyaccept/use_case_1.txt", 
+				 							  "easyaccept/use_case_2.txt", 
+				 							  "easyaccept/use_case_3.txt", 
+				 							  "easyaccept/use_case_4.txt", 
+				 							  "easyaccept/use_case_5.txt"};		
 		EasyAccept.main(args);
 	}
 	
@@ -50,7 +54,7 @@ public class Facade {
 	public void salvarSistema() {		
 	}
 	
-	public void carregarSistema() {		
+	public void carregarSistema() {
 	}
 
 }
