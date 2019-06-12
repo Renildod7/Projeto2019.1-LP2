@@ -179,7 +179,7 @@ public class Pessoa {
 	/**
 	 * Metodo responsavel por identificar se uma pessoa tem o cargo politico de deputado.
 	 * 
-	 * @return true caso o cargo politico seja deputado e false caso contrario.
+	 * @return false caso a pessoa nao possua um cargo politico e true caso contrario.
 	 */
 	public boolean ehDeputado() {
 		if (this.cargoPolitico == null) {

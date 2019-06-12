@@ -16,7 +16,8 @@ public class Facade {
 				 							  "easyaccept/use_case_2.txt", 
 				 							  "easyaccept/use_case_3.txt", 
 				 							  "easyaccept/use_case_4.txt", 
-				 							  "easyaccept/use_case_5.txt"};		
+				 							  "easyaccept/use_case_5.txt",
+				 							  "easyaccept/use_case_6.txt"};		
 		EasyAccept.main(args);
 	}
 	
@@ -47,6 +48,23 @@ public class Facade {
 	public void cadastrarComissao(String tema, String politicos) {
 		this.systemCntrl.cadastrarComissao(tema, politicos);
 	}
+	
+	public void cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo) {
+		this.systemCntrl.cadastrarPL(dni, ano, ementa, interesses, url, conclusivo);
+	}
+	
+	public void cadastrarPLP(String dni, int ano, String ementa, String interesses, String url, String artigo) {
+		this.systemCntrl.cadastrarPLP(dni, ano, ementa, interesses, url, artigo);
+	}
+	
+	public void cadastrarPEC(String dni, int ano, String ementa, String interesses, String url, String artigo) {
+		this.systemCntrl.cadastrarPEC(dni, ano, ementa, interesses, url, artigo);
+	}
+	
+	public String exibirProjeto(String codigo) {
+		return this.systemCntrl.exibirProjeto(codigo);
+	}
+	
 	
 	public void limparSistema() {		
 	}

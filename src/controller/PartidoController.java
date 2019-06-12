@@ -1,8 +1,8 @@
 package controller;
 
-import java.util.Map;
-import java.util.TreeMap;
-import entities.Partido;
+
+import java.util.Set;
+import java.util.TreeSet;
 import others.Validacao;
 
 /**
@@ -17,13 +17,13 @@ public class PartidoController {
 	/**
 	 * Mapa responsavel por armazenar partidos. As chaves do mapa sao nomes de partidos.
 	 */
-	private Map<String, Partido> partidos;
+	private Set<String> partidos;
 	
 	/**
 	 * Construtor de PartidoController. Cria um novo TreeMap.
 	 */
 	public PartidoController() {
-		this.partidos = new TreeMap<>();		
+		this.partidos = new TreeSet<>();		
 	}
 	
 	/**
@@ -33,9 +33,8 @@ public class PartidoController {
 	 */
 	public void cadastrarPartido(String nome) {
 		Validacao.validaString(nome, "Erro ao cadastrar partido: partido nao pode ser vazio ou nulo");
-		if (!this.partidos.containsKey(nome)) {
-			Partido p = new Partido(nome);
-			this.partidos.put(nome, p);
+		if (!this.partidos.contains(nome)) {
+			this.partidos.add(nome);
 		} else {
 			throw new IllegalArgumentException("Erro ao cadastrar partido: partido ja cadastrado");
 		}
@@ -48,8 +47,8 @@ public class PartidoController {
 	 */
 	public String exibirBase() {		
 		String retorno = "";
-		for (Partido w : this.partidos.values()) {
-			retorno += w.getNome() + ",";
+		for (String w : this.partidos) {
+			retorno += w + ",";
 		}
 		if (this.partidos.size() > 0) {
 			return retorno.substring(0, retorno.length() -1);
