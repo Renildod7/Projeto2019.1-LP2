@@ -43,6 +43,6 @@ public class ComissaoController {
 	 */
 	public boolean containsComissao(String tema) {
 		return this.comissoes.containsKey(tema);
-	}
+	}  
 
 }
