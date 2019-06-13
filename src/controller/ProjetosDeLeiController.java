@@ -24,35 +24,36 @@ public class ProjetosDeLeiController {
 		this.codigosPec = new HashMap<>();
 	}
 
-	public void cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo) {
+	public String cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo) {
 		String codigo = geraCodigo(this.codigosPl, ano, "PL"); 
 		if (!this.projetosLei.containsKey(codigo)) {
 			ProjetoDeLei pl = new Pl(dni, ano, codigo, ementa, interesses, url, conclusivo);
 			this.projetosLei.put(codigo, pl);
+			return codigo;
 		} else {
 			throw new NullPointerException("n sei o que escrever");
 		} 
 	
 	}
 	
-	public void cadastrarPLP(String dni, int ano, String ementa, String interesses, String url,String artigo) {
+	public String cadastrarPLP(String dni, int ano, String ementa, String interesses, String url,String artigo) {
 		String codigo = geraCodigo(this.codigosPlp, ano, "PLP"); 
 		if (!this.projetosLei.containsKey(codigo)) {
 			ProjetoDeLei plp = new Plp(dni, ano, codigo, ementa, interesses, url, artigo);
 			this.projetosLei.put(codigo, plp);
-			
+			return codigo;
 		} else {
 			throw new NullPointerException("n sei o que escrever");
 		}
 	
 	}
 	
-	public void cadastrarPEC(String dni, int ano, String ementa, String interesses, String url,String artigo) {
+	public String cadastrarPEC(String dni, int ano, String ementa, String interesses, String url,String artigo) {
 		String codigo = geraCodigo(this.codigosPec, ano, "PEC"); 
 		if (!this.projetosLei.containsKey(codigo)) {
 			ProjetoDeLei pec = new Pec(dni, ano, codigo, ementa, interesses, url, artigo);
 			this.projetosLei.put(codigo, pec);
-			
+			return codigo;
 		} else {
 			throw new NullPointerException("n sei o que escrever");
 		}

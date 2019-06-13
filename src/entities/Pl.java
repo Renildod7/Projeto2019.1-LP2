@@ -12,9 +12,10 @@ public class Pl extends ProjetoDeLei {
 
 	@Override
 	public String toString() {
-		return "Projeto de Lei Pl [conclusivo=" + conclusivo + ", dniAutor=" + dni + ", ano=" + ano + ", codigo=" + codigo
-				+ ", ementa=" + ementa + ", interessesRelacionados=" + interesses + ", situacaoAtual="
-				+ situacaoAtual + ", enderecoDocumento=" + url + "]";
+		if (this.conclusivo) {
+			return "Projeto de Lei - " + this.codigo + " - " + this.dni + " - " + this.ementa + " - " + "Conclusiva" + " - " +  this.situacaoAtual ;	
+		}
+		return "Projeto de Lei - " + this.codigo + " - " + this.dni + " - " + this.ementa + " - " +  this.situacaoAtual ;
 	}
 	
 	

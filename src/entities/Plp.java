@@ -11,9 +11,7 @@ public class Plp extends ProjetoDeLei {
 
 	@Override
 	public String toString() {
-		return " Projeto de Lei Complementar Plp [artigos=" + artigos + ", dniAutor=" + dni + ", ano=" + ano + ", codigo=" + codigo
-				+ ", ementa=" + ementa + ", interessesRelacionados=" + interesses + ", situacaoAtual="
-				+ situacaoAtual + ", enderecoDocumento=" + url + "]";
+		return "Projeto de Lei Complementar" + " - " +  this.codigo + " - " + this.dni + " - " + this.ementa + " - " + this.artigos + " - " + this.situacaoAtual;   
 	}
 	
 	

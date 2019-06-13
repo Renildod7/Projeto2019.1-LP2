@@ -11,9 +11,7 @@ public class Pec extends ProjetoDeLei{
 
 	@Override
 	public String toString() {
-		return " Projeto de Emenda Complementar Plp [artigos=" + artigos + ", dniAutor=" + dni + ", ano=" + ano + ", codigo=" + codigo
-				+ ", ementa=" + ementa + ", interessesRelacionados=" + interesses + ", situacaoAtual="
-				+ situacaoAtual + ", enderecoDocumento=" + url + "]";
+		return "Projeto de Emenda Constitucional" + " - " + this.codigo + " - " + this.dni + " - " + this.ementa + " - " + this.artigos.replace(",", ", ") + " - " + this.situacaoAtual;
 	}
 	
 	
