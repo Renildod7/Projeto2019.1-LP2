@@ -67,23 +67,60 @@ public class SystemController {
 	}
 
 	public void cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo) {
-		this.projetoCntrl.cadastrarPL(dni, ano, ementa, interesses, url, conclusivo);
+		Validacao.validaString(dni, "Erro ao cadastrar projeto: autor nao pode ser vazio ou nulo");
+		Validacao.validaDni(dni, "Erro ao cadastrar projeto: dni invalido");
+		Validacao.validaString(ementa, "Erro ao cadastrar projeto: ementa nao pode ser vazia ou nula");
+		Validacao.validaString(interesses, "Erro ao cadastrar projeto: interesse nao pode ser vazio ou nulo");
+		Validacao.validaString(url, "Erro ao cadastrar projeto: url nao pode ser vazio ou nulo");
+		
+		if (pessoaCntrl.containsPessoa(dni)) {
+			if (!pessoaCntrl.ehDeputado(dni)) {
+				throw new NullPointerException("Erro ao cadastrar projeto: pessoa nao eh deputado");}}
+		if (pessoaCntrl.containsPessoa(dni)) {
+			this.projetoCntrl.cadastrarPL(dni, ano, ementa, interesses, url, conclusivo);
+		} else {
+			throw new NullPointerException("Erro ao cadastrar projeto: pessoa inexistente");
+		}
+
 	}
 
 	public void cadastrarPLP(String dni, int ano, String ementa, String interesses, String url, String artigo) {
-		this.projetoCntrl.cadastrarPLP(dni, ano, ementa, interesses, url, artigo);
-		
+		Validacao.validaString(dni, "Erro ao cadastrar projeto: autor nao pode ser vazio ou nulo");
+		Validacao.validaDni(dni, "Erro ao cadastrar projeto: dni invalido");
+		Validacao.validaString(ementa, "Erro ao cadastrar projeto: ementa nao pode ser vazia ou nula");
+		Validacao.validaString(interesses, "Erro ao cadastrar projeto: interesse nao pode ser vazio ou nulo");
+		Validacao.validaString(url, "Erro ao cadastrar projeto: url nao pode ser vazio ou nulo");
+		if (pessoaCntrl.containsPessoa(dni)) {
+			if (!pessoaCntrl.ehDeputado(dni)) {
+				throw new NullPointerException("Erro ao cadastrar projeto: pessoa nao eh deputado");}}
+		if (pessoaCntrl.containsPessoa(dni)) {
+			this.projetoCntrl.cadastrarPLP(dni, ano, ementa, interesses, url, artigo);
+		} else {
+			throw new NullPointerException("Erro ao cadastrar projeto: pessoa inexistente");
+		}
+
 	}
 
 	public void cadastrarPEC(String dni, int ano, String ementa, String interesses, String url, String artigo) {
-		this.projetoCntrl.cadastrarPEC(dni, ano, ementa, interesses, url, artigo);
-		
+		Validacao.validaString(dni, "Erro ao cadastrar projeto: autor nao pode ser vazio ou nulo");
+		Validacao.validaDni(dni, "Erro ao cadastrar projeto: dni invalido");
+		Validacao.validaString(ementa, "Erro ao cadastrar projeto: ementa nao pode ser vazia ou nula");
+		Validacao.validaString(interesses, "Erro ao cadastrar projeto: interesse nao pode ser vazio ou nulo");
+		Validacao.validaString(url, "Erro ao cadastrar projeto: url nao pode ser vazio ou nulo");
+		if (pessoaCntrl.containsPessoa(dni)) {
+			if (!pessoaCntrl.ehDeputado(dni)) {
+				throw new NullPointerException("Erro ao cadastrar projeto: pessoa nao eh deputado");}}
+		if (pessoaCntrl.containsPessoa(dni)) {
+			this.projetoCntrl.cadastrarPEC(dni, ano, ementa, interesses, url, artigo);
+		} else {
+			throw new NullPointerException("Erro ao cadastrar projeto: pessoa inexistente");
+		}
+
 	}
 
 	public String exibirProjeto(String codigo) {
 		return this.projetoCntrl.exibirProjeto(codigo);
-		
-	}
 
+	}
 
 }

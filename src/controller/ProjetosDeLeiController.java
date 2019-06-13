@@ -8,6 +8,7 @@ import entities.Pec;
 import entities.Pl;
 import entities.Plp;
 import entities.ProjetoDeLei;
+import others.Validacao;
 
 public class ProjetosDeLeiController {
 
@@ -25,7 +26,13 @@ public class ProjetosDeLeiController {
 	}
 
 	public String cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo) {
-		String codigo = geraCodigo(this.codigosPl, ano, "PL"); 
+		Validacao.validaAno(ano, "Erro ao cadastrar projeto: " );
+		Validacao.validaString(dni, "Erro ao cadastrar projeto: autor nao pode ser vazio ou nulo");
+		Validacao.validaDni(dni, "Erro ao cadastrar projeto: dni invalido");
+		Validacao.validaString(ementa, "Erro ao cadastrar projeto: ementa nao pode ser vazia ou nula");
+		Validacao.validaString(interesses, "Erro ao cadastrar projeto: interesse nao pode ser vazio ou nulo");
+		Validacao.validaString(url, "Erro ao cadastrar projeto: url nao pode ser vazio ou nulo");
+		String codigo = geraCodigo(this.codigosPl, ano, "PL"); 	
 		if (!this.projetosLei.containsKey(codigo)) {
 			ProjetoDeLei pl = new Pl(dni, ano, codigo, ementa, interesses, url, conclusivo);
 			this.projetosLei.put(codigo, pl);
@@ -37,6 +44,15 @@ public class ProjetosDeLeiController {
 	}
 	
 	public String cadastrarPLP(String dni, int ano, String ementa, String interesses, String url,String artigo) {
+		
+		Validacao.validaString(dni, "Erro ao cadastrar projeto: autor nao pode ser vazio ou nulo");
+		Validacao.validaDni(dni, "Erro ao cadastrar projeto: dni invalido");
+		Validacao.validaString(ementa, "Erro ao cadastrar projeto: ementa nao pode ser vazia ou nula");
+		Validacao.validaString(interesses, "Erro ao cadastrar projeto: interesse nao pode ser vazio ou nulo");
+		Validacao.validaString(url, "Erro ao cadastrar projeto: url nao pode ser vazio ou nulo");
+		Validacao.validaString(artigo, "Erro ao cadastrar projeto: artigo nao pode ser vazio ou nulo");
+		Validacao.validaAno(ano, "Erro ao cadastrar projeto: " );
+		
 		String codigo = geraCodigo(this.codigosPlp, ano, "PLP"); 
 		if (!this.projetosLei.containsKey(codigo)) {
 			ProjetoDeLei plp = new Plp(dni, ano, codigo, ementa, interesses, url, artigo);
@@ -49,6 +65,15 @@ public class ProjetosDeLeiController {
 	}
 	
 	public String cadastrarPEC(String dni, int ano, String ementa, String interesses, String url,String artigo) {
+		
+		Validacao.validaString(dni, "Erro ao cadastrar projeto: autor nao pode ser vazio ou nulo");
+		Validacao.validaDni(dni, "Erro ao cadastrar projeto: dni invalido");
+		Validacao.validaString(ementa, "Erro ao cadastrar projeto: ementa nao pode ser vazia ou nula");
+		Validacao.validaString(interesses, "Erro ao cadastrar projeto: interesse nao pode ser vazio ou nulo");
+		Validacao.validaString(url, "Erro ao cadastrar projeto: url nao pode ser vazio ou nulo");
+		Validacao.validaString(artigo, "Erro ao cadastrar projeto: artigo nao pode ser vazio ou nulo");
+		Validacao.validaAno(ano, "Erro ao cadastrar projeto: " );
+		
 		String codigo = geraCodigo(this.codigosPec, ano, "PEC"); 
 		if (!this.projetosLei.containsKey(codigo)) {
 			ProjetoDeLei pec = new Pec(dni, ano, codigo, ementa, interesses, url, artigo);

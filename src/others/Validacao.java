@@ -73,5 +73,23 @@ public class Validacao {
 		
 		if(dataC.after(dataAtual)) throw new IllegalArgumentException(msgErr + "data futura");
 	}
+	
+	/**
+	 * Metodo responsavel por validar uma ano. 
+	 * 
+	 * @param ano o ano a ser avaliado.
+	 * @param msgErr A mensagem de erro caso o ano seja invalido.
+	 */
+	public static void validaAno(int ano, String msgErr) {
+		if(ano < 1988 ) {
+			throw new IllegalArgumentException(msgErr + "ano anterior a 1988");
+		}
+		if (ano > 2019) {
+			throw new IllegalArgumentException(msgErr + "ano posterior ao ano atual");
+		}
+			
+	}
+	
+	
 
 }
