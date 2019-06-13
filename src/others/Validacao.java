@@ -26,7 +26,7 @@ public class Validacao {
 		if (atributo == null) {
 			throw new NullPointerException(mensagem);
 		}
-		if (atributo.trim().equals("")) {
+		if (atributo.trim().isEmpty()) {
 			throw new IllegalArgumentException(mensagem);
 		}
 	}
