@@ -25,18 +25,18 @@ public class ProjetosDeLeiController {
 	}
 
 	public void cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo) {
-		String codigo = geraCodigo(ano, "PL"); 
+		String codigo = geraCodigo(this.codigosPl, ano, "PL"); 
 		if (!this.projetosLei.containsKey(codigo)) {
 			ProjetoDeLei pl = new Pl(dni, ano, codigo, ementa, interesses, url, conclusivo);
 			this.projetosLei.put(codigo, pl);
 		} else {
 			throw new NullPointerException("n sei o que escrever");
-		}
+		} 
 	
 	}
 	
 	public void cadastrarPLP(String dni, int ano, String ementa, String interesses, String url,String artigo) {
-		String codigo = geraCodigo(ano, "PLP"); 
+		String codigo = geraCodigo(this.codigosPlp, ano, "PLP"); 
 		if (!this.projetosLei.containsKey(codigo)) {
 			ProjetoDeLei plp = new Plp(dni, ano, codigo, ementa, interesses, url, artigo);
 			this.projetosLei.put(codigo, plp);
@@ -48,7 +48,7 @@ public class ProjetosDeLeiController {
 	}
 	
 	public void cadastrarPEC(String dni, int ano, String ementa, String interesses, String url,String artigo) {
-		String codigo = geraCodigo(ano, "PEC"); 
+		String codigo = geraCodigo(this.codigosPec, ano, "PEC"); 
 		if (!this.projetosLei.containsKey(codigo)) {
 			ProjetoDeLei pec = new Pec(dni, ano, codigo, ementa, interesses, url, artigo);
 			this.projetosLei.put(codigo, pec);
@@ -58,42 +58,18 @@ public class ProjetosDeLeiController {
 		}
 	
 	}
+
 	
-	
-	private String geraCodigo(int ano, String tipo) {
-		if(tipo.equals("PL")) {
-			if(this.codigosPl.containsKey(ano)){
-				this.codigosPl.put(ano, this.codigosPl.get(ano)+1);
-				return "PL " + (this.codigosPl.get(ano)) + "/" + ano;
-			} else {
-				this.codigosPl.put(ano,0);
-				this.codigosPl.put(ano, this.codigosPl.get(ano)+1);
-				return "PL " + (this.codigosPl.get(ano)) + "/" + ano;
-			}
+	private String geraCodigo(Map<Integer, Integer> contador, int ano, String lei) {
+		if(contador.containsKey(ano)){
+			contador.put(ano, contador.get(ano)+1);
+			return lei+" " + (contador.get(ano)) + "/" + ano;
+		} else {
+			contador.put(ano,0);
+			contador.put(ano, contador.get(ano)+1);
+			return lei+" " + (contador.get(ano)) + "/" + ano;
 		}
 		
-		if(tipo.equals("PLP")) {
-			if(this.codigosPlp.containsKey(ano)){
-				this.codigosPlp.put(ano, this.codigosPlp.get(ano)+1);
-				return "PLP " + (this.codigosPlp.get(ano)+1) + "/" + ano;
-			} else {
-				this.codigosPlp.put(ano,0);
-				this.codigosPlp.put(ano, this.codigosPlp.get(ano)+1);
-				return "PLP " + (this.codigosPlp.get(ano)) + "/" + ano;
-			}
-		}
-		
-		if(tipo.equals("PEC")) {
-			if(this.codigosPec.containsKey(ano)){
-				this.codigosPec.put(ano, this.codigosPec.get(ano)+1);
-				return "PEC " + (this.codigosPec.get(ano)+1) + "/" + ano;
-			} else {
-				this.codigosPec.put(ano,0);
-				this.codigosPec.put(ano, this.codigosPec.get(ano)+1);
-				return "PEC " + (this.codigosPec.get(ano)) + "/" + ano;
-			}
-		}
-		return "";
 	}
 
 	public String exibirProjeto(String codigo) {
