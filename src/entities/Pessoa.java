@@ -143,13 +143,11 @@ public class Pessoa {
 	 * @return A representacao em String da pessoa.
 	 */
 	private String representacaoPessoaComum() {
-		String retorno = "";
+		String partido = (!this.partido.isEmpty()) ? " - " + this.partido :"";
+		String interesses = (!this.interesses.isEmpty()) ? " - Interesses: " + this.interesses :"";
 		
-		retorno += this.nome + " - " + this.dni + " (" + this.estado + ")";
-		if(!this.partido.equals("")) retorno += " - " + this.partido;
-		if(!this.interesses.equals("")) retorno += " - Interesses: " + this.interesses;
-		
-		return retorno;
+		return String.format("%s - %s (%s)%s%s", nome, dni, estado, partido, interesses);
+
 	}
 	
 	/**
@@ -158,13 +156,11 @@ public class Pessoa {
 	 * @return A representacao em String da pessoa.
 	 */
 	private String representacaoPessoaDeputado() {
-		String retorno = "";
 		
-		retorno += "POL: " + this.nome + " - " + this.dni + " (" + this.estado + ") - " + this.partido;
-		if(!this.interesses.equals("")) retorno += " - Interesses: " + this.interesses;
-		retorno += " - " + this.cargoPolitico.getDataDeInicio() + " - " + this.cargoPolitico.getLeisAprovadas() + " Leis";
+		String interesses = (!this.interesses.isEmpty()) ? " - Interesses: " + this.interesses :"";
 		
-		return retorno;
+		return String.format("POL: %s - %s (%s) - %s%s - %s - %d Leis", nome, dni, estado, 
+				partido, interesses, cargoPolitico.getDataDeInicio(), cargoPolitico.getLeisAprovadas());
 	}
 	
 	/**
