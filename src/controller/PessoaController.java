@@ -1,7 +1,9 @@
 package controller;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import entities.Pessoa;
 import others.Validacao;
@@ -121,6 +123,19 @@ public class PessoaController {
 	 */
 	public boolean ehDeputado(String dni) {
 		return this.pessoas.get(dni).ehDeputado();
+	}
+	
+	public Pessoa getPessoa(String dni) {
+		return this.pessoas.get(dni);
+	}
+	
+	public Set<String> getDeputados(){
+		Set<String> deputados = new HashSet<>();
+		
+		for(String dni : this.pessoas.keySet()){
+			if(ehDeputado(dni)) deputados.add(dni);
+		}
+		return deputados;
 	}
 
 }

@@ -1,17 +1,26 @@
 package entities;
 
+import others.StatusDaLei;
+import others.StatusPlenario;
+import others.TipoDeLei;
+
 public abstract class ProjetoDeLei {
 	
 	protected String dni;
-	protected int ano;
+	private int ano;
 	protected String codigo;
 	protected String ementa;
-	protected String interesses;
+	private String interesses;
 	protected String situacaoAtual;
-	protected String url;
+	private String url;
+	private String proximoLocalDeVotacao;
+	private TipoDeLei tipoDeLei;
+	private StatusDaLei statusDaLei;
+	private StatusPlenario statusPlenario;
 	
 	
-	public ProjetoDeLei(String dni, int ano, String codigo, String ementa, String interesses, String url) {
+	
+	public ProjetoDeLei(String dni, int ano, String codigo, String ementa, String interesses, String url, TipoDeLei tipoDeLei) {
 		this.dni = dni;
 		this.ano = ano;
 		this.codigo = codigo;
@@ -19,8 +28,60 @@ public abstract class ProjetoDeLei {
 		this.interesses = interesses;
 		this.url = url;
 		this.situacaoAtual = "EM VOTACAO (CCJC)";
+		this.proximoLocalDeVotacao = "CCJC";
+		this.tipoDeLei = tipoDeLei;
+		this.statusDaLei = StatusDaLei.EM_VOTACAO;
+		this.statusPlenario = StatusPlenario.NAO_ESTA;
 	}
-
+	
+	public String getInteresses() {
+		return this.interesses;
+	}
+	
+	public TipoDeLei getTipoDeLei() {
+		return this.tipoDeLei;
+	}
+	
+	public String getProximoLocalDeVotacao() {
+		return this.proximoLocalDeVotacao;
+	}
+	
+	public void setProximoLocalDeVotacao(String novoLocal) {
+		this.proximoLocalDeVotacao = novoLocal;
+		this.situacaoAtual = "EM VOTACAO (" + novoLocal + ")";
+	}
+	
+	public String getCriadorDaLei() {
+		return this.dni;
+	}
+	
+	public StatusDaLei getStatus() {
+		return this.statusDaLei;
+	}
+	
+	public void aprovarLei() {
+		this.statusDaLei = StatusDaLei.ENCERRADA;
+		this.situacaoAtual = "APROVADA";
+	}
+	
+	public void regeitarLei() {
+		this.statusDaLei = StatusDaLei.ENCERRADA;
+		this.situacaoAtual = "ARQUIVADA";
+	}
+	
+	public StatusPlenario getStatusPlenario() {
+		return this.statusPlenario;
+	}
+	
+	public void plenario1oTurno() {
+		this.statusPlenario = StatusPlenario.PRIMEIRO_TURNO;
+		setProximoLocalDeVotacao("(Plenario - 1o turno)");
+	}
+	
+	public void plenario2oTurno() {
+		this.statusPlenario = StatusPlenario.SEGUNDO_TURNO;
+		setProximoLocalDeVotacao("(Plenario - 2o turno)");
+	}
 
 	@Override
 	public int hashCode() {

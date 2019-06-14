@@ -4,8 +4,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.HashMap;
 
-import entities.Comissao;
-
 /**
  * Classe que representa o controlador de comissoes.
  */
@@ -14,7 +12,7 @@ public class ComissaoController {
 	/**
 	 * Map de comissoes cadastradas no sistema.
 	 */
-	private Map<String, Comissao> comissoes;
+	private Map<String, Set<String>> comissoes;
 	
 	/**
 	 * Construtor do controlador. Cria um novo HashMap.
@@ -30,8 +28,7 @@ public class ComissaoController {
 	 * @param politicos Os dni's dos politicos que farao parte da comissao.
 	 */
 	public void cadastrarComissao(String tema, Set<String> politicos) {		
-		Comissao c = new Comissao(politicos);
-		this.comissoes.put(tema, c);
+		this.comissoes.put(tema, politicos);
 	}
 	
 	/**
@@ -44,5 +41,9 @@ public class ComissaoController {
 	public boolean containsComissao(String tema) {
 		return this.comissoes.containsKey(tema);
 	}  
+	
+	public Set<String> getComissao(String tema){
+		return this.comissoes.get(tema);
+	}
 
 }

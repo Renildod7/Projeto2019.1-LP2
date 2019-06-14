@@ -7,5 +7,6 @@ public interface CargoPoliticoInteface {
 	
 	public String getDataDeInicio();
 	public int getLeisAprovadas();
+	public void adicionaLeiAprovada();
 
 }

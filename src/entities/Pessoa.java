@@ -183,5 +183,12 @@ public class Pessoa {
 		}		
 		return true;
 	}
-
+	
+	public String getInteresses() {
+		return this.interesses;
+	}
+	
+	public void adicionaLeiAprovada() {
+		this.cargoPolitico.adicionaLeiAprovada();
+	}
 }

@@ -12,12 +12,13 @@ public class Facade {
 	}
 	
 	public static void main(String[] args) {
-		args = new String[] {"others.Facade", "easyaccept/use_case_1.txt", 
-				 							  "easyaccept/use_case_2.txt", 
-				 							  "easyaccept/use_case_3.txt", 
-				 							  "easyaccept/use_case_4.txt", 
-				 							  "easyaccept/use_case_5.txt",
-				 							  "easyaccept/use_case_6.txt"};		
+		args = new String[] {"others.Facade", //"easyaccept/use_case_1.txt", 
+				 							  //"easyaccept/use_case_2.txt", 
+				 							  //"easyaccept/use_case_3.txt", 
+				 							  //"easyaccept/use_case_4.txt", 
+				 							  //"easyaccept/use_case_5.txt",
+				 							  //"easyaccept/use_case_6.txt",
+				 							  "easyaccept/use_case_7.txt"};		
 		EasyAccept.main(args);
 	}
 	
@@ -49,20 +50,28 @@ public class Facade {
 		this.systemCntrl.cadastrarComissao(tema, politicos);
 	}
 	
-	public void cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo) {
-		this.systemCntrl.cadastrarPL(dni, ano, ementa, interesses, url, conclusivo);
+	public String cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo) {
+		return this.systemCntrl.cadastrarPL(dni, ano, ementa, interesses, url, conclusivo);
 	}
 	
-	public void cadastrarPLP(String dni, int ano, String ementa, String interesses, String url, String artigo) {
-		this.systemCntrl.cadastrarPLP(dni, ano, ementa, interesses, url, artigo);
+	public String cadastrarPLP(String dni, int ano, String ementa, String interesses, String url, String artigo) {
+		return this.systemCntrl.cadastrarPLP(dni, ano, ementa, interesses, url, artigo);
 	}
 	
-	public void cadastrarPEC(String dni, int ano, String ementa, String interesses, String url, String artigo) {
-		this.systemCntrl.cadastrarPEC(dni, ano, ementa, interesses, url, artigo);
+	public String cadastrarPEC(String dni, int ano, String ementa, String interesses, String url, String artigo) {
+		return this.systemCntrl.cadastrarPEC(dni, ano, ementa, interesses, url, artigo);
 	}
 	
 	public String exibirProjeto(String codigo) {
 		return this.systemCntrl.exibirProjeto(codigo);
+	}
+	
+	public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal) {
+		return this.systemCntrl.votarComissao(codigo, statusGovernista, proximoLocal);
+	}
+	
+	public boolean votarPlenario(String codigo, String statusGovernista, String presentes) {
+		return this.systemCntrl.votarPlenario(codigo, statusGovernista, presentes);
 	}
 	
 	

@@ -54,4 +54,8 @@ public class Deputado implements CargoPoliticoInteface {
 		return this.leisAprovadas;
 	}
 	
+	public void adicionaLeiAprovada() {
+		this.leisAprovadas += 1;
+	}
+	
 }

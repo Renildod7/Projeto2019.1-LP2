@@ -56,4 +56,7 @@ public class PartidoController {
 		return retorno;
 	}
 	
+	public Set<String> getBase(){
+		return this.partidos;
+	}
 }
