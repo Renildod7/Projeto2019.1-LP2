@@ -13,7 +13,7 @@ public abstract class ProjetoDeLei {
 	private String interesses;
 	protected String situacaoAtual;
 	private String url;
-	private String proximoLocalDeVotacao;
+	private String localDeVotacao;
 	private TipoDeLei tipoDeLei;
 	private StatusDaLei statusDaLei;
 	private StatusPlenario statusPlenario;
@@ -28,7 +28,7 @@ public abstract class ProjetoDeLei {
 		this.interesses = interesses;
 		this.url = url;
 		this.situacaoAtual = "EM VOTACAO (CCJC)";
-		this.proximoLocalDeVotacao = "CCJC";
+		this.localDeVotacao = "CCJC";
 		this.tipoDeLei = tipoDeLei;
 		this.statusDaLei = StatusDaLei.EM_VOTACAO;
 		this.statusPlenario = StatusPlenario.NAO_ESTA;
@@ -42,12 +42,12 @@ public abstract class ProjetoDeLei {
 		return this.tipoDeLei;
 	}
 	
-	public String getProximoLocalDeVotacao() {
-		return this.proximoLocalDeVotacao;
+	public String getLocalDeVotacao() {
+		return this.localDeVotacao;
 	}
 	
 	public void setProximoLocalDeVotacao(String novoLocal) {
-		this.proximoLocalDeVotacao = novoLocal;
+		this.localDeVotacao = novoLocal;
 		this.situacaoAtual = "EM VOTACAO (" + novoLocal + ")";
 	}
 	
@@ -61,12 +61,12 @@ public abstract class ProjetoDeLei {
 	
 	public void aprovarLei() {
 		this.statusDaLei = StatusDaLei.ENCERRADA;
-		this.situacaoAtual = "APROVADA";
+		this.situacaoAtual = "APROVADO";
 	}
 	
 	public void regeitarLei() {
 		this.statusDaLei = StatusDaLei.ENCERRADA;
-		this.situacaoAtual = "ARQUIVADA";
+		this.situacaoAtual = "ARQUIVADO";
 	}
 	
 	public StatusPlenario getStatusPlenario() {
@@ -75,12 +75,12 @@ public abstract class ProjetoDeLei {
 	
 	public void plenario1oTurno() {
 		this.statusPlenario = StatusPlenario.PRIMEIRO_TURNO;
-		setProximoLocalDeVotacao("(Plenario - 1o turno)");
+		setProximoLocalDeVotacao("Plenario - 1o turno");
 	}
 	
 	public void plenario2oTurno() {
 		this.statusPlenario = StatusPlenario.SEGUNDO_TURNO;
-		setProximoLocalDeVotacao("(Plenario - 2o turno)");
+		setProximoLocalDeVotacao("Plenario - 2o turno");
 	}
 
 	@Override

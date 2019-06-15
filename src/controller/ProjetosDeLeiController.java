@@ -106,6 +106,10 @@ public class ProjetosDeLeiController {
 		return "deu merda";
 	}
 	
+	public boolean containsLei(String codigo) {
+		return this.projetosLei.containsKey(codigo);
+	}
+	
 	public ProjetoDeLei getLei(String codigo) {
 		return this.projetosLei.get(codigo);
 	}
