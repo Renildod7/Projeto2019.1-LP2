@@ -75,10 +75,10 @@ public class Facade {
 	}
 	
 	
-	public void limparSistema() {		
+	public void limparSistema() {
 	}
 	
-	public void salvarSistema() {		
+	public void salvarSistema() {
 	}
 	
 	public void carregarSistema() {

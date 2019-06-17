@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import controller.SystemController;
+import entities.Pessoa;
 
 class SystemControllerTest {
 	
@@ -14,6 +15,7 @@ class SystemControllerTest {
 	String plnc;
 	String plp;
 	String pec;
+
 	
 	@BeforeEach
 	void setup() {
@@ -128,7 +130,7 @@ class SystemControllerTest {
 	
 	
 	@Test
-	void testVotacaoPLc() {
+	void testVotacaoPLcNormal() {
 		assertTrue(sc.votarComissao(plc, "GOVERNISTA", "comissao1"));
 		assertFalse(sc.votarComissao(plc, "GOVERNISTA", "-"));
 		try {
@@ -136,11 +138,40 @@ class SystemControllerTest {
 			fail("");
 		} catch (IllegalArgumentException iae) {
 		}
-
 	}
 	
 	@Test
-	void testVotacaoPLnc() {
+	void testVotacaoPLcStatusGovernistaInvalido() {
+		try {
+			sc.votarComissao(plnc, "INVALIDO", "comissao1");
+			fail("");
+		} catch (IllegalArgumentException iae) {
+		}
+	}
+	
+	@Test
+	void testVotacaoPLcDiretoNoPlenario() {
+		try {
+			sc.votarPlenario(plnc, "GOVERNISTA", "000000000-1,000000000-2,000000000-3,000000000-4,000000000-5,000000000-6");
+			fail("");
+		} catch (IllegalArgumentException iae) {
+		}
+	}
+	
+	@Test
+	void testVotacaoPLcPlenarioQuorumInvalido() {
+		assertTrue(sc.votarComissao(plc, "GOVERNISTA", "plenario"));
+		try {
+			sc.votarPlenario(plnc, "GOVERNISTA", "000000000-1,000000000-2,000000000-3,000000000-4");
+			fail("");
+		} catch (IllegalArgumentException iae) {
+		}
+	}
+	
+	
+	
+	@Test
+	void testVotacaoPLncNormal() {
 		assertTrue(sc.votarComissao(plnc, "GOVERNISTA", "comissao1"));
 		assertTrue(sc.votarComissao(plnc, "OPOSICAO", "plenario"));
 		assertFalse(sc.votarPlenario(plnc, "OPOSICAO", "000000000-1,000000000-2,000000000-3,000000000-4,000000000-5,000000000-6,000000000-7"));
@@ -149,11 +180,39 @@ class SystemControllerTest {
 			fail("");
 		} catch (IllegalArgumentException iae) {
 		}
-
 	}
 	
 	@Test
-	void testVotacaoPLP() {
+	void testVotacaoPLncStatusGovernistaInvalido() {
+		try {
+			sc.votarComissao(plnc, "INVALIDO", "plenario");
+			fail("");
+		} catch (IllegalArgumentException iae) {
+		}
+	}
+	
+	@Test
+	void testVotacaoPLncDiretoNoPlenario() {
+		try {
+			sc.votarPlenario(plnc, "OPOSICAO", "000000000-1,000000000-2,000000000-3,000000000-4,000000000-5,000000000-6,000000000-7");
+			fail("");
+		} catch (IllegalArgumentException iae) {
+		}
+	}
+	
+	@Test
+	void testVotacaoPLncPlenarioQuorumInvalido() {
+		assertTrue(sc.votarComissao(plnc, "GOVERNISTA", "plenario"));
+		try {
+			sc.votarPlenario(plnc, "OPOSICAO", "000000000-1,000000000-2,000000000-3,000000000-4,000000000-5");
+			fail("");
+		} catch (IllegalArgumentException iae) {
+		}
+	}
+	
+	
+	@Test
+	void testVotacaoPLPNormal() {
 		assertFalse(sc.votarComissao(plp, "OPOSICAO", "plenario"));
 		assertFalse(sc.votarPlenario(plp, "GOVERNISTA", "000000000-1,000000000-2,000000000-3,000000000-4,000000000-5,000000000-6,000000000-7"));
 		try {
@@ -164,7 +223,36 @@ class SystemControllerTest {
 	}
 	
 	@Test
-	void testVotacaoPEC() {
+	void testVotacaoPLPStatusGovernistaInvalido() {
+		try {
+			sc.votarComissao(plp, "INVALIDO", "plenario");
+			fail("");
+		} catch (IllegalArgumentException iae) {
+		}
+	}
+	
+	@Test
+	void testVotacaoPLPDiretoNoPlenario() {
+		try {
+			sc.votarComissao(plp, "INVALIDO", "plenaio");
+			fail("");
+		} catch (IllegalArgumentException iae) {
+		}
+	}
+	
+	@Test
+	void testVotacaoPLPQuorumInvalido() {
+		assertTrue(sc.votarComissao(plp, "GOVERNISTA", "plenario"));
+		try {
+			sc.votarComissao(plp, "INVALIDO", "000000000-1,000000000-2,000000000-3,000000000-4,000000000-5");
+			fail("");
+		} catch (IllegalArgumentException iae) {
+		}
+	}
+	
+	
+	@Test
+	void testVotacaoPECNormal() {
 		assertTrue(sc.votarComissao(pec, "GOVERNISTA", "plenario"));
 		assertFalse(sc.votarPlenario(pec, "OPOSICAO", "000000000-1,000000000-2,000000000-3,000000000-4,000000000-5,000000000-6,000000000-7"));
 		try {
@@ -173,6 +261,38 @@ class SystemControllerTest {
 		} catch (IllegalArgumentException iae) {
 		}
 	}
+	
+	@Test
+	void testVotacaoPECStatusGovernistaInvalido() {
+		try {
+			assertTrue(sc.votarComissao(pec, "INVALIDO", "plenario"));
+			fail("");
+		} catch (IllegalArgumentException iae) {
+		}
+	}
+	
+	@Test
+	void testVotacaoPECDiretoNoPlenario() {
+		try {
+			sc.votarPlenario(pec, "OPOSICAO", "000000000-1,000000000-2,000000000-3,000000000-4,000000000-5,000000000-6,000000000-7");
+			fail("");
+		} catch (IllegalArgumentException iae) {
+		}
+	}
+	
+	@Test
+	void testVotacaoPECQuorumInvalido() {
+		assertTrue(sc.votarComissao(pec, "GOVERNISTA", "plenario"));
+		assertFalse(sc.votarPlenario(pec, "OPOSICAO", "000000000-1,000000000-2,000000000-3,000000000-4,000000000-5,000000000-6,000000000-7"));
+		try {
+			sc.votarPlenario(pec, "OPOSICAO", "000000000-1,000000000-2,000000000-3,000000000-4,000000000-5,000000000-6");
+			fail("");
+		} catch (IllegalArgumentException iae) {
+		}
+	}
+	
+	
+	
 	
 
 	
