@@ -7,8 +7,8 @@ import entities.Pec;
 import entities.Pl;
 import entities.Plp;
 import entities.ProjetoDeLei;
-import others.ChaveLeiAno;
-import others.Validacao;
+import util.ChaveLeiAno;
+import util.Validacao;
 
 public class ProjetosDeLeiController {
 

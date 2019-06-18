@@ -8,7 +8,7 @@ import java.util.Set;
 import entities.Deputado;
 import entities.PessoaCivil;
 import entities.PessoaInterface;
-import others.Validacao;
+import util.Validacao;
 
 /**
  * Classe que representa o Controlador de pessoas.
@@ -124,11 +124,11 @@ public class PessoaController {
 		return this.pessoas.get(dni);
 	}
 	
-	public Set<String> getDeputados(){
-		Set<String> deputados = new HashSet<>();
+	public Set<Deputado> getDeputados(){
+		Set<Deputado> deputados = new HashSet<>();
 		
 		for(String dni : this.pessoas.keySet()){
-			if(ehDeputado(dni)) deputados.add(dni);
+			if(ehDeputado(dni)) deputados.add((Deputado) this.pessoas.get(dni));
 		}
 		return deputados;
 	}

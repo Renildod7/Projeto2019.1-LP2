@@ -1,10 +1,10 @@
 package testes;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
-import others.Validacao;
+import util.Validacao;
 
 class ValidacaoTest {
 

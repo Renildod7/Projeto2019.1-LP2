@@ -1,29 +1,26 @@
 package controller;
 
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import entities.Deputado;
-import entities.Pl;
 import entities.ProjetoDeLei;
 import enums.StatusDaLei;
 import enums.StatusPlenario;
 import enums.TipoDeLei;
-import others.Validacao;
+import util.Validacao;
 
 public class SystemController {
 
 	private PessoaController pessoaCntrl;
 	private PartidoController partidoCntrl;
-	private ComissaoController comissaoCntrl;
+	private CamaraController camaraCntrl;
 	private ProjetosDeLeiController projetoCntrl;
 
 	public SystemController() {
 		this.pessoaCntrl = new PessoaController();
 		this.partidoCntrl = new PartidoController();
-		this.comissaoCntrl = new ComissaoController();
+		this.camaraCntrl = new CamaraController();
 		this.projetoCntrl = new ProjetosDeLeiController();
 	}
 
@@ -54,7 +51,7 @@ public class SystemController {
 	public void cadastrarComissao(String tema, String politicos) {
 		Validacao.validaString(tema, "Erro ao cadastrar comissao: tema nao pode ser vazio ou nulo");
 		Validacao.validaString(politicos, "Erro ao cadastrar comissao: lista de politicos nao pode ser vazio ou nulo");
-		if (comissaoCntrl.containsComissao(tema)) {
+		if (camaraCntrl.containsComissao(tema)) {
 			throw new IllegalArgumentException("Erro ao cadastrar comissao: tema existente");
 		}
 
@@ -71,7 +68,7 @@ public class SystemController {
 				throw new NullPointerException("Erro ao cadastrar comissao: pessoa inexistente");
 			}
 		}
-		this.comissaoCntrl.cadastrarComissao(tema, setPoliticos);
+		this.camaraCntrl.cadastrarComissao(tema, setPoliticos);
 	}
 
 	public String cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo) {
@@ -139,171 +136,38 @@ public class SystemController {
 	}
 
 	public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal) {
-		validaVotacaoComissao(codigo, statusGovernista, proximoLocal);
+		validaVotacaoComissao(codigo, statusGovernista, proximoLocal);	
+		
 		ProjetoDeLei lei = this.projetoCntrl.getLei(codigo);
 		Deputado autorDaLei = (Deputado) this.pessoaCntrl.getPessoa(lei.getCriadorDaLei());
-		Set<String> comissao = this.comissaoCntrl.getComissao(lei.getLocalDeVotacao());
-		
-		int votosAFavor = votar(comissao, lei, statusGovernista);
-		
-		switch(lei.getTipoDeLei()) {
-		
-		case PL:
-			if(((Pl)lei).getConclusivo()) {
-				if(votosAFavor >= (Math.floor(comissao.size() / 2) + 1)) {
-					lei.setLocalDeVotacao(proximoLocal);
-					if(proximoLocal.equals("-")) {
-						lei.aprovarLei();
-						autorDaLei.adicionaLeiAprovada();
-					}
-					return true;
-				}else {
-					lei.rejeitarLei();
-				}
-				return false;
-			} else {
-				lei.setLocalDeVotacao(proximoLocal);
-				if(proximoLocal.equals("plenario")) lei.plenario1oTurno();
-				if(votosAFavor >= (Math.floor(comissao.size() / 2) + 1)) {
-					return true;
-				} else return false;
-			}
-			
-		case PLP:
-			lei.setLocalDeVotacao(proximoLocal);
-			if(proximoLocal.equals("plenario")) lei.plenario1oTurno();
-			if(votosAFavor >= (Math.floor(comissao.size() / 2) + 1)) {
-				return true;
-			} else return false;
-
-		case PEC:
-			lei.setLocalDeVotacao(proximoLocal);
-			if(proximoLocal.equals("plenario")) lei.plenario1oTurno();
-			if(votosAFavor >= (Math.floor(comissao.size() / 2) + 1)) {
-				return true;
-			} else return false;
-
-		default:
-			break;
-		}
-		return false;
+		Set<String> comissao = this.camaraCntrl.getComissao(lei.getLocalDeVotacao());
+		Set<String> base = this.partidoCntrl.getBase();
+		Set<Deputado> deputados = new HashSet<>();
+		for (String dni : comissao) {
+			deputados.add((Deputado) this.pessoaCntrl.getPessoa(dni));
+		}	
+		return this.camaraCntrl.votarComissao(statusGovernista, proximoLocal, lei, autorDaLei, deputados, base);	
 	}
 	
 	public boolean votarPlenario(String codigo, String statusGovernista, String presentes) {
 		ProjetoDeLei lei = this.projetoCntrl.getLei(codigo);
 		Deputado autorDaLei = (Deputado) this.pessoaCntrl.getPessoa(lei.getCriadorDaLei());
-		Set<String> todosDeputados = this.pessoaCntrl.getDeputados();
-		Set<String> setPresentes = new HashSet<>();
-		setPresentes.addAll(Arrays.asList(presentes.split(",")));
-		validaVotacaoPlenario(lei, statusGovernista, setPresentes, todosDeputados);
-		int votosAFavor = votar(setPresentes, lei, statusGovernista);
-		
-		switch (lei.getTipoDeLei()) {
-		case PL:
-			if(votosAFavor >= (Math.floor(setPresentes.size() / 2) + 1)) {
-				lei.aprovarLei();
-				autorDaLei.adicionaLeiAprovada();
-				return true;
-			}else {
-				lei.rejeitarLei();
-				return false;
-			}
-			
-		case PLP:
-			switch (lei.getStatusPlenario()) {
-			case PRIMEIRO_TURNO:
-				if(votosAFavor >= (Math.floor(todosDeputados.size() / 2) + 1)) {
-					lei.plenario2oTurno();
-					return true;
-				}else {
-					lei.rejeitarLei();
-					return false;
-				}
-				
-			case SEGUNDO_TURNO:
-				if(votosAFavor >= (Math.floor(todosDeputados.size() / 2) + 1)) {
-					lei.aprovarLei();
-					autorDaLei.adicionaLeiAprovada();
-					return true;
-				}else {
-					lei.rejeitarLei();
-					return false;
-				}
-
-			default:
-				break;
-			}
-			
-		case PEC:
-			switch (lei.getStatusPlenario()) {
-			case PRIMEIRO_TURNO:
-				if(votosAFavor >= (Math.floor(3 * setPresentes.size() / 5) + 1)) {
-					lei.plenario2oTurno();
-					return true;
-				}else {
-					lei.rejeitarLei();
-					return false;
-				}
-				
-			case SEGUNDO_TURNO:
-				if(votosAFavor >= (Math.floor(3 * setPresentes.size() / 5) + 1)) {
-					lei.aprovarLei();
-					autorDaLei.adicionaLeiAprovada();
-					return true;
-				}else {
-					lei.rejeitarLei();
-					return false;
-				}
-			default:
-				break;
-			}
-
-		default:
-			break;
-		}
-		
-		return true;
-	}
-	
-	private int votar(Set<String> deputados, ProjetoDeLei lei, String statusGovernista) {
+		Set<Deputado> todosDeputados = this.pessoaCntrl.getDeputados();
+		Set<Deputado> deputadosPresentes = new HashSet<>();
 		Set<String> base = this.partidoCntrl.getBase();
-		int votosAFavor = 0;
-		for(String dni : deputados) {
-			String partidoDeputado = this.pessoaCntrl.getPessoa(dni).getPartido();
-			
-			switch (statusGovernista) {
-			case "GOVERNISTA":
-				if(base.contains(partidoDeputado)) votosAFavor ++;
-				break;
-				
-			case "OPOSICAO":
-				if(!base.contains(partidoDeputado)) votosAFavor ++;
-				break;
-				
-			case "LIVRE":
-				List<String> leiInteresses  = Arrays.asList(lei.getInteresses().split(","));
-				List<String> deputadoInteresses = Arrays.asList(this.pessoaCntrl.getPessoa(dni).getInteresses().split(","));
-				
-				for(String interesse : deputadoInteresses) {
-					if(leiInteresses.contains(interesse)) {
-						votosAFavor ++;
-						break;
-					}
-				}
-				break;
-				
-			default:
-				break;
-			}
+		
+		for (String dni : presentes.split(",")) {
+			deputadosPresentes.add((Deputado) this.pessoaCntrl.getPessoa(dni));
 		}		
-		return votosAFavor;
+		validaVotacaoPlenario(lei, statusGovernista, deputadosPresentes.size(), todosDeputados.size());
+		return this.camaraCntrl.votarPlenario(statusGovernista, lei, autorDaLei, deputadosPresentes, todosDeputados, base);
 	}
 
 	private void validaVotacaoComissao(String codigo, String statusGovernista, String proximoLocal) {
-		if(!this.comissaoCntrl.containsComissao("CCJC")) throw new NullPointerException("Erro ao votar proposta: CCJC nao cadastrada");
+		if (!this.camaraCntrl.containsComissao("CCJC")) throw new NullPointerException("Erro ao votar proposta: CCJC nao cadastrada");
 		Validacao.validaProximoLocalDeVotacao(proximoLocal);
 		Validacao.validaStatusGovernista(statusGovernista);
-		if(!this.projetoCntrl.containsLei(codigo)) throw new NullPointerException("Erro ao votar proposta: projeto inexistente");
+		if (!this.projetoCntrl.containsLei(codigo)) throw new NullPointerException("Erro ao votar proposta: projeto inexistente");
 		ProjetoDeLei lei = this.projetoCntrl.getLei(codigo);
 		StatusDaLei satatuDaLei = lei.getStatus();
 		String localDeVotacao = lei.getLocalDeVotacao();
@@ -311,18 +175,18 @@ public class SystemController {
 		Validacao.validaStatusLei(satatuDaLei);	
 	}
 	
-	private void validaVotacaoPlenario(ProjetoDeLei lei, String statusGovernista, Set<String> presentes, Set<String> todosDeputados) {
-		if(TipoDeLei.PL.equals(lei.getTipoDeLei()) || TipoDeLei.PLP.equals(lei.getTipoDeLei())) {
-			if(presentes.size() < (Math.floor(todosDeputados.size() / 2) + 1)) {
+	private void validaVotacaoPlenario(ProjetoDeLei lei, String statusGovernista, int presentes, int todosDeputados) {
+		if (TipoDeLei.PL.equals(lei.getTipoDeLei()) || TipoDeLei.PLP.equals(lei.getTipoDeLei())) {
+			if(presentes < (Math.floor(todosDeputados / 2) + 1)) {
 				throw new IllegalArgumentException("Erro ao votar proposta: quorum invalido");
 			}
-		}else if (TipoDeLei.PEC.equals(lei.getTipoDeLei())) {
-			if(presentes.size() < (3 * Math.floor(todosDeputados.size() / 5) + 1)) {
+		} else if (TipoDeLei.PEC.equals(lei.getTipoDeLei())) {
+			if (presentes < (3 * Math.floor(todosDeputados / 5) + 1)) {
 				throw new IllegalArgumentException("Erro ao votar proposta: quorum invalido");
 			}
 		}
-		if(StatusDaLei.ENCERRADA.equals(lei.getStatus())) throw new IllegalArgumentException("Erro ao votar proposta: tramitacao encerrada");
-		if(StatusPlenario.NAO_ESTA.equals(lei.getStatusPlenario())) throw new IllegalArgumentException("Erro ao votar proposta: tramitacao em comissao");
+		if (StatusDaLei.ENCERRADA.equals(lei.getStatus())) throw new IllegalArgumentException("Erro ao votar proposta: tramitacao encerrada");
+		if (StatusPlenario.NAO_ESTA.equals(lei.getStatusPlenario())) throw new IllegalArgumentException("Erro ao votar proposta: tramitacao em comissao");
 	}
 	
 }

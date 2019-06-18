@@ -1,6 +1,6 @@
 package entities;
 
-import others.Validacao;
+import util.Validacao;
 
 /**
  * Classe que representa um deputado.

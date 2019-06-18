@@ -1,9 +1,9 @@
 package controller;
 
-
 import java.util.Set;
 import java.util.TreeSet;
-import others.Validacao;
+
+import util.Validacao;
 
 /**
  * Clase Partido Controller onde se opera sobre a Classe Partido.
