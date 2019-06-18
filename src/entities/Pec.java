@@ -1,6 +1,6 @@
 package entities;
 
-import others.TipoDeLei;
+import enums.TipoDeLei;
 
 public class Pec extends ProjetoDeLei{
 

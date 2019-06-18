@@ -1,6 +1,6 @@
 package entities;
 
-import others.TipoDeLei;
+import enums.TipoDeLei;
 
 public class Plp extends ProjetoDeLei {
 	
@@ -16,7 +16,5 @@ public class Plp extends ProjetoDeLei {
 		return String.format("Projeto de Lei Complementar - %s - %s - %s - %s - %s", 
 				this.codigo, this.dni, this.ementa, this.artigos, this.situacaoAtual);
 	}
-	
-	
 
 }

@@ -1,6 +1,6 @@
 package entities;
 
-import others.TipoDeLei;
+import enums.TipoDeLei;
 
 public class Pl extends ProjetoDeLei {
 	
@@ -23,10 +23,5 @@ public class Pl extends ProjetoDeLei {
 	public boolean getConclusivo() {
 		return this.conclusivo;
 	}
-	
-	
-	
-	
-	
 
 }

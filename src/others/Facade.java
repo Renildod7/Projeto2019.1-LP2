@@ -74,7 +74,6 @@ public class Facade {
 		return this.systemCntrl.votarPlenario(codigo, statusGovernista, presentes);
 	}
 	
-	
 	public void limparSistema() {
 	}
 	

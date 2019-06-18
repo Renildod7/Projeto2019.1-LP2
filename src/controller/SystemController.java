@@ -8,9 +8,9 @@ import java.util.Set;
 import entities.Pessoa;
 import entities.Pl;
 import entities.ProjetoDeLei;
-import others.StatusDaLei;
-import others.StatusPlenario;
-import others.TipoDeLei;
+import enums.StatusDaLei;
+import enums.StatusPlenario;
+import enums.TipoDeLei;
 import others.Validacao;
 
 public class SystemController {
@@ -83,16 +83,15 @@ public class SystemController {
 		
 		String codigo;
 		if (pessoaCntrl.containsPessoa(dni)) {
-			if (!pessoaCntrl.ehDeputado(dni)) {
-				throw new NullPointerException("Erro ao cadastrar projeto: pessoa nao eh deputado");}}
-		if (pessoaCntrl.containsPessoa(dni)) {
-			codigo = this.projetoCntrl.cadastrarPL(dni, ano, ementa, interesses, url, conclusivo);
+			if (pessoaCntrl.ehDeputado(dni)) {
+				codigo = this.projetoCntrl.cadastrarPL(dni, ano, ementa, interesses, url, conclusivo);				
+			} else {
+				throw new NullPointerException("Erro ao cadastrar projeto: pessoa nao eh deputado");
+			}
 		} else {
 			throw new NullPointerException("Erro ao cadastrar projeto: pessoa inexistente");
-		}
-		
+		}	
 		return codigo;
-
 	}
 
 	public String cadastrarPLP(String dni, int ano, String ementa, String interesses, String url, String artigo) {
@@ -104,16 +103,15 @@ public class SystemController {
 		
 		String codigo;
 		if (pessoaCntrl.containsPessoa(dni)) {
-			if (!pessoaCntrl.ehDeputado(dni)) {
-				throw new NullPointerException("Erro ao cadastrar projeto: pessoa nao eh deputado");}}
-		if (pessoaCntrl.containsPessoa(dni)) {
-			codigo =this.projetoCntrl.cadastrarPLP(dni, ano, ementa, interesses, url, artigo);
+			if (pessoaCntrl.ehDeputado(dni)) {
+				codigo =this.projetoCntrl.cadastrarPLP(dni, ano, ementa, interesses, url, artigo);
+			} else {
+				throw new NullPointerException("Erro ao cadastrar projeto: pessoa nao eh deputado");				
+			}
 		} else {
 			throw new NullPointerException("Erro ao cadastrar projeto: pessoa inexistente");
-		}
-		
+		}		
 		return codigo;
-
 	}
 
 	public String cadastrarPEC(String dni, int ano, String ementa, String interesses, String url, String artigo) {
@@ -125,21 +123,19 @@ public class SystemController {
 		
 		String codigo;
 		if (pessoaCntrl.containsPessoa(dni)) {
-			if (!pessoaCntrl.ehDeputado(dni)) {
-				throw new NullPointerException("Erro ao cadastrar projeto: pessoa nao eh deputado");}}
-		if (pessoaCntrl.containsPessoa(dni)) {
-			codigo = this.projetoCntrl.cadastrarPEC(dni, ano, ementa, interesses, url, artigo);
+			if (pessoaCntrl.ehDeputado(dni)) {
+				codigo = this.projetoCntrl.cadastrarPEC(dni, ano, ementa, interesses, url, artigo);
+			} else {
+				throw new NullPointerException("Erro ao cadastrar projeto: pessoa nao eh deputado");
+			}
 		} else {
 			throw new NullPointerException("Erro ao cadastrar projeto: pessoa inexistente");
 		}
-		
 		return codigo;
-
 	}
 
 	public String exibirProjeto(String codigo) {
 		return this.projetoCntrl.exibirProjeto(codigo);
-
 	}
 
 	public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal) {
@@ -147,7 +143,6 @@ public class SystemController {
 		ProjetoDeLei lei = this.projetoCntrl.getLei(codigo);
 		Pessoa criadorDaLei = this.pessoaCntrl.getPessoa(lei.getCriadorDaLei());
 		Set<String> comissao = this.comissaoCntrl.getComissao(lei.getLocalDeVotacao());
-		
 		
 		int votosAFavor = votar(comissao, lei, statusGovernista);
 		
@@ -190,7 +185,6 @@ public class SystemController {
 
 		default:
 			break;
-		
 		}
 		return false;
 	}
@@ -301,8 +295,7 @@ public class SystemController {
 			default:
 				break;
 			}
-		}
-		
+		}		
 		return votosAFavor;
 	}
 
@@ -315,8 +308,7 @@ public class SystemController {
 		StatusDaLei satatuDaLei = lei.getStatus();
 		String localDeVotacao = lei.getLocalDeVotacao();
 		Validacao.validaLocalDeVotacao(localDeVotacao);
-		Validacao.validaStatusLei(satatuDaLei);
-		
+		Validacao.validaStatusLei(satatuDaLei);	
 	}
 	
 	private void validaVotacaoPlenario(ProjetoDeLei lei, String statusGovernista, Set<String> presentes, Set<String> todosDeputados) {
@@ -332,4 +324,5 @@ public class SystemController {
 		if(StatusDaLei.ENCERRADA.equals(lei.getStatus())) throw new IllegalArgumentException("Erro ao votar proposta: tramitacao encerrada");
 		if(StatusPlenario.NAO_ESTA.equals(lei.getStatusPlenario())) throw new IllegalArgumentException("Erro ao votar proposta: tramitacao em comissao");
 	}
+	
 }

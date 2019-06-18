@@ -1,8 +1,8 @@
 package entities;
 
-import others.StatusDaLei;
-import others.StatusPlenario;
-import others.TipoDeLei;
+import enums.StatusDaLei;
+import enums.StatusPlenario;
+import enums.TipoDeLei;
 
 public abstract class ProjetoDeLei {
 	

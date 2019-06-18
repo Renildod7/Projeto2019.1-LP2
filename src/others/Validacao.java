@@ -7,6 +7,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import enums.StatusDaLei;
+
 /**
  * Classe responsavel pela validacao de atributos. 
  * 
@@ -110,10 +112,6 @@ public class Validacao {
 	
 	public static void validaProximoLocalDeVotacao(String proximoLocal) {
 		if(proximoLocal.equals("")) throw new IllegalArgumentException("Erro ao votar proposta: proximo local vazio");
-	}
-	
-	
-	
-	
+	}	
 
 }

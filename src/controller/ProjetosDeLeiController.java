@@ -8,15 +8,12 @@ import entities.Pl;
 import entities.Plp;
 import entities.ProjetoDeLei;
 import others.ChaveLeiAno;
-import others.TipoDeLei;
 import others.Validacao;
 
 public class ProjetosDeLeiController {
 
 	private Map<String, ProjetoDeLei> projetosLei;
 	private Map<ChaveLeiAno, Integer> cont;
-
-
 
 	public ProjetosDeLeiController() {
 		this.projetosLei = new HashMap<>();
@@ -37,8 +34,7 @@ public class ProjetosDeLeiController {
 			this.projetosLei.put(codigo, pl);
 		} else {
 			throw new NullPointerException("n sei o que escrever");
-		} 
-	
+		} 	
 		return codigo;
 	}
 	
