@@ -1,6 +1,5 @@
 package entities;
 
-import others.CargoPoliticoInteface;
 import others.Validacao;
 
 /**
@@ -10,7 +9,7 @@ import others.Validacao;
  * @author Renildo Dantas Melo
  * @author Wander Medeiros de Brito Junior
  */
-public class Deputado implements CargoPoliticoInteface {
+public class Deputado implements PessoaInterface {
 	
 	/**
 	 * Data de inicio do mandato do deputado.
@@ -22,16 +21,19 @@ public class Deputado implements CargoPoliticoInteface {
 	 */
 	private int leisAprovadas;
 	
+	private PessoaCivil pessoa;
+	
 	/**
 	 * Construtor de Deputado.
 	 * 
 	 * @param dataDeInicio A data de inicio do mandato.
 	 */
-	public Deputado(String dataDeInicio) {
+	public Deputado(String dataDeInicio, PessoaCivil pessoa) {
 		Validacao.validaString(dataDeInicio, "Erro ao cadastrar deputado: data nao pode ser vazio ou nulo");
 		Validacao.validaData(dataDeInicio, "Erro ao cadastrar deputado: ");	
 		this.dataDeInicio = dataDeInicio;
 		this.leisAprovadas = 0;
+		this.pessoa = pessoa;
 	}
 	
 	/**
@@ -49,13 +51,31 @@ public class Deputado implements CargoPoliticoInteface {
 		return retorno;
 	}
 
-	@Override
+	
 	public int getLeisAprovadas() {
 		return this.leisAprovadas;
 	}
 	
 	public void adicionaLeiAprovada() {
 		this.leisAprovadas += 1;
+	}
+	
+	public String toString() {
+
+		String interesses = (!this.pessoa.getInteresses().isEmpty()) ? " - Interesses: " + this.pessoa.getInteresses() :"";
+		
+		return String.format("POL: %s - %s (%s) - %s%s - %s - %d Leis", this.pessoa.getNome(), this.pessoa.getDni(), this.pessoa.getEstado(), 
+				this.pessoa.getPartido(), interesses, getDataDeInicio(), leisAprovadas);
+	}
+
+	@Override
+	public String getPartido() {
+		return this.pessoa.getPartido();
+	}
+
+	@Override
+	public String getInteresses() {
+		return this.pessoa.getInteresses();
 	}
 	
 }

@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import entities.Pessoa;
+import entities.Deputado;
 import entities.Pl;
 import entities.ProjetoDeLei;
 import enums.StatusDaLei;
@@ -141,7 +141,7 @@ public class SystemController {
 	public boolean votarComissao(String codigo, String statusGovernista, String proximoLocal) {
 		validaVotacaoComissao(codigo, statusGovernista, proximoLocal);
 		ProjetoDeLei lei = this.projetoCntrl.getLei(codigo);
-		Pessoa criadorDaLei = this.pessoaCntrl.getPessoa(lei.getCriadorDaLei());
+		Deputado autorDaLei = (Deputado) this.pessoaCntrl.getPessoa(lei.getCriadorDaLei());
 		Set<String> comissao = this.comissaoCntrl.getComissao(lei.getLocalDeVotacao());
 		
 		int votosAFavor = votar(comissao, lei, statusGovernista);
@@ -154,7 +154,7 @@ public class SystemController {
 					lei.setLocalDeVotacao(proximoLocal);
 					if(proximoLocal.equals("-")) {
 						lei.aprovarLei();
-						criadorDaLei.adicionaLeiAprovada();
+						autorDaLei.adicionaLeiAprovada();
 					}
 					return true;
 				}else {
@@ -191,7 +191,7 @@ public class SystemController {
 	
 	public boolean votarPlenario(String codigo, String statusGovernista, String presentes) {
 		ProjetoDeLei lei = this.projetoCntrl.getLei(codigo);
-		Pessoa criadorDaLei = this.pessoaCntrl.getPessoa(lei.getCriadorDaLei());
+		Deputado autorDaLei = (Deputado) this.pessoaCntrl.getPessoa(lei.getCriadorDaLei());
 		Set<String> todosDeputados = this.pessoaCntrl.getDeputados();
 		Set<String> setPresentes = new HashSet<>();
 		setPresentes.addAll(Arrays.asList(presentes.split(",")));
@@ -202,7 +202,7 @@ public class SystemController {
 		case PL:
 			if(votosAFavor >= (Math.floor(setPresentes.size() / 2) + 1)) {
 				lei.aprovarLei();
-				criadorDaLei.adicionaLeiAprovada();
+				autorDaLei.adicionaLeiAprovada();
 				return true;
 			}else {
 				lei.rejeitarLei();
@@ -223,7 +223,7 @@ public class SystemController {
 			case SEGUNDO_TURNO:
 				if(votosAFavor >= (Math.floor(todosDeputados.size() / 2) + 1)) {
 					lei.aprovarLei();
-					criadorDaLei.adicionaLeiAprovada();
+					autorDaLei.adicionaLeiAprovada();
 					return true;
 				}else {
 					lei.rejeitarLei();
@@ -248,7 +248,7 @@ public class SystemController {
 			case SEGUNDO_TURNO:
 				if(votosAFavor >= (Math.floor(3 * setPresentes.size() / 5) + 1)) {
 					lei.aprovarLei();
-					criadorDaLei.adicionaLeiAprovada();
+					autorDaLei.adicionaLeiAprovada();
 					return true;
 				}else {
 					lei.rejeitarLei();

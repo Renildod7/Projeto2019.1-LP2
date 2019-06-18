@@ -5,7 +5,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import entities.Pessoa;
+import entities.Deputado;
+import entities.PessoaCivil;
+import entities.PessoaInterface;
 import others.Validacao;
 
 /**
@@ -20,7 +22,7 @@ public class PessoaController {
 	/**
 	 * Mapa responsavel por armazenar as pessoas cadastradas. As chaves do mapa sao dni's de pessoas.
 	 */
-	private Map<String, Pessoa> pessoas;
+	private Map<String, PessoaInterface> pessoas;
 	
 	/**
 	 * Construtor de PessoaController. Cria um novo HashMap.
@@ -43,7 +45,7 @@ public class PessoaController {
 		Validacao.validaString(dni, "Erro ao cadastrar pessoa: dni nao pode ser vazio ou nulo");
 		Validacao.validaString(estado, "Erro ao cadastrar pessoa: estado nao pode ser vazio ou nulo");
 		if (!this.pessoas.containsKey(dni)) {
-			Pessoa p = new Pessoa(nome, dni, estado, interesses, partido);
+			PessoaCivil p = new PessoaCivil(nome, dni, estado, interesses, partido);
 			this.pessoas.put(dni, p);
 		} else {
 			throw new IllegalArgumentException("Erro ao cadastrar pessoa: dni ja cadastrado");
@@ -59,15 +61,7 @@ public class PessoaController {
 	 * @param interesses	Os interesses que possui.
 	 */
 	public void cadastrarPessoa(String nome, String dni, String estado, String interesses) {
-		Validacao.validaString(nome, "Erro ao cadastrar pessoa: nome nao pode ser vazio ou nulo");
-		Validacao.validaString(dni, "Erro ao cadastrar pessoa: dni nao pode ser vazio ou nulo");
-		Validacao.validaString(estado, "Erro ao cadastrar pessoa: estado nao pode ser vazio ou nulo");
-		if (!this.pessoas.containsKey(dni)) {
-			Pessoa p = new Pessoa(nome, dni, estado, interesses);
-			this.pessoas.put(dni, p);
-		} else {
-			throw new IllegalArgumentException("Erro ao cadastrar pessoa: dni ja cadastrado");
-		}
+		cadastrarPessoa(nome, dni, estado, interesses, "");
 	}
 
 	/**
@@ -81,10 +75,11 @@ public class PessoaController {
 		Validacao.validaDni(dni, "Erro ao cadastrar deputado: dni invalido");
 		
 		if(this.pessoas.containsKey(dni)) {
-			if(this.pessoas.get(dni).getPartido().equals("")) throw new IllegalArgumentException("Erro ao cadastrar deputado: pessoa sem partido");
+			PessoaCivil p = (PessoaCivil) this.pessoas.get(dni);
+			if(p.getPartido().isEmpty()) throw new IllegalArgumentException("Erro ao cadastrar deputado: pessoa sem partido");
 			Validacao.validaString(dataDeInicio, "Erro ao cadastrar deputado: data nao pode ser vazio ou nulo");
 			Validacao.validaData(dataDeInicio, "Erro ao cadastrar deputado: ");
-			this.pessoas.get(dni).alteraCargoPolitico(dataDeInicio);
+			this.pessoas.put(dni, new Deputado(dataDeInicio, p));
 		}else throw new NullPointerException("Erro ao cadastrar deputado: pessoa nao encontrada");
 	}
 	
@@ -122,10 +117,10 @@ public class PessoaController {
 	 * @return true caso o cargo politico seja deputado e false caso contrario.
 	 */
 	public boolean ehDeputado(String dni) {
-		return this.pessoas.get(dni).ehDeputado();
+		return (this.pessoas.get(dni).getClass().equals(Deputado.class));	
 	}
 	
-	public Pessoa getPessoa(String dni) {
+	public PessoaInterface getPessoa(String dni) {
 		return this.pessoas.get(dni);
 	}
 	

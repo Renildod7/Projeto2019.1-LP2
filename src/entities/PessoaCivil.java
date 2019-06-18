@@ -1,6 +1,5 @@
 package entities;
 
-import others.CargoPoliticoInteface;
 import others.Validacao;
 
 /**
@@ -10,7 +9,7 @@ import others.Validacao;
  * @author Renildo Dantas Melo
  * @author Wander Medeiros de Brito Junior
  */
-public class Pessoa {
+public class PessoaCivil implements PessoaInterface{
 	
 	/**
 	 * Nome da pessoa.
@@ -37,8 +36,6 @@ public class Pessoa {
 	 */
 	private String partido;
 	
-	
-	private CargoPoliticoInteface cargoPolitico;
 
 	/**
 	 * Construtor de principal de Pessoa.
@@ -49,7 +46,7 @@ public class Pessoa {
 	 * @param interesses	Os interesses que possui.
 	 * @param partido		O partido da pessoa.
 	 */
-	public Pessoa(String nome, String dni, String estado, String interesses, String partido) {
+	public PessoaCivil(String nome, String dni, String estado, String interesses, String partido) {
 		validaEntradas(nome, dni, estado);
 		this.nome = nome;
 		this.dni = dni;
@@ -58,17 +55,6 @@ public class Pessoa {
 		this.partido = partido;		
 	}
 	
-	/**
-	 * Construtor secundario de Pessoa. Utilizado quando a pessoa em questao nao possui partido.
-	 * 
-	 * @param nome			O nome da pessoa.
-	 * @param dni			O dni da pessoa.
-	 * @param estado		O estado onde mora.
-	 * @param interesses	Os interesses que possui.
-	 */
-	public Pessoa(String nome, String dni, String estado, String interesses) {
-		this(nome, dni, estado, interesses, "");
-	}
 	
 	/**
 	 * Metodo auxiliar utilizado para validar as entradas do construtor de Pessoa.
@@ -84,9 +70,6 @@ public class Pessoa {
 		Validacao.validaDni(dni, "Erro ao cadastrar pessoa: dni invalido");
 	}
 	
-	public void alteraCargoPolitico(String dataDeInicio) {
-		this.cargoPolitico = new Deputado(dataDeInicio);
-	}
 	
 	/**
 	 * hashCode de Pessoa. Calculado a partir do DNI da pessoa.
@@ -110,7 +93,7 @@ public class Pessoa {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Pessoa other = (Pessoa) obj;
+		PessoaCivil other = (PessoaCivil) obj;
 		if (dni == null) {
 			if (other.dni != null)
 				return false;
@@ -124,43 +107,10 @@ public class Pessoa {
 	 */
 	@Override
 	public String toString() {
-
-		String retorno = "";
-		
-		if(this.cargoPolitico == null) {
-			retorno = representacaoPessoaComum();
-			
-		}else if(this.cargoPolitico.getClass() == Deputado.class) {
-			retorno  = representacaoPessoaDeputado();
-		}
-	
-		return retorno;
-	}
-	
-	/**
-	 * Metodo auxiliar que retorna a representacao em String de uma pessoa comum.
-	 * 
-	 * @return A representacao em String da pessoa.
-	 */
-	private String representacaoPessoaComum() {
 		String partido = (!this.partido.isEmpty()) ? " - " + this.partido :"";
 		String interesses = (!this.interesses.isEmpty()) ? " - Interesses: " + this.interesses :"";
 		
 		return String.format("%s - %s (%s)%s%s", nome, dni, estado, partido, interesses);
-
-	}
-	
-	/**
-	 * Metodo auxiliar que retorna a representacao em String de uma pessoa deputado.
-	 * 
-	 * @return A representacao em String da pessoa.
-	 */
-	private String representacaoPessoaDeputado() {
-		
-		String interesses = (!this.interesses.isEmpty()) ? " - Interesses: " + this.interesses :"";
-		
-		return String.format("POL: %s - %s (%s) - %s%s - %s - %d Leis", nome, dni, estado, 
-				partido, interesses, cargoPolitico.getDataDeInicio(), cargoPolitico.getLeisAprovadas());
 	}
 	
 	/**
@@ -168,27 +118,28 @@ public class Pessoa {
 	 * 
 	 * @return O partido da pessoa.
 	 */
+	@Override
 	public String getPartido() {
 		return this.partido;
 	}
 
-	/**
-	 * Metodo responsavel por identificar se uma pessoa tem o cargo politico de deputado.
-	 * 
-	 * @return false caso a pessoa nao possua um cargo politico e true caso contrario.
-	 */
-	public boolean ehDeputado() {
-		if (this.cargoPolitico == null) {
-			return false;			
-		}		
-		return true;
+	public String getNome() {
+		return nome;
 	}
-	
+
+
+	public String getDni() {
+		return dni;
+	}
+
+
+	public String getEstado() {
+		return estado;
+	}
+
+
 	public String getInteresses() {
 		return this.interesses;
 	}
-	
-	public void adicionaLeiAprovada() {
-		this.cargoPolitico.adicionaLeiAprovada();
-	}
+
 }
