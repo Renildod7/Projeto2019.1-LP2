@@ -156,18 +156,18 @@ public class SystemController {
 		case PL:
 			if(((Pl)lei).getConclusivo()) {
 				if(votosAFavor >= (Math.floor(comissao.size() / 2) + 1)) {
-					lei.setProximoLocalDeVotacao(proximoLocal);
+					lei.setLocalDeVotacao(proximoLocal);
 					if(proximoLocal.equals("-")) {
 						lei.aprovarLei();
 						criadorDaLei.adicionaLeiAprovada();
 					}
 					return true;
 				}else {
-					lei.regeitarLei();
+					lei.rejeitarLei();
 				}
 				return false;
 			} else {
-				lei.setProximoLocalDeVotacao(proximoLocal);
+				lei.setLocalDeVotacao(proximoLocal);
 				if(proximoLocal.equals("plenario")) lei.plenario1oTurno();
 				if(votosAFavor >= (Math.floor(comissao.size() / 2) + 1)) {
 					return true;
@@ -175,14 +175,14 @@ public class SystemController {
 			}
 			
 		case PLP:
-			lei.setProximoLocalDeVotacao(proximoLocal);
+			lei.setLocalDeVotacao(proximoLocal);
 			if(proximoLocal.equals("plenario")) lei.plenario1oTurno();
 			if(votosAFavor >= (Math.floor(comissao.size() / 2) + 1)) {
 				return true;
 			} else return false;
 
 		case PEC:
-			lei.setProximoLocalDeVotacao(proximoLocal);
+			lei.setLocalDeVotacao(proximoLocal);
 			if(proximoLocal.equals("plenario")) lei.plenario1oTurno();
 			if(votosAFavor >= (Math.floor(comissao.size() / 2) + 1)) {
 				return true;
@@ -211,7 +211,7 @@ public class SystemController {
 				criadorDaLei.adicionaLeiAprovada();
 				return true;
 			}else {
-				lei.regeitarLei();
+				lei.rejeitarLei();
 				return false;
 			}
 			
@@ -222,7 +222,7 @@ public class SystemController {
 					lei.plenario2oTurno();
 					return true;
 				}else {
-					lei.regeitarLei();
+					lei.rejeitarLei();
 					return false;
 				}
 				
@@ -232,7 +232,7 @@ public class SystemController {
 					criadorDaLei.adicionaLeiAprovada();
 					return true;
 				}else {
-					lei.regeitarLei();
+					lei.rejeitarLei();
 					return false;
 				}
 
@@ -247,7 +247,7 @@ public class SystemController {
 					lei.plenario2oTurno();
 					return true;
 				}else {
-					lei.regeitarLei();
+					lei.rejeitarLei();
 					return false;
 				}
 				
@@ -257,7 +257,7 @@ public class SystemController {
 					criadorDaLei.adicionaLeiAprovada();
 					return true;
 				}else {
-					lei.regeitarLei();
+					lei.rejeitarLei();
 					return false;
 				}
 			default:

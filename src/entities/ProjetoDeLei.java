@@ -46,7 +46,7 @@ public abstract class ProjetoDeLei {
 		return this.localDeVotacao;
 	}
 	
-	public void setProximoLocalDeVotacao(String novoLocal) {
+	public void setLocalDeVotacao(String novoLocal) {
 		this.localDeVotacao = novoLocal;
 		this.situacaoAtual = "EM VOTACAO (" + novoLocal + ")";
 	}
@@ -64,7 +64,7 @@ public abstract class ProjetoDeLei {
 		this.situacaoAtual = "APROVADO";
 	}
 	
-	public void regeitarLei() {
+	public void rejeitarLei() {
 		this.statusDaLei = StatusDaLei.ENCERRADA;
 		this.situacaoAtual = "ARQUIVADO";
 	}
@@ -75,12 +75,12 @@ public abstract class ProjetoDeLei {
 	
 	public void plenario1oTurno() {
 		this.statusPlenario = StatusPlenario.PRIMEIRO_TURNO;
-		setProximoLocalDeVotacao("Plenario - 1o turno");
+		setLocalDeVotacao("Plenario - 1o turno");
 	}
 	
 	public void plenario2oTurno() {
 		this.statusPlenario = StatusPlenario.SEGUNDO_TURNO;
-		setProximoLocalDeVotacao("Plenario - 2o turno");
+		setLocalDeVotacao("Plenario - 2o turno");
 	}
 
 	@Override
