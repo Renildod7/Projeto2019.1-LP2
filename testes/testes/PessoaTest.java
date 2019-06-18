@@ -5,13 +5,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import entities.Pessoa;
+import entities.PessoaCivil;
 
 class PessoaTest {
 
 	@Test
 	void testConstrutorNomeNulo() {
 		try {
-			Pessoa p = new Pessoa(null, "000000000-0", "XX", "interesses");
+			PessoaCivil p = new PessoaCivil(null, "000000000-0", "XX", "interesses", "");
 			fail("Excecao nao lancada");
 		} catch (NullPointerException npe) { }
 	}
@@ -19,7 +20,7 @@ class PessoaTest {
 	@Test
 	void testConstrutorNomeVazio() {
 		try {
-			Pessoa p = new Pessoa("", "000000000-0", "XX", "interesses");
+			PessoaCivil p = new PessoaCivil("", "000000000-0", "XX", "interesses", "");
 			fail("Excecao nao lancada");;
 		} catch (IllegalArgumentException iae) { }
 	}
@@ -27,7 +28,7 @@ class PessoaTest {
 	@Test
 	void testConstrutorNomeApenasEspacos() {
 		try {
-			Pessoa p = new Pessoa("   ", "000000000-0", "XX", "interesses");
+			PessoaCivil p = new PessoaCivil("   ", "000000000-0", "XX", "interesses", "");
 			fail("Excecao nao lancada");
 		} catch (IllegalArgumentException iae) { }
 	}
@@ -35,7 +36,7 @@ class PessoaTest {
 	@Test
 	void testConstrutorDniNulo() {
 		try {
-			Pessoa p = new Pessoa("nome", null, "XX", "interesses");
+			PessoaCivil p = new PessoaCivil("nome", null, "XX", "interesses", "");
 			fail("Excecao nao lancada");
 		} catch (NullPointerException npe) { }
 	}
@@ -43,7 +44,7 @@ class PessoaTest {
 	@Test
 	void testConstrutorDniVazio() {
 		try {
-			Pessoa p = new Pessoa("nome", "", "XX", "interesses");
+			PessoaCivil p = new PessoaCivil("nome", "", "XX", "interesses", "");
 			fail("Excecao nao lancada");
 		} catch (IllegalArgumentException iae) { }
 	}
@@ -51,7 +52,7 @@ class PessoaTest {
 	@Test
 	void testConstrutorDniApenasEspacos() {
 		try {
-			Pessoa p = new Pessoa("nome", "    ", "XX", "interesses");
+			PessoaCivil p = new PessoaCivil("nome", "    ", "XX", "interesses", "");
 			fail("Excecao nao lancada");
 		} catch (IllegalArgumentException iae) { }
 	}
@@ -59,7 +60,7 @@ class PessoaTest {
 	@Test
 	void testConstrutorDniInvalido() {
 		try {
-			Pessoa p = new Pessoa("nome", "A00000000-0", "XX", "interesses");
+			PessoaCivil p = new PessoaCivil("nome", "A00000000-0", "XX", "interesses", "");
 			fail("Excecao nao lancada");
 		} catch (IllegalArgumentException iae) { }
 	}
@@ -67,7 +68,7 @@ class PessoaTest {
 	@Test
 	void testConstrutorEstadoNulo() {
 		try {
-			Pessoa p = new Pessoa("nome", "000000000-0", null, "interesses");
+			PessoaCivil p = new PessoaCivil("nome", "000000000-0", null, "interesses", "");
 			fail("Excecao nao lancada");
 		} catch (NullPointerException npe) { }
 	}
@@ -75,7 +76,7 @@ class PessoaTest {
 	@Test
 	void testConstrutorEstadoVazio() {
 		try {
-			Pessoa p = new Pessoa("nome", "000000000-0", "", "interesses");
+			PessoaCivil p = new PessoaCivil("nome", "000000000-0", "", "interesses", "");
 			fail("Excecao nao lancada");
 		} catch (IllegalArgumentException iae) { }
 	}
@@ -83,36 +84,33 @@ class PessoaTest {
 	@Test
 	void testConstrutorEstadoApenasEspacos() {
 		try {
-			Pessoa p = new Pessoa("nome", "000000000-0", "    ", "interesses");
+			PessoaCivil p = new PessoaCivil("nome", "000000000-0", "    ", "interesses", "");
 			fail("Excecao nao lancada");
 		} catch (IllegalArgumentException iae) { }
 	}
 
 	@Test
 	void testToStringPessoaSemPartidoSemInteresses() {
-		Pessoa p = new Pessoa("nome", "000000000-0", "XX", "");
+		PessoaCivil p = new PessoaCivil("nome", "000000000-0", "XX", "", "");
 		assertEquals("nome - 000000000-0 (XX)", p.toString());
 	}
 	
 	@Test
 	void testToStringPessoaComPartidoSemInteresses() {
-		Pessoa p = new Pessoa("nome", "000000000-0", "XX", "","YY");
+		PessoaCivil p = new PessoaCivil("nome", "000000000-0", "XX", "","YY");
 		assertEquals("nome - 000000000-0 (XX) - YY", p.toString());
 	}
 	
 	@Test
 	void testToStringPessoaSemPartidoComInteresses() {
-		Pessoa p = new Pessoa("nome", "000000000-0", "XX", "interesses");
+		PessoaCivil p = new PessoaCivil("nome", "000000000-0", "XX", "interesses", "");
 		assertEquals("nome - 000000000-0 (XX) - Interesses: interesses", p.toString());
 	}
 	
 	@Test
 	void testToStringPessoaComPartidoComInteresses() {
-		Pessoa p = new Pessoa("nome", "000000000-0", "XX", "interesses", "YY");
+		PessoaCivil p = new PessoaCivil("nome", "000000000-0", "XX", "interesses", "YY");
 		assertEquals("nome - 000000000-0 (XX) - YY - Interesses: interesses", p.toString());
 	}
-	
-	
-	
 	
 }

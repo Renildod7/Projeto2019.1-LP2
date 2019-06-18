@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import controller.SystemController;
-import entities.Pessoa;
+import entities.PessoaCivil;
 
 class SystemControllerTest {
 	
