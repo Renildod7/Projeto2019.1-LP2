@@ -70,7 +70,7 @@ public class PessoaController {
 	 * @param dni			O dni da pessoa em questao.
 	 * @param dataDeInicio	A data de inicio do mandato.
 	 */
-	public void cadastrarDeputado(String dni, String dataDeInicio) {
+	public Deputado cadastrarDeputado(String dni, String dataDeInicio) {
 		Validacao.validaString(dni, "Erro ao cadastrar deputado: dni nao pode ser vazio ou nulo");
 		Validacao.validaDni(dni, "Erro ao cadastrar deputado: dni invalido");
 		
@@ -79,7 +79,9 @@ public class PessoaController {
 			if(p.getPartido().isEmpty()) throw new IllegalArgumentException("Erro ao cadastrar deputado: pessoa sem partido");
 			Validacao.validaString(dataDeInicio, "Erro ao cadastrar deputado: data nao pode ser vazio ou nulo");
 			Validacao.validaData(dataDeInicio, "Erro ao cadastrar deputado: ");
-			this.pessoas.put(dni, new Deputado(dataDeInicio, p));
+			Deputado d = new Deputado(dataDeInicio, p);
+			this.pessoas.put(dni, d);
+			return d;
 		}else throw new NullPointerException("Erro ao cadastrar deputado: pessoa nao encontrada");
 	}
 	
