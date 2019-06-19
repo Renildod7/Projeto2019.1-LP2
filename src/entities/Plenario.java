@@ -59,7 +59,7 @@ public class Plenario {
 		case PEC:
 			switch (lei.getStatusPlenario()) {
 			case PRIMEIRO_TURNO:
-				if (votosAFavor >= (Math.floor(3 * deputadosPresentes.size() / 5) + 1)) {
+				if (votosAFavor >= (Math.floor(3 * this.todosDeputados.size() / 5) + 1)) {
 					lei.plenario2oTurno();
 					return true;
 				} else {
@@ -68,7 +68,7 @@ public class Plenario {
 				}
 				
 			case SEGUNDO_TURNO:
-				if (votosAFavor >= (Math.floor(3 * deputadosPresentes.size() / 5) + 1)) {
+				if (votosAFavor >= (Math.floor(3 * this.todosDeputados.size() / 5) + 1)) {
 					lei.aprovarLei();
 					autorDaLei.adicionaLeiAprovada();
 					return true;
