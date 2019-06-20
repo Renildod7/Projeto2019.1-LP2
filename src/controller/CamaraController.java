@@ -56,5 +56,8 @@ public class CamaraController {
 	
 	public boolean votarPlenario(String statusGovernista, ProjetoDeLei lei, Deputado autorDaLei, Set<Deputado> deputadosPresentes, Set<String> base) {
 		return this.dados.getPlenario().votarPlenario(statusGovernista, lei, autorDaLei, deputadosPresentes, base);
-	}	
+	}
+
+	
+	
 }

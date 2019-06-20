@@ -1,5 +1,8 @@
 package entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import enums.StatusDaLei;
 import enums.StatusPlenario;
 import enums.TipoDeLei;
@@ -17,6 +20,8 @@ public abstract class ProjetoDeLei {
 	private TipoDeLei tipoDeLei;
 	private StatusDaLei statusDaLei;
 	private StatusPlenario statusPlenario;
+	private List<String> tramitacao;
+	private int aprovacoes;
 	
 	
 	
@@ -32,6 +37,9 @@ public abstract class ProjetoDeLei {
 		this.tipoDeLei = tipoDeLei;
 		this.statusDaLei = StatusDaLei.EM_VOTACAO;
 		this.statusPlenario = StatusPlenario.NAO_ESTA;
+		this.tramitacao = new ArrayList<>();
+		this.tramitacao.add(this.situacaoAtual);
+		this.aprovacoes = 0;
 	}
 	
 	public String getInteresses() {
@@ -46,17 +54,69 @@ public abstract class ProjetoDeLei {
 		return this.localDeVotacao;
 	}
 	
-	public void setLocalDeVotacao(String novoLocal) {
+	private void setLocalDeVotacao(String novoLocal) {
 		this.localDeVotacao = novoLocal;
 		this.situacaoAtual = "EM VOTACAO (" + novoLocal + ")";
+		this.tramitacao.add("EM VOTACAO (" + novoLocal + ")");
 	}
 	
-	public String getCriadorDaLei() {
+	public String getAutorDaLei() {
 		return this.dni;
 	}
 	
 	public StatusDaLei getStatus() {
 		return this.statusDaLei;
+	}
+	
+	public void votacaoComissaoAprovado(String novoLocal) {
+		this.aprovacoes ++;
+		this.tramitacao.remove(this.tramitacao.size()-1);
+		this.tramitacao.add("APROVADO (" + this.localDeVotacao + ")");
+		if(novoLocal.equals("plenario")) {
+			plenario1oTurno();
+		} else setLocalDeVotacao(novoLocal);
+	}
+	
+	public void votacaoComissaoRejeitado(String novoLocal) {
+		this.tramitacao.remove(this.tramitacao.size()-1);
+		this.tramitacao.add("REJEITADO (" + this.localDeVotacao + ")");
+		if(novoLocal.equals("plenario")) {
+			plenario1oTurno();
+		} else setLocalDeVotacao(novoLocal);
+		if(this.tipoDeLei.equals(TipoDeLei.PL)) this.tramitacao.remove(this.tramitacao.size()-1);
+		
+	}
+	
+	public StatusPlenario getStatusPlenario() {
+		return this.statusPlenario;
+	}
+	
+	public void votacaoPlenarioAprovado() {
+		this.aprovacoes ++;
+		this.tramitacao.remove(this.tramitacao.size()-1);
+		this.tramitacao.add("APROVADO (" + this.localDeVotacao + ")");
+		if(this.statusPlenario.equals(StatusPlenario.PRIMEIRO_TURNO)) {
+			plenario2oTurno();
+		}
+		if(this.tipoDeLei.equals(TipoDeLei.PL)) this.tramitacao.remove(this.tramitacao.size()-1);
+	}
+	
+	public void votacaoPlenarioRejeitado() {
+		this.tramitacao.remove(this.tramitacao.size()-1);
+		this.tramitacao.add("REJEITADO (" + this.localDeVotacao + ")");
+		if(this.tipoDeLei.equals(TipoDeLei.PL)) this.tramitacao.remove(this.tramitacao.size()-1);
+	}
+	
+	private void plenario1oTurno() {
+		this.statusPlenario = StatusPlenario.PRIMEIRO_TURNO;
+		if(this.tipoDeLei.equals(TipoDeLei.PL)) {
+			setLocalDeVotacao("Plenario");
+		}else setLocalDeVotacao("Plenario - 1o turno");
+	}
+	
+	private void plenario2oTurno() {
+		this.statusPlenario = StatusPlenario.SEGUNDO_TURNO;
+		setLocalDeVotacao("Plenario - 2o turno");
 	}
 	
 	public void aprovarLei() {
@@ -69,19 +129,6 @@ public abstract class ProjetoDeLei {
 		this.situacaoAtual = "ARQUIVADO";
 	}
 	
-	public StatusPlenario getStatusPlenario() {
-		return this.statusPlenario;
-	}
-	
-	public void plenario1oTurno() {
-		this.statusPlenario = StatusPlenario.PRIMEIRO_TURNO;
-		setLocalDeVotacao("Plenario - 1o turno");
-	}
-	
-	public void plenario2oTurno() {
-		this.statusPlenario = StatusPlenario.SEGUNDO_TURNO;
-		setLocalDeVotacao("Plenario - 2o turno");
-	}
 
 	@Override
 	public int hashCode() {
@@ -91,7 +138,8 @@ public abstract class ProjetoDeLei {
 		return result;
 	}
 
-
+	
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -109,9 +157,16 @@ public abstract class ProjetoDeLei {
 		return true;
 	}
 	
-	
-	
-	
-	
+	public String exibirTramitacao() {
+		String retorno = "";
+		
+		for(int i = 0; i < this.tramitacao.size()-1; i++) {
+			retorno += this.tramitacao.get(i) + ", ";
+		}
+		retorno += this.tramitacao.get(this.tramitacao.size()-1) + ".";
+		return retorno;
+	}
+
+
 
 }

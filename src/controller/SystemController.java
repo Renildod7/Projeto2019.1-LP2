@@ -140,7 +140,7 @@ public class SystemController {
 		validaVotacaoComissao(codigo, statusGovernista, proximoLocal);	
 		
 		ProjetoDeLei lei = this.projetoCntrl.getLei(codigo);
-		Deputado autorDaLei = (Deputado) this.pessoaCntrl.getPessoa(lei.getCriadorDaLei());
+		Deputado autorDaLei = (Deputado) this.pessoaCntrl.getPessoa(lei.getAutorDaLei());
 		String localDeVotacao = lei.getLocalDeVotacao();
 		Set<String> base = this.partidoCntrl.getBase();
 	
@@ -149,7 +149,7 @@ public class SystemController {
 	
 	public boolean votarPlenario(String codigo, String statusGovernista, String presentes) {
 		ProjetoDeLei lei = this.projetoCntrl.getLei(codigo);
-		Deputado autorDaLei = (Deputado) this.pessoaCntrl.getPessoa(lei.getCriadorDaLei());
+		Deputado autorDaLei = (Deputado) this.pessoaCntrl.getPessoa(lei.getAutorDaLei());
 		Set<Deputado> todosDeputados = this.pessoaCntrl.getDeputados();
 		Set<Deputado> deputadosPresentes = new HashSet<>();
 		Set<String> base = this.partidoCntrl.getBase();
@@ -163,7 +163,7 @@ public class SystemController {
 
 	private void validaVotacaoComissao(String codigo, String statusGovernista, String proximoLocal) {
 		if (!this.camaraCntrl.containsComissao("CCJC")) throw new NullPointerException("Erro ao votar proposta: CCJC nao cadastrada");
-		Validacao.validaProximoLocalDeVotacao(proximoLocal);
+		Validacao.validaString(proximoLocal, "Erro ao votar proposta: proximo local vazio");
 		Validacao.validaStatusGovernista(statusGovernista);
 		if (!this.projetoCntrl.containsLei(codigo)) throw new NullPointerException("Erro ao votar proposta: projeto inexistente");
 		ProjetoDeLei lei = this.projetoCntrl.getLei(codigo);
@@ -185,6 +185,10 @@ public class SystemController {
 			}
 		}
 		if (StatusPlenario.NAO_ESTA.equals(lei.getStatusPlenario())) throw new IllegalArgumentException("Erro ao votar proposta: tramitacao em comissao");
+	}
+
+	public String exibirTramitacao(String codigo) {
+		return this.projetoCntrl.exibirTramitacao(codigo);
 	}
 	
 }

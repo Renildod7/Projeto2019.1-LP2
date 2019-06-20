@@ -78,6 +78,10 @@ public class Facade {
 		return this.systemCntrl.votarPlenario(codigo, statusGovernista, presentes);
 	}
 	
+public String exibirTramitacao(String codigo) {
+		return this.systemCntrl.exibirTramitacao(codigo);
+	}
+	
 	public void limparSistema() {
 		this.dados.limparSistema();
 	}
@@ -89,5 +93,7 @@ public class Facade {
 	public void carregarSistema() throws ClassNotFoundException {
 		this.dados.carregarSistema();
 	}
+	
+	
 
 }

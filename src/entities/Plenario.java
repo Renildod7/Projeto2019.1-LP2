@@ -23,10 +23,12 @@ public class Plenario {
 		switch (lei.getTipoDeLei()) {
 		case PL:
 			if (votosAFavor >= (Math.floor(deputadosPresentes.size() / 2) + 1)) {
+				lei.votacaoPlenarioAprovado();
 				lei.aprovarLei();
 				autorDaLei.adicionaLeiAprovada();
 				return true;
 			} else {
+				lei.votacaoPlenarioRejeitado();
 				lei.rejeitarLei();
 				return false;
 			}
@@ -35,19 +37,22 @@ public class Plenario {
 			switch (lei.getStatusPlenario()) {
 			case PRIMEIRO_TURNO:
 				if (votosAFavor >= (Math.floor(this.todosDeputados.size() / 2) + 1)) {
-					lei.plenario2oTurno();
+					lei.votacaoPlenarioAprovado();
 					return true;
 				} else {
+					lei.votacaoPlenarioRejeitado();
 					lei.rejeitarLei();
 					return false;
 				}
 				
 			case SEGUNDO_TURNO:
 				if (votosAFavor >= (Math.floor(this.todosDeputados.size() / 2) + 1)) {
+					lei.votacaoPlenarioAprovado();
 					lei.aprovarLei();
 					autorDaLei.adicionaLeiAprovada();
 					return true;
 				} else {
+					lei.votacaoPlenarioRejeitado();
 					lei.rejeitarLei();
 					return false;
 				}
@@ -60,19 +65,22 @@ public class Plenario {
 			switch (lei.getStatusPlenario()) {
 			case PRIMEIRO_TURNO:
 				if (votosAFavor >= (Math.floor(3 * this.todosDeputados.size() / 5) + 1)) {
-					lei.plenario2oTurno();
+					lei.votacaoPlenarioAprovado();
 					return true;
 				} else {
+					lei.votacaoPlenarioRejeitado();
 					lei.rejeitarLei();
 					return false;
 				}
 				
 			case SEGUNDO_TURNO:
 				if (votosAFavor >= (Math.floor(3 * this.todosDeputados.size() / 5) + 1)) {
+					lei.votacaoPlenarioAprovado();
 					lei.aprovarLei();
 					autorDaLei.adicionaLeiAprovada();
 					return true;
 				} else {
+					lei.votacaoPlenarioRejeitado();
 					lei.rejeitarLei();
 					return false;
 				}

@@ -99,6 +99,10 @@ public class ProjetosDeLeiController {
 	public ProjetoDeLei getLei(String codigo) {
 		return this.dados.getProjetosLei().get(codigo);
 	}
+
+	public String exibirTramitacao(String codigo) {
+		return this.getLei(codigo).exibirTramitacao();
+	}
 	
 }
 

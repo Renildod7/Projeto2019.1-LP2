@@ -105,13 +105,9 @@ public class Validacao {
 	}
 	
 	public static void validaLocalDeVotacao(String local) {
-		if(local.equals("Plenario - 1o turno") || local.equals("Plenario - 2o turno")) {
+		if(local.equals("Plenario - 1o turno") || local.equals("Plenario - 2o turno") || local.equals("Plenario")) {
 			throw new IllegalArgumentException("Erro ao votar proposta: proposta encaminhada ao plenario");
 		}
-	}
-	
-	public static void validaProximoLocalDeVotacao(String proximoLocal) {
-		if(proximoLocal.equals("")) throw new IllegalArgumentException("Erro ao votar proposta: proximo local vazio");
 	}	
 
 }

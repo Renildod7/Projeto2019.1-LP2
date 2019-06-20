@@ -15,45 +15,54 @@ public class Comissao {
 	public boolean votarComissao(String statusGovernista, String proximoLocal, ProjetoDeLei lei, Deputado autorDaLei, Set<String> base) {
 		int votosAFavor = votar(this.deputados, base, lei, statusGovernista);
 		
+		
 		switch (lei.getTipoDeLei()) {	
 		case PL:
 			if (((Pl)lei).getConclusivo()) {
 				if (votosAFavor >= (Math.floor(this.deputados.size() / 2) + 1)) {
-					lei.setLocalDeVotacao(proximoLocal);
 					if (proximoLocal.equals("-")) {
+						lei.votacaoComissaoAprovado(proximoLocal);
 						lei.aprovarLei();
 						autorDaLei.adicionaLeiAprovada();
-						return true;
+					return true;
 					}
 				} else {
+					lei.votacaoComissaoRejeitado(proximoLocal);
 					lei.rejeitarLei();
 					return false;
 				}
 			} else {
-				lei.setLocalDeVotacao(proximoLocal);
-				if (proximoLocal.equals("plenario")) lei.plenario1oTurno();
 				if (votosAFavor >= (Math.floor(this.deputados.size() / 2) + 1)) {
+					lei.votacaoComissaoAprovado(proximoLocal);
 					return true;
-				} else return false;
+				} else {
+					lei.votacaoComissaoRejeitado(proximoLocal);
+					return false;
+				}
 			}
 			
 		case PLP:
-			lei.setLocalDeVotacao(proximoLocal);
-			if (proximoLocal.equals("plenario")) lei.plenario1oTurno();
 			if (votosAFavor >= (Math.floor(this.deputados.size() / 2) + 1)) {
+				lei.votacaoComissaoAprovado(proximoLocal);
 				return true;
-			} else return false;
+			} else {
+				lei.votacaoComissaoRejeitado(proximoLocal);
+				return false;
+			}
 
 		case PEC:
-			lei.setLocalDeVotacao(proximoLocal);
-			if (proximoLocal.equals("plenario")) lei.plenario1oTurno();
 			if (votosAFavor >= (Math.floor(this.deputados.size() / 2) + 1)) {
+				lei.votacaoComissaoAprovado(proximoLocal);
 				return true;
-			} else return false;
+			} else {
+				lei.votacaoComissaoRejeitado(proximoLocal);
+				return false;
+			}
 			
 		default:
 			break;
-		}	
+		}
+		
 		return false;
 	}
 	
