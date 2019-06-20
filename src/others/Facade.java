@@ -2,13 +2,16 @@ package others;
 
 import controller.SystemController;
 import easyaccept.EasyAccept;
+import util.Dados;
 
 public class Facade {
 	
 	private SystemController systemCntrl;
+	private Dados dados;
 	
 	public Facade() {
-		this.systemCntrl = new SystemController();
+		this.dados = new Dados();
+		this.systemCntrl = new SystemController(dados);	
 	}
 	
 	public static void main(String[] args) {
@@ -17,7 +20,7 @@ public class Facade {
 				 							  //"easyaccept/use_case_3.txt", 
 				 							  //"easyaccept/use_case_4.txt", 
 				 							  //"easyaccept/use_case_5.txt",
-				 							  //"easyaccept/use_case_6.txt",
+				 							  //"easyaccept/use_case_6.txt"
 				 							  "easyaccept/use_case_7.txt"};
 		
 		EasyAccept.main(args);
@@ -76,12 +79,15 @@ public class Facade {
 	}
 	
 	public void limparSistema() {
+		this.dados.limparSistema();
 	}
 	
 	public void salvarSistema() {
+		this.dados.salvarSistema();
 	}
 	
-	public void carregarSistema() {
+	public void carregarSistema() throws ClassNotFoundException {
+		this.dados.carregarSistema();
 	}
 
 }

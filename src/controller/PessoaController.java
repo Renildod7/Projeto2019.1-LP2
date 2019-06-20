@@ -1,13 +1,12 @@
 package controller;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import entities.Deputado;
 import entities.PessoaCivil;
 import entities.PessoaInterface;
+import util.Dados;
 import util.Validacao;
 
 /**
@@ -19,16 +18,13 @@ import util.Validacao;
  */
 public class PessoaController {
 	
-	/**
-	 * Mapa responsavel por armazenar as pessoas cadastradas. As chaves do mapa sao dni's de pessoas.
-	 */
-	private Map<String, PessoaInterface> pessoas;
+	private Dados dados;
 	
 	/**
 	 * Construtor de PessoaController. Cria um novo HashMap.
 	 */
-	public PessoaController() {
-		this.pessoas = new HashMap<>();
+	public PessoaController(Dados dados) {
+		this.dados = dados;
 	}
 	
 	/**
@@ -44,9 +40,8 @@ public class PessoaController {
 		Validacao.validaString(nome, "Erro ao cadastrar pessoa: nome nao pode ser vazio ou nulo");
 		Validacao.validaString(dni, "Erro ao cadastrar pessoa: dni nao pode ser vazio ou nulo");
 		Validacao.validaString(estado, "Erro ao cadastrar pessoa: estado nao pode ser vazio ou nulo");
-		if (!this.pessoas.containsKey(dni)) {
-			PessoaCivil p = new PessoaCivil(nome, dni, estado, interesses, partido);
-			this.pessoas.put(dni, p);
+		if (!dados.getPessoas().containsKey(dni)) {
+			this.dados.adicionaPessoa(dni, new PessoaCivil(nome, dni, estado, interesses, partido));
 		} else {
 			throw new IllegalArgumentException("Erro ao cadastrar pessoa: dni ja cadastrado");
 		}
@@ -74,13 +69,13 @@ public class PessoaController {
 		Validacao.validaString(dni, "Erro ao cadastrar deputado: dni nao pode ser vazio ou nulo");
 		Validacao.validaDni(dni, "Erro ao cadastrar deputado: dni invalido");
 		
-		if(this.pessoas.containsKey(dni)) {
-			PessoaCivil p = (PessoaCivil) this.pessoas.get(dni);
+		if(this.dados.getPessoas().containsKey(dni)) {
+			PessoaCivil p = (PessoaCivil) this.dados.getPessoas().get(dni);
 			if(p.getPartido().isEmpty()) throw new IllegalArgumentException("Erro ao cadastrar deputado: pessoa sem partido");
 			Validacao.validaString(dataDeInicio, "Erro ao cadastrar deputado: data nao pode ser vazio ou nulo");
 			Validacao.validaData(dataDeInicio, "Erro ao cadastrar deputado: ");
 			Deputado d = new Deputado(dataDeInicio, p);
-			this.pessoas.put(dni, d);
+			this.dados.adicionaPessoa(dni, d);
 			return d;
 		}else throw new NullPointerException("Erro ao cadastrar deputado: pessoa nao encontrada");
 	}
@@ -95,8 +90,8 @@ public class PessoaController {
 	public String exibirPessoa(String dni) {
 		Validacao.validaString(dni, "Erro ao exibir pessoa: dni nao pode ser vazio ou nulo");
 		Validacao.validaDni(dni, "Erro ao exibir pessoa: dni invalido");
-		if(this.pessoas.containsKey(dni)) {
-			return this.pessoas.get(dni).toString();
+		if(this.dados.getPessoas().containsKey(dni)) {
+			return this.dados.getPessoas().get(dni).toString();
 		}else throw new NullPointerException("Erro ao exibir pessoa: pessoa nao encontrada");
 	}
 	
@@ -108,7 +103,7 @@ public class PessoaController {
 	 * @return true caso a pessoa esteja cadastrada e false caso contrario.
 	 */
 	public boolean containsPessoa(String dni) {
-		return this.pessoas.containsKey(dni);
+		return this.dados.getPessoas().containsKey(dni);
 	}
 
 	/**
@@ -119,18 +114,18 @@ public class PessoaController {
 	 * @return true caso o cargo politico seja deputado e false caso contrario.
 	 */
 	public boolean ehDeputado(String dni) {
-		return (this.pessoas.get(dni).getClass().equals(Deputado.class));	
+		return (this.dados.getPessoas().get(dni).getClass().equals(Deputado.class));	
 	}
 	
 	public PessoaInterface getPessoa(String dni) {
-		return this.pessoas.get(dni);
+		return this.dados.getPessoas().get(dni);
 	}
 	
 	public Set<Deputado> getDeputados(){
 		Set<Deputado> deputados = new HashSet<>();
 		
-		for(String dni : this.pessoas.keySet()){
-			if(ehDeputado(dni)) deputados.add((Deputado) this.pessoas.get(dni));
+		for(String dni : this.dados.getPessoas().keySet()){
+			if(ehDeputado(dni)) deputados.add((Deputado) this.dados.getPessoas().get(dni));
 		}
 		return deputados;
 	}

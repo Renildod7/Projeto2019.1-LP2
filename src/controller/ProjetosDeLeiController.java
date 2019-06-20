@@ -1,23 +1,19 @@
 package controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import entities.Pec;
 import entities.Pl;
 import entities.Plp;
 import entities.ProjetoDeLei;
 import util.ChaveLeiAno;
+import util.Dados;
 import util.Validacao;
 
 public class ProjetosDeLeiController {
 
-	private Map<String, ProjetoDeLei> projetosLei;
-	private Map<ChaveLeiAno, Integer> cont;
+	private Dados dados;
 
-	public ProjetosDeLeiController() {
-		this.projetosLei = new HashMap<>();
-		this.cont = new HashMap<>();
+	public ProjetosDeLeiController(Dados dados) {
+		this.dados = dados;
 	}
 
 	public String cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo) {
@@ -29,11 +25,11 @@ public class ProjetosDeLeiController {
 		Validacao.validaString(url, "Erro ao cadastrar projeto: url nao pode ser vazio ou nulo");
 		
 		String codigo = geraCodigo("PL", ano); 	
-		if (!this.projetosLei.containsKey(codigo)) {
+		if (!this.dados.getProjetosLei().containsKey(codigo)) {
 			ProjetoDeLei pl = new Pl(dni, ano, codigo, ementa, interesses, url, conclusivo);
-			this.projetosLei.put(codigo, pl);
+			this.dados.adicionaProjeto(codigo, pl);
 		} else {
-			throw new NullPointerException("n sei o que escrever");
+			throw new NullPointerException("Erro ao cadastrar PL: codigo de projeto ja cadastrado");
 		} 	
 		return codigo;
 	}
@@ -49,13 +45,12 @@ public class ProjetosDeLeiController {
 		Validacao.validaAno(ano, "Erro ao cadastrar projeto: " );
 		
 		String codigo = geraCodigo("PLP", ano); 
-		if (!this.projetosLei.containsKey(codigo)) {
+		if (!this.dados.getProjetosLei().containsKey(codigo)) {
 			ProjetoDeLei plp = new Plp(dni, ano, codigo, ementa, interesses, url, artigo);
-			this.projetosLei.put(codigo, plp);
+			this.dados.adicionaProjeto(codigo, plp);
 		} else {
-			throw new NullPointerException("n sei o que escrever");
+			throw new NullPointerException("Erro ao cadastrar PLP: codigo de projeto ja cadastrado");
 		}
-	
 		return codigo;
 	}
 	
@@ -70,44 +65,39 @@ public class ProjetosDeLeiController {
 		Validacao.validaAno(ano, "Erro ao cadastrar projeto: " );
 		
 		String codigo = geraCodigo("PEC", ano); 
-		if (!this.projetosLei.containsKey(codigo)) {
+		if (!this.dados.getProjetosLei().containsKey(codigo)) {
 			ProjetoDeLei pec = new Pec(dni, ano, codigo, ementa, interesses, url, artigo);
-			this.projetosLei.put(codigo, pec);
+			this.dados.adicionaProjeto(codigo, pec);
 		} else {
-			throw new NullPointerException("n sei o que escrever");
-		}
-	
+			throw new NullPointerException("Erro ao cadastrar PEC: codigo de projeto ja cadastrado");
+		}	
 		return codigo;
 	}
 
-	
 	private String geraCodigo(String lei, int ano) {
 		ChaveLeiAno chave = new ChaveLeiAno(lei, ano);
-		if(this.cont.containsKey(chave)){
-			this.cont.put(chave, this.cont.get(chave)+1);
-			return lei + " " + (this.cont.get(chave)) + "/" + ano;
+		if(this.dados.getCont().containsKey(chave)){
+			this.dados.atualizaCont(chave);
+			return lei + " " + (this.dados.getCont().get(chave)) + "/" + ano;
 		} else {
-			this.cont.put(chave,0);
-			this.cont.put(chave, this.cont.get(chave)+1);
-			return lei + " " + (this.cont.get(chave)) + "/" + ano;
-		}
-		
-		
+			this.dados.adicionaCont(chave);
+			return lei + " " + (this.dados.getCont().get(chave)) + "/" + ano;
+		}		
 	}
 
 	public String exibirProjeto(String codigo) {
-		if(this.projetosLei.containsKey(codigo)) {
-			return this.projetosLei.get(codigo).toString();
+		if(this.dados.getProjetosLei().containsKey(codigo)) {
+			return this.dados.getProjetosLei().get(codigo).toString();
 		}
-		return "deu merda";
+		return "Erro ao exibir projeto: projeto de lei nao existe";
 	}
 	
 	public boolean containsLei(String codigo) {
-		return this.projetosLei.containsKey(codigo);
+		return this.dados.getProjetosLei().containsKey(codigo);
 	}
 	
 	public ProjetoDeLei getLei(String codigo) {
-		return this.projetosLei.get(codigo);
+		return this.dados.getProjetosLei().get(codigo);
 	}
 	
 }

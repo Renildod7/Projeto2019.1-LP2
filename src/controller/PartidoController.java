@@ -1,29 +1,19 @@
 package controller;
 
 import java.util.Set;
-import java.util.TreeSet;
 
+import util.Dados;
 import util.Validacao;
 
 /**
  * Clase Partido Controller onde se opera sobre a Classe Partido.
- * 
- * @author Augusto Gomes dos Santos
- * @author Renildo Dantas Melo
- * @author Wander Medeiros de Brito Junior
  */
 public class PartidoController {
 	
-	/**
-	 * Mapa responsavel por armazenar partidos. As chaves do mapa sao nomes de partidos.
-	 */
-	private Set<String> partidos;
+	private Dados dados;
 	
-	/**
-	 * Construtor de PartidoController. Cria um novo TreeMap.
-	 */
-	public PartidoController() {
-		this.partidos = new TreeSet<>();		
+	public PartidoController(Dados dados) {
+		this.dados = dados;
 	}
 	
 	/**
@@ -33,8 +23,8 @@ public class PartidoController {
 	 */
 	public void cadastrarPartido(String nome) {
 		Validacao.validaString(nome, "Erro ao cadastrar partido: partido nao pode ser vazio ou nulo");
-		if (!this.partidos.contains(nome)) {
-			this.partidos.add(nome);
+		if (!this.dados.getPartidos().contains(nome)) {
+			this.dados.adicionaPartido(nome);
 		} else {
 			throw new IllegalArgumentException("Erro ao cadastrar partido: partido ja cadastrado");
 		}
@@ -47,16 +37,17 @@ public class PartidoController {
 	 */
 	public String exibirBase() {		
 		String retorno = "";
-		for (String w : this.partidos) {
+		for (String w : this.dados.getPartidos()) {
 			retorno += w + ",";
 		}
-		if (this.partidos.size() > 0) {
+		if (this.dados.getPartidos().size() > 0) {
 			return retorno.substring(0, retorno.length() -1);
 		}
 		return retorno;
 	}
 	
 	public Set<String> getBase(){
-		return this.partidos;
+		return this.dados.getPartidos();
 	}
+	
 }

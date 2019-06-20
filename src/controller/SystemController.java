@@ -8,6 +8,7 @@ import entities.ProjetoDeLei;
 import enums.StatusDaLei;
 import enums.StatusPlenario;
 import enums.TipoDeLei;
+import util.Dados;
 import util.Validacao;
 
 public class SystemController {
@@ -17,11 +18,11 @@ public class SystemController {
 	private CamaraController camaraCntrl;
 	private ProjetosDeLeiController projetoCntrl;
 
-	public SystemController() {
-		this.pessoaCntrl = new PessoaController();
-		this.partidoCntrl = new PartidoController();
-		this.camaraCntrl = new CamaraController();
-		this.projetoCntrl = new ProjetosDeLeiController();
+	public SystemController(Dados dados) {
+		this.pessoaCntrl = new PessoaController(dados);
+		this.partidoCntrl = new PartidoController(dados);
+		this.camaraCntrl = new CamaraController(dados);
+		this.projetoCntrl = new ProjetosDeLeiController(dados);
 	}
 
 	public void cadastrarPessoa(String nome, String dni, String estado, String interesses, String partido) {
