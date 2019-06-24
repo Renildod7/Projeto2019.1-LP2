@@ -20,8 +20,10 @@ public class Facade {
 				 							  //"easyaccept/use_case_3.txt", 
 				 							  //"easyaccept/use_case_4.txt", 
 				 							  //"easyaccept/use_case_5.txt",
-				 							  //"easyaccept/use_case_6.txt"
-				 							  "easyaccept/use_case_7.txt"};
+				 							  //"easyaccept/use_case_6.txt",
+				 							  "easyaccept/use_case_7.txt"
+				 							  //"easyaccept/use_case_8.txt"
+				};
 		
 		EasyAccept.main(args);
 	}
@@ -78,7 +80,7 @@ public class Facade {
 		return this.systemCntrl.votarPlenario(codigo, statusGovernista, presentes);
 	}
 	
-public String exibirTramitacao(String codigo) {
+	public String exibirTramitacao(String codigo) {
 		return this.systemCntrl.exibirTramitacao(codigo);
 	}
 	
@@ -94,6 +96,4 @@ public String exibirTramitacao(String codigo) {
 		this.dados.carregarSistema();
 	}
 	
-	
-
 }

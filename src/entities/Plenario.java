@@ -1,12 +1,17 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Plenario {
+public class Plenario implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Set<Deputado> todosDeputados;
 	
 	public Plenario() {

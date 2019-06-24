@@ -1,5 +1,6 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,12 @@ import enums.StatusDaLei;
 import enums.StatusPlenario;
 import enums.TipoDeLei;
 
-public abstract class ProjetoDeLei {
+public abstract class ProjetoDeLei implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	protected String dni;
 	private int ano;
@@ -163,7 +169,7 @@ public abstract class ProjetoDeLei {
 		for(int i = 0; i < this.tramitacao.size()-1; i++) {
 			retorno += this.tramitacao.get(i) + ", ";
 		}
-		retorno += this.tramitacao.get(this.tramitacao.size()-1) + ".";
+		retorno += this.tramitacao.get(this.tramitacao.size()-1);
 		return retorno;
 	}
 

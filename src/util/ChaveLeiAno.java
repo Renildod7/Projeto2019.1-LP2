@@ -1,7 +1,13 @@
 package util;
 
-public class ChaveLeiAno {
+import java.io.Serializable;
+
+public class ChaveLeiAno implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String lei;
 	private int ano;
 

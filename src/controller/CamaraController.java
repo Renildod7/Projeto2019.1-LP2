@@ -8,7 +8,6 @@ import entities.Deputado;
 import entities.ProjetoDeLei;
 import util.Dados;
 
-
 /**
  * Classe que representa o controlador de comissoes.
  */
@@ -53,11 +52,8 @@ public class CamaraController {
 		return this.dados.getComissoes().get(localDeVotacao).votarComissao(statusGovernista, proximoLocal, lei, autorDaLei, base);	
 	}	
 	
-	
 	public boolean votarPlenario(String statusGovernista, ProjetoDeLei lei, Deputado autorDaLei, Set<Deputado> deputadosPresentes, Set<String> base) {
 		return this.dados.getPlenario().votarPlenario(statusGovernista, lei, autorDaLei, deputadosPresentes, base);
 	}
-
-	
 	
 }
