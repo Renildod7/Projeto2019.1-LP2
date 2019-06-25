@@ -15,8 +15,7 @@ public class Comissao implements Serializable {
 	}
 	
 	public boolean votarComissao(String statusGovernista, String proximoLocal, ProjetoDeLei lei, Deputado autorDaLei, Set<String> base) {
-		int votosAFavor = votar(this.deputados, base, lei, statusGovernista);
-		
+		int votosAFavor = votar(this.deputados, base, lei, statusGovernista);	
 		
 		switch (lei.getTipoDeLei()) {	
 		case PL:
