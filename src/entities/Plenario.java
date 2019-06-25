@@ -2,24 +2,18 @@ package entities;
 
 import java.io.Serializable;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import util.Dados;
+
 public class Plenario implements Serializable {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private Set<Deputado> todosDeputados;
+	private static final long serialVersionUID = -7651392946211906477L;
+	private Dados dados;
 	
-	public Plenario() {
-		this.todosDeputados = new HashSet<>();
-	}
-
-	public void cadastrarDeputado(Deputado deputado) {
-		this.todosDeputados.add(deputado);
+	public Plenario(Dados dados) {
+		this.dados = dados;
 	}
 	
 	public boolean votarPlenario(String statusGovernista, ProjetoDeLei lei, Deputado autorDaLei, Set<Deputado> deputadosPresentes, Set<String> base) {	
@@ -41,7 +35,7 @@ public class Plenario implements Serializable {
 		case PLP:
 			switch (lei.getStatusPlenario()) {
 			case PRIMEIRO_TURNO:
-				if (votosAFavor >= (Math.floor(this.todosDeputados.size() / 2) + 1)) {
+				if (votosAFavor >= (Math.floor(this.dados.getPlenario().size() / 2) + 1)) {
 					lei.votacaoPlenarioAprovado();
 					return true;
 				} else {
@@ -51,7 +45,7 @@ public class Plenario implements Serializable {
 				}
 				
 			case SEGUNDO_TURNO:
-				if (votosAFavor >= (Math.floor(this.todosDeputados.size() / 2) + 1)) {
+				if (votosAFavor >= (Math.floor(this.dados.getPlenario().size() / 2) + 1)) {
 					lei.votacaoPlenarioAprovado();
 					lei.aprovarLei();
 					autorDaLei.adicionaLeiAprovada();
@@ -69,7 +63,7 @@ public class Plenario implements Serializable {
 		case PEC:
 			switch (lei.getStatusPlenario()) {
 			case PRIMEIRO_TURNO:
-				if (votosAFavor >= (Math.floor(3 * this.todosDeputados.size() / 5) + 1)) {
+				if (votosAFavor >= (Math.floor(3 * this.dados.getPlenario().size() / 5) + 1)) {
 					lei.votacaoPlenarioAprovado();
 					return true;
 				} else {
@@ -79,7 +73,7 @@ public class Plenario implements Serializable {
 				}
 				
 			case SEGUNDO_TURNO:
-				if (votosAFavor >= (Math.floor(3 * this.todosDeputados.size() / 5) + 1)) {
+				if (votosAFavor >= (Math.floor(3 * this.dados.getPlenario().size() / 5) + 1)) {
 					lei.votacaoPlenarioAprovado();
 					lei.aprovarLei();
 					autorDaLei.adicionaLeiAprovada();

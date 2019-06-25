@@ -4,7 +4,7 @@ import java.util.Set;
 
 import entities.Comissao;
 import entities.Deputado;
-
+import entities.Plenario;
 import entities.ProjetoDeLei;
 import util.Dados;
 
@@ -14,6 +14,7 @@ import util.Dados;
 public class CamaraController {
 
 	private Dados dados;
+	private Plenario plenario;
 	
 	/**
 	 * Construtor do controlador. Cria um novo HashMap.
@@ -21,6 +22,7 @@ public class CamaraController {
 	 */
 	public CamaraController(Dados dados) {
 		this.dados = dados;
+		this.plenario = new Plenario(dados);
 	}
 
 	public void cadastrarDeputado(Deputado deputado) {
@@ -53,7 +55,7 @@ public class CamaraController {
 	}	
 	
 	public boolean votarPlenario(String statusGovernista, ProjetoDeLei lei, Deputado autorDaLei, Set<Deputado> deputadosPresentes, Set<String> base) {
-		return this.dados.getPlenario().votarPlenario(statusGovernista, lei, autorDaLei, deputadosPresentes, base);
+		return this.plenario.votarPlenario(statusGovernista, lei, autorDaLei, deputadosPresentes, base);
 	}
 	
 }

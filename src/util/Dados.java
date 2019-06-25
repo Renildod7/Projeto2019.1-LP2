@@ -2,6 +2,7 @@ package util;
 
 import java.io.*;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -9,7 +10,6 @@ import java.util.TreeSet;
 import entities.Comissao;
 import entities.Deputado;
 import entities.PessoaInterface;
-import entities.Plenario;
 import entities.ProjetoDeLei;
 
 public class Dados {
@@ -19,14 +19,14 @@ public class Dados {
 	private Map<String, Comissao> comissoes;
 	private Map<String, ProjetoDeLei> projetosLei;
 	private Map<ChaveLeiAno, Integer> cont;
-	private Plenario plenario;
+	private Set<Deputado> plenario;
 	
 	private File pessoasFile;
 	private File partidosFile;
 	private File comissoesFile;
 	private File projetosLeiFile;
 	private File contFile;
-//	private File plenarioFile;
+	private File plenarioFile;
 	
 	private FileInputStream fis; 
 	private ObjectInputStream ois;
@@ -39,14 +39,14 @@ public class Dados {
 		this.comissoes = new HashMap<>();
 		this.projetosLei = new HashMap<>();
 		this.cont = new HashMap<>();	
-		this.plenario = new Plenario();
+		this.plenario = new HashSet<>();
 
 		this.pessoasFile = new File("dados/pessoas.txt");
 		this.partidosFile = new File("dados/partidos.txt");
 		this.comissoesFile = new File("dados/comissoes.txt");
 		this.projetosLeiFile = new File("dados/projetosLei.txt");
 		this.contFile = new File("dados/cont.txt");
-//		this.plenarioFile = new File("dados/plenario.txt");
+		this.plenarioFile = new File("dados/plenario.txt");
 		
 	}
 	
@@ -75,10 +75,10 @@ public class Dados {
 	}
 	
 	public void adicionaDeputado(Deputado deputado) {
-		this.plenario.cadastrarDeputado(deputado);
+		this.plenario.add(deputado);
 	}
 	
-	public Plenario getPlenario() {
+	public Set<Deputado> getPlenario() {
 		return this.plenario;
 	}
 	
@@ -108,12 +108,14 @@ public class Dados {
 		this.comissoes = new HashMap<>();
 		this.projetosLei = new HashMap<>();
 		this.cont = new HashMap<>();
+		this.plenario = new HashSet<>();
 		
 		limparArquivo(this.pessoasFile);
 		limparArquivo(this.partidosFile);
 		limparArquivo(this.comissoesFile);
 		limparArquivo(this.projetosLeiFile);
 		limparArquivo(this.contFile);
+		limparArquivo(this.plenarioFile);
 	}
 	
 	public void salvarSistema() {
@@ -122,7 +124,7 @@ public class Dados {
 		salvarComissoes();
 		salvarProjetosLei();
 		salvarCont();
-//		salvarPlenario();
+		salvarPlenario();
 	}
 		
 	public void carregarSistema() throws ClassNotFoundException {
@@ -131,7 +133,7 @@ public class Dados {
 		carregarComissoes();
 		carregarProjetosLei();
 		carregarCont();
-//		carregarPlenario();
+		carregarPlenario();
 	}
 	
 	private void salvarPessoas() {
@@ -194,17 +196,17 @@ public class Dados {
 		}
 	}
 	
-//	private void salvarPlenario() {
-//		try {
-//			this.fos = new FileOutputStream(plenarioFile);
-//			this.oos = new ObjectOutputStream(fos);
-//			oos.flush();
-//			oos.close();
-//			oos.writeObject(this.plenario);
-//		} catch (IOException ioe) {
-//			System.out.println("Erro ao salvar plenario.");
-//		}
-//	}
+	private void salvarPlenario() {
+		try {
+			this.fos = new FileOutputStream(plenarioFile);
+			this.oos = new ObjectOutputStream(fos);
+			oos.writeObject(this.plenario);
+			oos.flush();
+			oos.close();
+		} catch (IOException ioe) {
+			System.out.println("Erro ao salvar plenario.");
+		}
+	}
 	
 	@SuppressWarnings("unchecked")
 	private void carregarPessoas() throws ClassNotFoundException {
@@ -251,13 +253,15 @@ public class Dados {
 		}
 	}
 	
-//	private void carregarPlenario() throws ClassNotFoundException {
-//		if (this.carregarObjeto(plenarioFile) == null) {
-//			this.plenario = new Plenario();
-//		} else {
-//			this.plenario = (Plenario) this.carregarObjeto(plenarioFile);
-//		}
-//	}
+	
+	@SuppressWarnings("unchecked")
+	private void carregarPlenario() throws ClassNotFoundException {
+		if (this.carregarObjeto(plenarioFile) == null) {
+			this.plenario = new HashSet<>();
+		} else {
+			this.plenario = (HashSet<Deputado>) this.carregarObjeto(plenarioFile);
+		}
+	}
 	
 	private Object carregarObjeto(File file) throws ClassNotFoundException {
 		Object object = null;
