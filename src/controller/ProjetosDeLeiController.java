@@ -101,7 +101,9 @@ public class ProjetosDeLeiController {
 	}
 
 	public String exibirTramitacao(String codigo) {
-		return this.getLei(codigo).exibirTramitacao();
+		if(this.dados.getProjetosLei().containsKey(codigo)) {
+			return this.getLei(codigo).exibirTramitacao();			
+		} else throw new NullPointerException("Erro ao exibir tramitacao: projeto inexistente");
 	}
 	
 }

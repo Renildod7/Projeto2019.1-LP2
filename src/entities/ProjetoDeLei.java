@@ -81,6 +81,8 @@ public abstract class ProjetoDeLei implements Serializable {
 		if(novoLocal.equals("plenario")) {
 			plenario1oTurno();
 		} else setLocalDeVotacao(novoLocal);
+		
+		if(novoLocal.equals("-")) this.tramitacao.remove(this.tramitacao.size()-1);
 	}
 	
 	public void votacaoComissaoRejeitado(String novoLocal) {
@@ -89,7 +91,7 @@ public abstract class ProjetoDeLei implements Serializable {
 		if(novoLocal.equals("plenario")) {
 			plenario1oTurno();
 		} else setLocalDeVotacao(novoLocal);
-		if(this.tipoDeLei.equals(TipoDeLei.PL)) this.tramitacao.remove(this.tramitacao.size()-1);
+		this.tramitacao.remove(this.tramitacao.size()-1);
 		
 	}
 	
@@ -104,13 +106,12 @@ public abstract class ProjetoDeLei implements Serializable {
 		if(this.statusPlenario.equals(StatusPlenario.PRIMEIRO_TURNO)) {
 			plenario2oTurno();
 		}
-		if(this.tipoDeLei.equals(TipoDeLei.PL)) this.tramitacao.remove(this.tramitacao.size()-1);
+
 	}
 	
 	public void votacaoPlenarioRejeitado() {
 		this.tramitacao.remove(this.tramitacao.size()-1);
 		this.tramitacao.add("REJEITADO (" + this.localDeVotacao + ")");
-		if(this.tipoDeLei.equals(TipoDeLei.PL)) this.tramitacao.remove(this.tramitacao.size()-1);
 	}
 	
 	private void plenario1oTurno() {
