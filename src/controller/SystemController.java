@@ -1,9 +1,21 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import comparator.Aprovacao;
+import comparator.Conclusao;
+import comparator.Constitucional;
+import comparator.EstrategiaOrdenacao;
+import comparator.Idade;
+import comparator.Interesses;
 import entities.Deputado;
+import entities.Lei;
 import entities.ProjetoDeLei;
 import enums.StatusDaLei;
 import enums.StatusPlenario;
@@ -190,5 +202,102 @@ public class SystemController {
 	public String exibirTramitacao(String codigo) {
 		return this.projetoCntrl.exibirTramitacao(codigo);
 	}
+	
+	public String pegarPropostaRelacionada(String dni) {
+		EstrategiaOrdenacao estrategiaOrdenacao = this.pessoaCntrl.getPessoa(dni).getEstrategiaOrdenacao();
+		
+		List<String> interessesPessoa = Arrays.asList(this.pessoaCntrl.getPessoa(dni).getInteresses().split(",")); // Interesses da Pessoa.
+		
+		List<ProjetoDeLei> projetosDelei = new ArrayList<>();
+		projetosDelei.addAll(this.projetoCntrl.getProjetosLei());
+		
+		List<Lei> leis = new ArrayList<>();
+		
+		for(ProjetoDeLei lei : projetosDelei) {
+			List<String> interessesLei = Arrays.asList(lei.getInteresses().split(","));
+			int cont = 0;
+			for(String interesseL : interessesLei) {
+				if(interessesPessoa.contains(interesseL)) cont++;
+			}
+			
+			leis.add(new Lei(lei.getCodigo(), cont, lei.getAprovacoes(), lei.getTipoDeLei(), lei.getTramitacao()));
+		}
+		
+		Collections.sort(leis, new Interesses());
+		Collections.reverse(leis);
+		if(leis.get(0).getQtdInteresses() == 0) return "";
+		
+		
+		List<Lei> maioresInteresses = new ArrayList<>();
+		
+		for(int i = 0; i < leis.size(); i++) {
+			if(leis.get(i).getQtdInteresses() == leis.get(0).getQtdInteresses()) maioresInteresses.add(leis.get(i));
+		}
+		
+		if(maioresInteresses.size() == 1) return maioresInteresses.get(0).getCodigo();
+	
+		Collections.sort(maioresInteresses, this.pessoaCntrl.getPessoa(dni).getEstrategiaOrdenacao());
+		Collections.reverse(maioresInteresses);
+		
+		
+		
+		List<Lei> a = new ArrayList<>();
+		
+		
+		//if(estrategiaOrdenacao.getClass() == Constitucional.class) {
+			for(int i = 0; i < maioresInteresses.size(); i++) {
+				if(maioresInteresses.get(i).geTipoDeLei() == maioresInteresses.get(0).geTipoDeLei()) {
+					a.add(maioresInteresses.get(i));
+					
+				}else break;
+			}
+		//}
+		
+		Collections.sort(a, new Idade());
+		Collections.reverse(a);
+		
+		return a.get(0).getCodigo();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//return maioresInteresses.get(0).getCodigo();
+
+		
+	}
+
+	public void configurarEstrategiaPropostaRelacionada(String dni, String estrategia) {
+		EstrategiaOrdenacao estrategiaOrdenacao = new Constitucional();;
+		switch (estrategia) {
+		case "CONCLUSAO":
+			estrategiaOrdenacao = new Conclusao();
+			break;
+			
+		case "APROVACAO":
+			estrategiaOrdenacao = new Aprovacao();
+			break;
+			
+		case "CONSTITUCIONAL":
+			estrategiaOrdenacao = new Constitucional();
+			break;
+
+		default:
+			break;
+		}
+		this.pessoaCntrl.getPessoa(dni).setEstrategia(estrategiaOrdenacao);
+	}
+	
+	
+	
 	
 }

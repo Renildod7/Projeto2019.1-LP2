@@ -1,5 +1,6 @@
 package entities;
 
+import comparator.EstrategiaOrdenacao;
 import util.Validacao;
 
 /**
@@ -12,6 +13,11 @@ import util.Validacao;
 public class Deputado implements PessoaInterface {
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7861222841082267736L;
+
+	/**
 	 * Data de inicio do mandato do deputado.
 	 */
 	private String dataDeInicio;
@@ -20,6 +26,7 @@ public class Deputado implements PessoaInterface {
 	 * Total de leis aprovadas pelo deputado.
 	 */
 	private int leisAprovadas;
+	
 	
 	private PessoaCivil pessoa;
 	
@@ -76,6 +83,17 @@ public class Deputado implements PessoaInterface {
 	@Override
 	public String getInteresses() {
 		return this.pessoa.getInteresses();
+	}
+
+	@Override
+	public EstrategiaOrdenacao getEstrategiaOrdenacao() {
+		return this.pessoa.getEstrategiaOrdenacao();
+	}
+
+	@Override
+	public void setEstrategia(EstrategiaOrdenacao estrategiaOrdenacao) {
+		this.pessoa.setEstrategia(estrategiaOrdenacao);
+		
 	}
 	
 }

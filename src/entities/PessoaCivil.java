@@ -1,5 +1,7 @@
 package entities;
 
+import comparator.Constitucional;
+import comparator.EstrategiaOrdenacao;
 import util.Validacao;
 
 /**
@@ -11,6 +13,11 @@ import util.Validacao;
  */
 public class PessoaCivil implements PessoaInterface{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6709870141888454000L;
+
 	/**
 	 * Nome da pessoa.
 	 */
@@ -36,6 +43,9 @@ public class PessoaCivil implements PessoaInterface{
 	 */
 	private String partido;
 	
+	
+	private EstrategiaOrdenacao estrategiaOrdenacao;
+	
 
 	/**
 	 * Construtor de principal de Pessoa.
@@ -52,7 +62,8 @@ public class PessoaCivil implements PessoaInterface{
 		this.dni = dni;
 		this.estado = estado;
 		this.interesses = interesses;
-		this.partido = partido;		
+		this.partido = partido;
+		this.estrategiaOrdenacao = new Constitucional();
 	}
 	
 	
@@ -140,6 +151,17 @@ public class PessoaCivil implements PessoaInterface{
 
 	public String getInteresses() {
 		return this.interesses;
+	}
+	
+	public EstrategiaOrdenacao getEstrategiaOrdenacao() {
+		return this.estrategiaOrdenacao;
+	}
+
+
+	@Override
+	public void setEstrategia(EstrategiaOrdenacao estrategiaOrdenacao) {
+		this.estrategiaOrdenacao = estrategiaOrdenacao;
+		
 	}
 
 }

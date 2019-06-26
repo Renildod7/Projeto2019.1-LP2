@@ -1,5 +1,5 @@
 package enums;
 
-public enum TipoDeLei {
+public enum TipoDeLei implements Comparable<TipoDeLei>{
 	PL, PLP, PEC
 }

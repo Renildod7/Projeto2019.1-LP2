@@ -22,7 +22,8 @@ public class Facade {
 				 							  "easyaccept/use_case_5.txt",
 				 							  "easyaccept/use_case_6.txt",
 				 							  "easyaccept/use_case_7.txt",
-				 							  "easyaccept/use_case_8.txt"
+				 							  "easyaccept/use_case_8.txt",
+				 							  "easyaccept/use_case_9.txt"
 				};
 		
 		EasyAccept.main(args);
@@ -84,6 +85,14 @@ public class Facade {
 		return this.systemCntrl.exibirTramitacao(codigo);
 	}
 	
+	public void configurarEstrategiaPropostaRelacionada(String dni, String estrategia) {
+		this.systemCntrl.configurarEstrategiaPropostaRelacionada(dni, estrategia);
+	}
+	
+	public String pegarPropostaRelacionada(String dni) {
+		return this.systemCntrl.pegarPropostaRelacionada(dni);
+	}
+	
 	public void limparSistema() {
 		this.dados.limparSistema();
 	}
@@ -95,5 +104,7 @@ public class Facade {
 	public void carregarSistema() throws ClassNotFoundException {
 		this.dados.carregarSistema();
 	}
+	
+	
 	
 }

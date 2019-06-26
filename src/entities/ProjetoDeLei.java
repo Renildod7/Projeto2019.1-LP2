@@ -74,6 +74,18 @@ public abstract class ProjetoDeLei implements Serializable {
 		return this.statusDaLei;
 	}
 	
+	public String getCodigo() {
+		return this.codigo;
+	}
+	
+	public int getAprovacoes() {
+		return this.aprovacoes;
+	}
+	
+	public List<String> getTramitacao(){
+		return this.tramitacao;
+	}
+	
 	public void votacaoComissaoAprovado(String novoLocal) {
 		this.aprovacoes ++;
 		this.tramitacao.remove(this.tramitacao.size()-1);

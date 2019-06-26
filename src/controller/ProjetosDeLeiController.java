@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.Collection;
+
 import entities.Pec;
 import entities.Pl;
 import entities.Plp;
@@ -94,6 +96,10 @@ public class ProjetosDeLeiController {
 	
 	public boolean containsLei(String codigo) {
 		return this.dados.getProjetosLei().containsKey(codigo);
+	}
+	
+	public Collection<ProjetoDeLei> getProjetosLei(){
+		return this.dados.getProjetosLei().values();
 	}
 	
 	public ProjetoDeLei getLei(String codigo) {
