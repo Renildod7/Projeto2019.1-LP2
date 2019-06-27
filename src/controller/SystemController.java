@@ -38,7 +38,8 @@ public class SystemController {
 
 	/**
 	 * Construtor do controlador Principal
-	 * @param dados
+	 * 
+	 * @param dados simulacao de um banco de dados.
 	 */
 	public SystemController(Dados dados) {
 		this.pessoaCntrl = new PessoaController(dados);
@@ -331,9 +332,10 @@ public class SystemController {
 	}
 	
 	/**
-	 * Metodo onde se retorna uma proposta relacionada.
+	 * Metodo onde se retorna uma proposta Mais relacionada.
+	 * 
 	 * @param dni dni da proposta a ser retornada.
-	 * @return E retornado 
+	 * @return E retornado o codigo da proposta mais relacionada
 	 */
 	public String pegarPropostaRelacionada(String dni) {
 		Comparator estrategiaOrdenacao = this.pessoaCntrl.getPessoa(dni).getEstrategiaOrdenacao();
@@ -443,6 +445,11 @@ public class SystemController {
 		
 	}
 
+	/**
+	 * Metodo onde se configura a estrategia, para pegar a proposta mais relacionada.
+	 * @param dni codigo indentificador da pessoa.
+	 * @param estrategia Nova estrategia a ser setada.
+	 */
 	public void configurarEstrategiaPropostaRelacionada(String dni, String estrategia) {
 		Comparator estrategiaOrdenacao = new Conclusao();
 		switch (estrategia) {

@@ -12,6 +12,13 @@ import entities.Deputado;
 import entities.PessoaInterface;
 import entities.ProjetoDeLei;
 
+/**
+ * @author Augusto Gomes dos Santos
+ * @author Renildo Dantas Melo
+ * @author Wander Medeiros de Brito Junior 
+ *
+ *
+ */
 public class Dados {
 	
 	private Map<String, PessoaInterface> pessoas;
@@ -33,6 +40,10 @@ public class Dados {
 	private FileOutputStream fos;
 	private ObjectOutputStream oos;
 	
+	/**
+	 * Construtor da classe de dados
+	 * 
+	 */
 	public Dados() {
 		this.pessoas = new HashMap<>();
 		this.partidos = new TreeSet<>();
@@ -50,6 +61,12 @@ public class Dados {
 		
 	}
 	
+	/**
+	 * Metodo que adiciona uma Pessoa.
+	 * 
+	 * @param dni indentificador unico de uma Pessoa
+	 * @param pessoa
+	 */
 	public void adicionaPessoa(String dni, PessoaInterface pessoa) {
 		this.pessoas.put(dni, pessoa);
 	}

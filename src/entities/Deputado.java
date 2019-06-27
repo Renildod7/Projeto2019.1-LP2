@@ -14,7 +14,7 @@ import util.Validacao;
 public class Deputado implements PessoaInterface {
 	
 	/**
-	 * 
+	 * usado para o banco de dados.
 	 */
 	private static final long serialVersionUID = 7861222841082267736L;
 
@@ -45,7 +45,9 @@ public class Deputado implements PessoaInterface {
 	}
 	
 	/**
-	 * Metodo que retorna a data de inicio do mandato do deputado.
+	 * Metodo onde retorna a data de inicio do mandato.
+	 * 
+	 * @return  retorna a data de inicio do mandato.
 	 */
 	public String getDataDeInicio() {
 		String retorno = "";
@@ -62,6 +64,7 @@ public class Deputado implements PessoaInterface {
 	
 	/**
 	 * Metodo one se retorna a quantidade de leis aprovadas.
+	 * 
 	 * @return retorna a quantidade de leis aprovadas. 
 	 */
 	public int getLeisAprovadas() {
@@ -78,6 +81,10 @@ public class Deputado implements PessoaInterface {
 	
 
 	
+	/**
+	 * metodo onde se tem a representacao de um Deputado pessoa em formato de String.
+	 *
+	 */
 	public String toString() {
 
 		String interesses = (!this.pessoa.getInteresses().isEmpty()) ? " - Interesses: " + this.pessoa.getInteresses() :"";
@@ -87,17 +94,19 @@ public class Deputado implements PessoaInterface {
 	}
 
 	
+	
 	@Override
 	public String getPartido() {
 		return this.pessoa.getPartido();
 	}
 
+	
 	@Override
 	public String getInteresses() {
 		return this.pessoa.getInteresses();
 	}
 
-	@Override
+	
 	public Comparator getEstrategiaOrdenacao() {
 		return this.pessoa.getEstrategiaOrdenacao();
 	}

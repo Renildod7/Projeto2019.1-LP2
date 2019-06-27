@@ -45,6 +45,9 @@ public class PessoaCivil implements PessoaInterface{
 	private String partido;
 	
 	
+	/**
+	 * comparator para se usar a estrategia de ordenacao.
+	 */
 	private Comparator estrategiaOrdenacao;
 	
 
@@ -137,6 +140,7 @@ public class PessoaCivil implements PessoaInterface{
 
 	/**
 	 * Metodo onde se retorna o nome da Pessoa.
+	 * 
 	 * @return retorna o nome da pessoa.
 	 */
 	public String getNome() {
@@ -146,6 +150,7 @@ public class PessoaCivil implements PessoaInterface{
 
 	/**
 	 * Metodo onde se retorna o dni da pessoa.
+	 * 
 	 * @return retorna em formato de String a indentificacao da pessoa.
 	 */
 	public String getDni() {
@@ -155,6 +160,7 @@ public class PessoaCivil implements PessoaInterface{
 
 	/**
 	 * Metodo onde se retorna o Estado de uma pessoa.
+	 * 
 	 * @return retorna em formato de String o Estado da pessoa.
 	 */
 	public String getEstado() {
@@ -164,17 +170,30 @@ public class PessoaCivil implements PessoaInterface{
 
 	
 
+	/**
+	 * metodo onde se retorna os interesses de uma pessoa
+	 * 
+	 * @return retorna em formato de String os interesses de uma pessoa. 
+	 */
 	public String getInteresses() {
 		return this.interesses;
 	}
 	
 	
 	
+	/**
+	 * Metodo onde se retorna a estrategia de ordenacao
+	 * @return E retornado a estrategia de ordenacao.
+	 */
 	public Comparator getEstrategiaOrdenacao() {
 		return this.estrategiaOrdenacao;
 	}
 
 
+	/**
+	 * Metodo onde e setado a estrategia de ordenacao.
+	 *
+	 */
 	@Override
 	public void setEstrategia(Comparator estrategiaOrdenacao) {
 		this.estrategiaOrdenacao = estrategiaOrdenacao;

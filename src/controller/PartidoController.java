@@ -46,7 +46,8 @@ public class PartidoController {
 		return retorno;
 	}
 	
-	/**metodo onde se retorna os partidos.
+	/**
+	 * Metodo onde se retorna os partidos.
 	 * 
 	 * @return retorna os partidos.
 	 */

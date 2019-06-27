@@ -5,6 +5,15 @@ import java.util.Comparator;
 
 import entities.Lei;
 
+/**
+ * @author Augusto Gomes dos Santos
+ * @author Renildo Dantas Melo
+ * @author Wander Medeiros de Brito Junior 
+ * 
+ * Classe para comparar leis de acordo com sua aprovacao.
+ *
+ */
+
 public class Aprovacao implements Comparator<Lei>, Serializable{
 
 	@Override

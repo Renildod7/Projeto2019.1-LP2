@@ -13,7 +13,8 @@ public class Pec extends ProjetoDeLei{
 	private String artigos;
 
 	/**
-	 * Construtor da PEc
+	 * Construtor da Pec
+	 * 
 	 * @param dni numero indentificador do autor da pec
 	 * @param ano ano em que a pec foi criada.
 	 * @param codigo codigo de indentificacao da pec.

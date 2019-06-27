@@ -16,10 +16,14 @@ import util.Dados;
 public class Plenario implements Serializable {
 	
 	private static final long serialVersionUID = -7651392946211906477L;
+	/**
+	 * simula um banco de dados.
+	 */
 	private Dados dados;
 	
 	/**
 	 * Construtor do Plenario
+	 * 
 	 * @param dados Classe que emula um banco de dados no sistema.
 	 */
 	public Plenario(Dados dados) {

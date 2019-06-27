@@ -22,6 +22,8 @@ public class PessoaController {
 	
 	/**
 	 * Construtor de PessoaController. Cria um novo HashMap.
+	 *
+	 * @param dados simulacao de um banco de dados.
 	 */
 	public PessoaController(Dados dados) {
 		this.dados = dados;

@@ -38,8 +38,8 @@ public class Pl extends ProjetoDeLei {
 	}
 	
 	/**
-	 * Metodo onde Retorna se a pl é conclusiva ou nao
-	 * @return Retorna um boolean co true se for conclusiva a pl ou false se nao for conclusiva.
+	 * Metodo onde Retorna se a pl e conclusiva ou nao
+	 * @return Retorna um boolean com true se for conclusiva  ou false se nao for conclusiva.
 	 */
 	public boolean getConclusivo() {
 		return this.conclusivo;

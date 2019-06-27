@@ -18,7 +18,7 @@ public class CamaraController {
 	
 	/**
 	 * Construtor do controlador. Cria um novo HashMap.
-	 * @param dados 
+	 * @param dados simulacao de um banco de dados.
 	 */
 	public CamaraController(Dados dados) {
 		this.dados = dados;
@@ -32,7 +32,7 @@ public class CamaraController {
 	/**
 	 * Metodo responsavel por cadastrar uma comissao de votacao no sistema.
 	 * 
-	 * @param tema		O tema da comissao.
+	 * @param tema O tema da comissao.
 	 * @param politicos Os dni's dos politicos que farao parte da comissao.
 	 */
 	public void cadastrarComissao(String tema, Set<Deputado> politicos) {		
@@ -73,7 +73,7 @@ public class CamaraController {
 	 * @param autorDaLei autor da lei em votacao
 	 * @param deputadosPresentes Deputados presentes no plenario
 	 * @param base A base governista.
-	 * @return
+	 * @return Retorna um boolean com true para aprovado e false para nao aprovado
 	 */
 	public boolean votarPlenario(String statusGovernista, ProjetoDeLei lei, Deputado autorDaLei, Set<Deputado> deputadosPresentes, Set<String> base) {
 		return this.plenario.votarPlenario(statusGovernista, lei, autorDaLei, deputadosPresentes, base);

@@ -25,7 +25,7 @@ public class ProjetosDeLeiController {
 	/**
 	 * Construtor do Controlador Projetos de lei.
 	 * 
-	 * @param dados Dados que serao usados no controlador
+	 * @param dados simulacao de um banco de dados.
 	 */
 	public ProjetosDeLeiController(Dados dados) {
 		this.dados = dados;
@@ -33,12 +33,13 @@ public class ProjetosDeLeiController {
 
 	/**
 	 * Metodo onde se cadastra um projeto de Lei PL.
+	 * 
 	 * @param dni numero indentificador do autor da pl
 	 * @param ano ano em que o proejto de lei é cadastrado
 	 * @param ementa descrição do que se refere o projeto
 	 * @param interesses os interesses do projeto de lei
 	 * @param url E o endereco de  um documento que descreve o teor, a lei e a sua justificativa
-	 * @param conclusivo indica se a pl precisa ir ao plenario.
+	 * @param conclusivo indica se a pl precisa ir ou nao (boolean) ao plenario.
 	 * @return O codigo que foi gerado de acordo com a ordem de cadastro.
 	 */
 	public String cadastrarPL(String dni, int ano, String ementa, String interesses, String url, boolean conclusivo) {
@@ -60,6 +61,8 @@ public class ProjetosDeLeiController {
 	}
 	
 	/**
+	 * Metodo onde se cadastra uma PLP
+	 * 
 	 * @param dni numero indentificador do autor da Plp
 	 * @param ano ano em que o proejto de lei é cadastrado
 	 * @param ementa descrição do que se refere o projeto
@@ -89,6 +92,8 @@ public class ProjetosDeLeiController {
 	}
 	
 	/**
+	 * Metodo onde se cadastra uma PEC
+	 * 
 	 * @param dni  numero indentificador do autor da Pec
 	 * @param ano  ano em que o proejto de lei é cadastrado
 	 * @param ementa descrição do que se refere o projeto
@@ -118,7 +123,8 @@ public class ProjetosDeLeiController {
 	}
 
 	/**
-	 * Metodo de gracao de codigo para as leis
+	 * Metodo de gracao de codigo para as leis.
+	 * 
 	 * @param lei lei em que o codigo sera gerada
 	 * @param ano ano de cadastro da lei
 	 * @return retorna a lei com codigo e ano.
@@ -136,6 +142,7 @@ public class ProjetosDeLeiController {
 
 	/**
 	 * Metodo onde se exibe um projeto
+	 * 
 	 * @param codigo codigo do projeto a ser exibido
 	 * @return retorna erro quando o projeto de lei nao existe
 	 */
@@ -167,6 +174,7 @@ public class ProjetosDeLeiController {
 	
 	/**
 	 * Metodo onde se retorna uma lei.
+	 * 
 	 * @param codigo Codigo da lei a ser retornada.
 	 * @return retorna Uma lei pelo seu codigo.
 	 */
@@ -176,6 +184,7 @@ public class ProjetosDeLeiController {
 
 	/**
 	 * Metodo onde se exibe a tramitacao
+	 * 
 	 * @param codigo codigo da lei a ter sua tramitacao exibida
 	 * @return retorna a tramitacao de determinada lei.
 	 */

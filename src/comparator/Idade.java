@@ -5,6 +5,13 @@ import java.util.Comparator;
 
 import entities.Lei;
 
+/**
+ * @author Augusto Gomes dos Santos
+ * @author Renildo Dantas Melo
+ * @author Wander Medeiros de Brito Junior 
+ *
+ * Classe para comparar Leis de acordo com a idade.
+ */
 public class Idade implements Comparator<Lei>, Serializable{
 
 	@Override

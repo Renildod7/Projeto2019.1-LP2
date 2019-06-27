@@ -13,7 +13,7 @@ public class Plp extends ProjetoDeLei {
 	private String artigos;
 
 	/**
-	 * Construtor da PL
+	 * Construtor da PLP
 	 * 
 	 * @param dni indentificador unico do criador da plp.
 	 * @param ano ano em que a pl foi criada.
@@ -29,6 +29,11 @@ public class Plp extends ProjetoDeLei {
 	}
 
 	
+	/**
+	 * Metodo onde se tem a representacao em formato de string de una PLP
+	 * 
+	 * @return retorna em formato de Strin a representacao de uma PLP
+	 */
 	@Override
 	public String toString() {
 		return String.format("Projeto de Lei Complementar - %s - %s - %s - %s - %s", 

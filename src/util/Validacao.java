@@ -92,18 +92,32 @@ public class Validacao {
 			
 	}
 	
+	/**
+	 * Metodo responsavel por validar um Status de lei
+	 * @param status Status a ser validado
+	 */
 	public static void validaStatusLei(StatusDaLei status) {
 		if(StatusDaLei.ENCERRADA.equals(status)) {
 			throw new IllegalArgumentException("Erro ao votar proposta: tramitacao encerrada");
 		}
 	}
 	
+	/**
+	 * Metodo responsavel por validar um Status de um Governista.
+	 * 
+	 * @param status Status do governista a ser avaliado.
+	 */
 	public static void validaStatusGovernista(String status) {
 		if(status.equals("GOVERNISTA") || status.equals("OPOSICAO") || status.equals("LIVRE")) {
 		} else throw new IllegalArgumentException("Erro ao votar proposta: status invalido");
 		
 	}
 	
+	/**
+	 * Metodo responsavel por validar um local de votacao.
+	 * 
+	 * @param local de votacao a ser validado.
+	 */
 	public static void validaLocalDeVotacao(String local) {
 		if(local.equals("Plenario - 1o turno") || local.equals("Plenario - 2o turno") || local.equals("Plenario")) {
 			throw new IllegalArgumentException("Erro ao votar proposta: proposta encaminhada ao plenario");

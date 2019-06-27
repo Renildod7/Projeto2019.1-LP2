@@ -5,7 +5,7 @@ import java.util.Comparator;
 
 
 /**
- * Classe responsavel pela implementacao da Interface CargoPolitico.
+ * Classe responsavel pela implementacao da Interface Pessoa.
  */
 public interface PessoaInterface extends Serializable {
 	public String getPartido();

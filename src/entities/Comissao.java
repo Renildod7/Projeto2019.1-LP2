@@ -88,6 +88,8 @@ public class Comissao implements Serializable {
 	}
 	
 	/**
+	 * Metodo onde se retorna os votos a Favor.
+	 * 
 	 * @param deputados deputados que estao na comissao
 	 * @param base os partidos que fazem parte.
 	 * @param lei lei que sera votada na comissao.

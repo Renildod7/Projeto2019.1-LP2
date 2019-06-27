@@ -10,6 +10,7 @@ import enums.TipoDeLei;
  * @author Wander Medeiros de Brito Junior
  *
  */
+
 public class Lei {
 	
 	private String codigo;
