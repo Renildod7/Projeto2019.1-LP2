@@ -50,10 +50,31 @@ public class CamaraController {
 		return this.dados.getComissoes().containsKey(tema);
 	}  
 
+	/**
+	 * Metodo onde é feita a votacao de uma comissao.
+	 * 
+	 * @param statusGovernista Se o é do governo, opisicao ou livre. 
+	 * @param proximoLocal proximo local onde sera votada a comisssao.
+	 * @param lei a leia a ser votada pela comissao.
+	 * @param autorDaLei O autor da lei a ser votada.
+	 * @param localDeVotacao O local onde a votacao sera votada.
+	 * @param base A base governista.
+	 * @return Retorna se o projeto de lei foi aprovada ou rejeitada.
+	 */
 	public boolean votarComissao(String statusGovernista, String proximoLocal, ProjetoDeLei lei, Deputado autorDaLei, String localDeVotacao, Set<String> base) {
 		return this.dados.getComissoes().get(localDeVotacao).votarComissao(statusGovernista, proximoLocal, lei, autorDaLei, base);	
 	}	
 	
+	/**
+	 * Metodo onte se tem a votacao no plenario.
+	 * 
+	 * @param statusGovernista Se o é do governo, opisicao ou livre 
+	 * @param lei lei em votacao
+	 * @param autorDaLei autor da lei em votacao
+	 * @param deputadosPresentes Deputados presentes no plenario
+	 * @param base A base governista.
+	 * @return
+	 */
 	public boolean votarPlenario(String statusGovernista, ProjetoDeLei lei, Deputado autorDaLei, Set<Deputado> deputadosPresentes, Set<String> base) {
 		return this.plenario.votarPlenario(statusGovernista, lei, autorDaLei, deputadosPresentes, base);
 	}

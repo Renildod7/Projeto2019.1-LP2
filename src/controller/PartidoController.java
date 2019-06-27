@@ -46,6 +46,10 @@ public class PartidoController {
 		return retorno;
 	}
 	
+	/**metodo onde se retorna os partidos.
+	 * 
+	 * @return retorna os partidos.
+	 */
 	public Set<String> getBase(){
 		return this.dados.getPartidos();
 	}

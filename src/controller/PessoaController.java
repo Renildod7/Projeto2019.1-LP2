@@ -117,10 +117,20 @@ public class PessoaController {
 		return (this.dados.getPessoas().get(dni).getClass().equals(Deputado.class));	
 	}
 	
+	/**
+	 * Metodo onde retorna o dni da pessoa.
+	 * 
+	 * @param dni e o dni da pesso
+	 * @return retorna o dni da pessoa.
+	 */
 	public PessoaInterface getPessoa(String dni) {
 		return this.dados.getPessoas().get(dni);
 	}
 	
+	/**
+	 * Metodo onde retorna um Set de deputados.
+	 * @return
+	 */
 	public Set<Deputado> getDeputados(){
 		Set<Deputado> deputados = new HashSet<>();
 		
