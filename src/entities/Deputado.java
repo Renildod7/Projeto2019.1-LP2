@@ -59,13 +59,23 @@ public class Deputado implements PessoaInterface {
 	}
 
 	
+	/**
+	 * Metodo one se retorna a quantidade de leis aprovadas.
+	 * @return retorna a quantidade de leis aprovadas. 
+	 */
 	public int getLeisAprovadas() {
 		return this.leisAprovadas;
 	}
 	
+	/**
+	 * Metodo onde se incrementa o numero de leis aprovadas.
+	 * 
+	 */
 	public void adicionaLeiAprovada() {
 		this.leisAprovadas += 1;
 	}
+	
+
 	
 	public String toString() {
 
@@ -75,6 +85,7 @@ public class Deputado implements PessoaInterface {
 				this.pessoa.getPartido(), interesses, getDataDeInicio(), leisAprovadas);
 	}
 
+	
 	@Override
 	public String getPartido() {
 		return this.pessoa.getPartido();

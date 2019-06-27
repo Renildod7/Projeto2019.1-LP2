@@ -7,15 +7,35 @@ import java.util.Set;
 
 import util.Dados;
 
+/**
+ * @author Augusto Gomes dos Santos
+ * @author Renildo Dantas Melo
+ * @author Wander Medeiros de Brito Junior
+ *
+ */
 public class Plenario implements Serializable {
 	
 	private static final long serialVersionUID = -7651392946211906477L;
 	private Dados dados;
 	
+	/**
+	 * Construtor do Plenario
+	 * @param dados Classe que emula um banco de dados no sistema.
+	 */
 	public Plenario(Dados dados) {
 		this.dados = dados;
 	}
 	
+	/**
+	 * Metodo onde se tem a simulacao de uma votacao no plenario.
+	 * 
+	 * @param statusGovernista Status onde idica se a comissao e da base governista ou nao.
+	 * @param lei lei a ser votada no plenario
+	 * @param autorDaLei autor da lei.
+	 * @param deputadosPresentes depetuados presentes na votacao.
+	 * @param base os partidos que fazem parte.
+	 * @return retorna um booleano com o resultado da votacao se foi aprovada ou nao.
+	 */
 	public boolean votarPlenario(String statusGovernista, ProjetoDeLei lei, Deputado autorDaLei, Set<Deputado> deputadosPresentes, Set<String> base) {	
 		int votosAFavor = votar(deputadosPresentes, base, lei, statusGovernista);
 		
@@ -94,6 +114,15 @@ public class Plenario implements Serializable {
 		return true;
 	}
 	
+	/**
+	 * Metodo onde calcula os votos a favor.
+	 * 
+	 * @param deputados set com os deputados.
+	 * @param base os partidos que fazem parte.
+	 * @param lei lei a ser votada
+	 * @param statusGovernista Status onde idica se a comissao e da base governista ou nao.
+	 * @return retorna um inteiro com o numero de votos a favor.
+	 */
 	private int votar(Set<Deputado> deputados, Set<String> base, ProjetoDeLei lei, String statusGovernista) {
 		int votosAFavor = 0;
 		for(Deputado d : deputados) {

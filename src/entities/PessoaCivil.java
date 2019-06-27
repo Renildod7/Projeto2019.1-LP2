@@ -134,24 +134,39 @@ public class PessoaCivil implements PessoaInterface{
 		return this.partido;
 	}
 
+	/**
+	 * Metodo onde se retorna o nome da Pessoa.
+	 * @return retorna o nome da pessoa.
+	 */
 	public String getNome() {
 		return nome;
 	}
 
 
+	/**
+	 * Metodo onde se retorna o dni da pessoa.
+	 * @return retorna em formato de String a indentificacao da pessoa.
+	 */
 	public String getDni() {
 		return dni;
 	}
 
 
+	/**
+	 * Metodo onde se retorna o Estado de uma pessoa.
+	 * @return retorna em formato de String o Estado da pessoa.
+	 */
 	public String getEstado() {
 		return estado;
 	}
 
 
+	
+
 	public String getInteresses() {
 		return this.interesses;
 	}
+	
 	
 	public EstrategiaOrdenacao getEstrategiaOrdenacao() {
 		return this.estrategiaOrdenacao;

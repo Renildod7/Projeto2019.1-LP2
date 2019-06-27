@@ -5,15 +5,35 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * @author Augusto Gomes dos Santos
+ * @author Renildo Dantas Melo
+ * @author Wander Medeiros de Brito Junior
+ */
+
 public class Comissao implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	private Set<Deputado> deputados;
 	
+	/**
+	 * Construtor de Comissao
+	 * @param deputados deputados que fazem parte das comissoes.
+	 */
 	public Comissao(Set<Deputado> deputados) {
 		this.deputados = deputados;
 	}
 	
+	/**
+	 * Metodo onde se Vota uma Comissao.
+	 * 
+	 * @param statusGovernista estados se a comissao e da base governista ou nao.
+	 * @param proximoLocal proximo local a ser votado a comissao.
+	 * @param lei lei a ser votada na comissao.
+	 * @param autorDaLei autor da lei a ser votada
+	 * @param base os partidos que fazem parte
+	 * @return retorna se a lei foi aprovada ou nao.
+	 */
 	public boolean votarComissao(String statusGovernista, String proximoLocal, ProjetoDeLei lei, Deputado autorDaLei, Set<String> base) {
 		int votosAFavor = votar(this.deputados, base, lei, statusGovernista);	
 		
@@ -67,6 +87,13 @@ public class Comissao implements Serializable {
 		return false;
 	}
 	
+	/**
+	 * @param deputados deputados que estao na comissao
+	 * @param base os partidos que fazem parte.
+	 * @param lei lei que sera votada na comissao.
+	 * @param statusGovernista Status onde idica se a comissao e da base governista ou nao.
+	 * @return retorna votos a favor da votacao de uma comissao.
+	 */
 	private int votar(Set<Deputado> deputados, Set<String> base, ProjetoDeLei lei, String statusGovernista) {
 		int votosAFavor = 0;
 		for(Deputado d : deputados) {
