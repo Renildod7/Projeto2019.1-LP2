@@ -35,6 +35,7 @@ public class Deputado implements PessoaInterface {
 	 * Construtor de Deputado.
 	 * 
 	 * @param dataDeInicio A data de inicio do mandato.
+	 * @param pessoa pessoa a virar deputado.
 	 */
 	public Deputado(String dataDeInicio, PessoaCivil pessoa) {
 		Validacao.validaString(dataDeInicio, "Erro ao cadastrar deputado: data nao pode ser vazio ou nulo");

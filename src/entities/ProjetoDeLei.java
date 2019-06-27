@@ -45,10 +45,10 @@ public abstract class ProjetoDeLei implements Serializable {
 	 * @param dni codigo indentificador unico de que criou o projeto de lei.
 	 * @param ano ano em que o projeto de lei foi criado.
 	 * @param codigo codigo do projeto de lei.
-	 * @param ementa 
-	 * @param interesses
-	 * @param url
-	 * @param tipoDeLei
+	 * @param ementa descricao ao que se refere o projeto de lei.
+	 * @param interesses interesses relacionados a lei, ex: saude, educacao etc..
+	 * @param url endereco do documento onde se descreve o teor do projeto de lei.
+	 * @param tipoDeLei tipo da lei.
 	 */
 	public ProjetoDeLei(String dni, int ano, String codigo, String ementa, String interesses, String url, TipoDeLei tipoDeLei) {
 		this.dni = dni;

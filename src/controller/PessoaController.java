@@ -66,6 +66,7 @@ public class PessoaController {
 	 * 
 	 * @param dni			O dni da pessoa em questao.
 	 * @param dataDeInicio	A data de inicio do mandato.
+	 * @return d e retornado o deputado em caso de cadastro.
 	 */
 	public Deputado cadastrarDeputado(String dni, String dataDeInicio) {
 		Validacao.validaString(dni, "Erro ao cadastrar deputado: dni nao pode ser vazio ou nulo");
@@ -131,7 +132,8 @@ public class PessoaController {
 	
 	/**
 	 * Metodo onde retorna um Set de deputados.
-	 * @return
+	 * 
+	 * @return e retornado os deputados
 	 */
 	public Set<Deputado> getDeputados(){
 		Set<Deputado> deputados = new HashSet<>();

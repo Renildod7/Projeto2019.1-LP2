@@ -26,6 +26,7 @@ public class Lei {
 	 * @param interesses interesses relacionados a lei.
 	 * @param aprovacoes numero de aprovacoes que a lei ja teve.
 	 * @param tipoDelei tipo de lei.
+	 * @param tramitacao numero de tramitacoes da lei.
 	 */
 	
 	public Lei(String codigo, int interesses, int aprovacoes, TipoDeLei tipoDelei, int tramitacao) {

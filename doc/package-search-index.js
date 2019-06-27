@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"controller"},{"l":"entities"},{"l":"others"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"comparator"},{"l":"controller"},{"l":"entities"},{"l":"enums"}]
