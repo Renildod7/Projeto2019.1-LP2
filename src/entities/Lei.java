@@ -10,9 +10,9 @@ public class Lei {
 	private int qtdInteresses;
 	private int aprovacoes;
 	private TipoDeLei tipoDeLei;
-	private List<String> tramitacao;
+	private int tramitacao;
 	
-	public Lei(String codigo, int interesses, int aprovacoes, TipoDeLei tipoDelei, List<String> tramitacao) {
+	public Lei(String codigo, int interesses, int aprovacoes, TipoDeLei tipoDelei, int tramitacao) {
 		this.codigo = codigo;
 		this.qtdInteresses = interesses;
 		this.aprovacoes = aprovacoes;
@@ -36,7 +36,7 @@ public class Lei {
 		return this.tipoDeLei;	
 	}
 	
-	public List<String> getTramitacao(){
+	public int getTramitacao(){
 		return this.tramitacao;
 	}
 

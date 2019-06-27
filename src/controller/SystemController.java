@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,7 +12,6 @@ import java.util.Set;
 import comparator.Aprovacao;
 import comparator.Conclusao;
 import comparator.Constitucional;
-import comparator.EstrategiaOrdenacao;
 import comparator.Idade;
 import comparator.Interesses;
 import entities.Deputado;
@@ -204,7 +204,7 @@ public class SystemController {
 	}
 	
 	public String pegarPropostaRelacionada(String dni) {
-		EstrategiaOrdenacao estrategiaOrdenacao = this.pessoaCntrl.getPessoa(dni).getEstrategiaOrdenacao();
+		Comparator estrategiaOrdenacao = this.pessoaCntrl.getPessoa(dni).getEstrategiaOrdenacao();
 		
 		List<String> interessesPessoa = Arrays.asList(this.pessoaCntrl.getPessoa(dni).getInteresses().split(",")); // Interesses da Pessoa.
 		
@@ -214,18 +214,31 @@ public class SystemController {
 		List<Lei> leis = new ArrayList<>();
 		
 		for(ProjetoDeLei lei : projetosDelei) {
+			if(lei.getStatus().equals(StatusDaLei.ENCERRADA)) continue;
 			List<String> interessesLei = Arrays.asList(lei.getInteresses().split(","));
-			int cont = 0;
+			int contInteresses = 0;
+			int contTramitacao = 0;
 			for(String interesseL : interessesLei) {
-				if(interessesPessoa.contains(interesseL)) cont++;
+				if(interessesPessoa.contains(interesseL)) contInteresses++;
+			}
+			for(String s : lei.getTramitacao()) {
+				if(s.equals("EM VOTACAO (Plenario - 2o turno)")) {
+					contTramitacao += 10000;
+				}else if(s.equals("EM VOTACAO (Plenario)")) {
+					contTramitacao += 10000;
+				}else if(s.equals("EM VOTACAO (Plenario - 1o turno)")) {
+					contTramitacao += 500;
+				}else contTramitacao++;
 			}
 			
-			leis.add(new Lei(lei.getCodigo(), cont, lei.getAprovacoes(), lei.getTipoDeLei(), lei.getTramitacao()));
+			
+			
+			if(contInteresses != 0) leis.add(new Lei(lei.getCodigo(), contInteresses, lei.getAprovacoes(), lei.getTipoDeLei(), contTramitacao));
 		}
 		
 		Collections.sort(leis, new Interesses());
 		Collections.reverse(leis);
-		if(leis.get(0).getQtdInteresses() == 0) return "";
+		if(leis.size()== 0) return "";
 		
 		
 		List<Lei> maioresInteresses = new ArrayList<>();
@@ -236,7 +249,7 @@ public class SystemController {
 		
 		if(maioresInteresses.size() == 1) return maioresInteresses.get(0).getCodigo();
 	
-		Collections.sort(maioresInteresses, this.pessoaCntrl.getPessoa(dni).getEstrategiaOrdenacao());
+		Collections.sort(maioresInteresses, estrategiaOrdenacao);
 		Collections.reverse(maioresInteresses);
 		
 		
@@ -244,19 +257,41 @@ public class SystemController {
 		List<Lei> a = new ArrayList<>();
 		
 		
-		//if(estrategiaOrdenacao.getClass() == Constitucional.class) {
-			for(int i = 0; i < maioresInteresses.size(); i++) {
-				if(maioresInteresses.get(i).geTipoDeLei() == maioresInteresses.get(0).geTipoDeLei()) {
-					a.add(maioresInteresses.get(i));
-					
-				}else break;
+		if(estrategiaOrdenacao.getClass() == Constitucional.class) {
+			for (Lei lei : maioresInteresses) {
+				if(lei.geTipoDeLei().equals(maioresInteresses.get(0).geTipoDeLei())) {
+					a.add(lei);
+				}
 			}
-		//}
+		}else if(estrategiaOrdenacao.getClass() == Conclusao.class){
+			for (Lei lei : maioresInteresses) {
+				if(lei.getTramitacao() == maioresInteresses.get(0).getTramitacao()) {
+					a.add(lei);
+				}
+			}
+		}else if((estrategiaOrdenacao.getClass() == Aprovacao.class)) {
+			for (Lei lei : maioresInteresses) {
+				if(lei.getAprovacoes() == maioresInteresses.get(0).getAprovacoes()) {
+					a.add(lei);
+				}
+			}
+		}
 		
 		Collections.sort(a, new Idade());
-		Collections.reverse(a);
+
+		
+//		for(Lei l : a) {
+//			if(l.getCodigo().equals("PL 10/2016")) return "ta aki";
+//			if(l.getCodigo().equals("PLP 3/2016")) return "ta aki";
+//			if(l.getCodigo().equals("PL 9/2016")) return "ta aki";
+//
+//		}
 		
 		return a.get(0).getCodigo();
+
+	
+
+		
 		
 		
 		
@@ -277,7 +312,7 @@ public class SystemController {
 	}
 
 	public void configurarEstrategiaPropostaRelacionada(String dni, String estrategia) {
-		EstrategiaOrdenacao estrategiaOrdenacao = new Constitucional();;
+		Comparator estrategiaOrdenacao = new Conclusao();
 		switch (estrategia) {
 		case "CONCLUSAO":
 			estrategiaOrdenacao = new Conclusao();

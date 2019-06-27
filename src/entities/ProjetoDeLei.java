@@ -2,6 +2,7 @@ package entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import enums.StatusDaLei;
@@ -28,6 +29,7 @@ public abstract class ProjetoDeLei implements Serializable {
 	private StatusPlenario statusPlenario;
 	private List<String> tramitacao;
 	private int aprovacoes;
+	private Date dataDeCadastro;
 	
 	
 	
@@ -46,6 +48,8 @@ public abstract class ProjetoDeLei implements Serializable {
 		this.tramitacao = new ArrayList<>();
 		this.tramitacao.add(this.situacaoAtual);
 		this.aprovacoes = 0;
+		this.dataDeCadastro = new Date();
+		
 	}
 	
 	public String getInteresses() {

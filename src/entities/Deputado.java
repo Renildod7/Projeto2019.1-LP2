@@ -1,6 +1,7 @@
 package entities;
 
-import comparator.EstrategiaOrdenacao;
+import java.util.Comparator;
+
 import util.Validacao;
 
 /**
@@ -86,12 +87,12 @@ public class Deputado implements PessoaInterface {
 	}
 
 	@Override
-	public EstrategiaOrdenacao getEstrategiaOrdenacao() {
+	public Comparator getEstrategiaOrdenacao() {
 		return this.pessoa.getEstrategiaOrdenacao();
 	}
 
 	@Override
-	public void setEstrategia(EstrategiaOrdenacao estrategiaOrdenacao) {
+	public void setEstrategia(Comparator estrategiaOrdenacao) {
 		this.pessoa.setEstrategia(estrategiaOrdenacao);
 		
 	}
