@@ -1,7 +1,8 @@
 package entities;
 
+import java.util.Comparator;
+
 import comparator.Constitucional;
-import comparator.EstrategiaOrdenacao;
 import util.Validacao;
 
 /**
@@ -44,7 +45,7 @@ public class PessoaCivil implements PessoaInterface{
 	private String partido;
 	
 	
-	private EstrategiaOrdenacao estrategiaOrdenacao;
+	private Comparator estrategiaOrdenacao;
 	
 
 	/**
@@ -168,13 +169,14 @@ public class PessoaCivil implements PessoaInterface{
 	}
 	
 	
-	public EstrategiaOrdenacao getEstrategiaOrdenacao() {
+	
+	public Comparator getEstrategiaOrdenacao() {
 		return this.estrategiaOrdenacao;
 	}
 
 
 	@Override
-	public void setEstrategia(EstrategiaOrdenacao estrategiaOrdenacao) {
+	public void setEstrategia(Comparator estrategiaOrdenacao) {
 		this.estrategiaOrdenacao = estrategiaOrdenacao;
 		
 	}

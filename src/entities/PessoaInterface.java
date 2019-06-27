@@ -1,8 +1,8 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
-import comparator.EstrategiaOrdenacao;
 
 /**
  * Classe responsavel pela implementacao da Interface CargoPolitico.
@@ -10,6 +10,6 @@ import comparator.EstrategiaOrdenacao;
 public interface PessoaInterface extends Serializable {
 	public String getPartido();
 	public String getInteresses();
-	public EstrategiaOrdenacao getEstrategiaOrdenacao();
-	public void setEstrategia(EstrategiaOrdenacao estrategiaOrdenacao);
+	public Comparator getEstrategiaOrdenacao();
+	public void setEstrategia(Comparator estrategiaOrdenacao);
 }
