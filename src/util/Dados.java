@@ -16,7 +16,7 @@ import entities.ProjetoDeLei;
  * @author Augusto Gomes dos Santos
  * @author Renildo Dantas Melo
  * @author Wander Medeiros de Brito Junior 
- *
+ 
  *
  */
 public class Dados {
