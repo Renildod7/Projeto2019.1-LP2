@@ -3,18 +3,18 @@ package controller;
 import java.util.HashSet;
 import java.util.Set;
 
-import entities.Deputado;
-import entities.PessoaCivil;
-import entities.PessoaInterface;
+import comparator.Aprovacao;
+import comparator.Conclusao;
+import comparator.Constitucional;
+import entities.pessoa.Deputado;
+import entities.pessoa.PessoaCivil;
+import interfaces.EstrategiaOrdenacao;
+import interfaces.PessoaInterface;
 import util.Dados;
 import util.Validacao;
 
 /**
  * Classe que representa o Controlador de pessoas.
- * 
- * @author Augusto Gomes dos Santos
- * @author Renildo Dantas Melo
- * @author Wander Medeiros de Brito Junior
  */
 public class PessoaController {
 	
@@ -142,6 +142,33 @@ public class PessoaController {
 			if(ehDeputado(dni)) deputados.add((Deputado) this.dados.getPessoas().get(dni));
 		}
 		return deputados;
+	}
+	
+	/**
+	 * Altera a estrateria de ordenacao de uma pessoa utilizada durante um empate no metodo pegarPropostaRelacionada.
+	 * 
+	 * @param dni Dni da pessoa que tera a estrategia de ordenacao alterada.
+	 * @param estrategia Nova estrategia de ordenacao da pessoa.
+	 */
+	public void configurarEstrategiaPropostaRelacionada(String dni, String estrategia) {
+		EstrategiaOrdenacao estrategiaOrdenacao = new Conclusao();
+		switch (estrategia) {
+		case "CONCLUSAO":
+			estrategiaOrdenacao = new Conclusao();
+			break;
+			
+		case "APROVACAO":
+			estrategiaOrdenacao = new Aprovacao();
+			break;
+			
+		case "CONSTITUCIONAL":
+			estrategiaOrdenacao = new Constitucional();
+			break;
+
+		default:
+			break;
+		}
+		this.getPessoa(dni).setEstrategia(estrategiaOrdenacao);
 	}
 
 }

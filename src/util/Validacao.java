@@ -123,5 +123,17 @@ public class Validacao {
 			throw new IllegalArgumentException("Erro ao votar proposta: proposta encaminhada ao plenario");
 		}
 	}	
+	
+	/**
+	 * Verifica se uma estrategia de ordenacao e valida.
+	 * 
+	 * @param estrategia Esrategia que sera verificada.
+	 */
+	public static void validaEstrategiaOrdenacao(String estrategia) {
+		if(estrategia.isEmpty()) throw new IllegalArgumentException("Erro ao configurar estrategia: estrategia vazia");
+		if(!("CONCLUSAO".equals(estrategia) || "APROVACAO".equals(estrategia) || "CONSTITUCIONAL".equals(estrategia))) {
+			throw new IllegalArgumentException("Erro ao configurar estrategia: estrategia invalida");
+		}
+	}
 
 }

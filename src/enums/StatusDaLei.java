@@ -1,11 +1,7 @@
 package enums;
 
 /**
- **@author Augusto Gomes dos Santos
- * @author Renildo Dantas Melo
- * @author Wander Medeiros de Brito Junior 
- *
- * Enumeracao que indica o Status de lei, se esta em votacao ou encerrada.
+ * Enumeracao que indica o Status da votacao de um projeto de lei.
  */
 
 public enum StatusDaLei {

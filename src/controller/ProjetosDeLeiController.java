@@ -1,22 +1,26 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
-import entities.Pec;
-import entities.Pl;
-import entities.Plp;
-import entities.ProjetoDeLei;
+import comparator.Idade;
+import comparator.Interesses;
+import entities.LeiComparator;
+import entities.projetodelei.Pec;
+import entities.projetodelei.Pl;
+import entities.projetodelei.Plp;
+import entities.projetodelei.ProjetoDeLei;
+import enums.StatusDaLei;
+import interfaces.EstrategiaOrdenacao;
 import util.ChaveLeiAno;
 import util.Dados;
 import util.Validacao;
 
 /**
  * Controler dos Projetos de lei.
- * 
- * @author Augusto Gomes dos Santos
- * @author Renildo Dantas Melo
- * @author Wander Medeiros de Brito Junior
- *
  */
 public class ProjetosDeLeiController {
 
@@ -35,8 +39,8 @@ public class ProjetosDeLeiController {
 	 * Metodo onde se cadastra um projeto de Lei PL.
 	 * 
 	 * @param dni numero indentificador do autor da pl
-	 * @param ano ano em que o proejto de lei é cadastrado
-	 * @param ementa descrição do que se refere o projeto
+	 * @param ano ano em que o proejto de lei e cadastrado
+	 * @param ementa descricao do que se refere o projeto
 	 * @param interesses os interesses do projeto de lei
 	 * @param url E o endereco de  um documento que descreve o teor, a lei e a sua justificativa
 	 * @param conclusivo indica se a pl precisa ir ou nao (boolean) ao plenario.
@@ -64,11 +68,11 @@ public class ProjetosDeLeiController {
 	 * Metodo onde se cadastra uma PLP
 	 * 
 	 * @param dni numero indentificador do autor da Plp
-	 * @param ano ano em que o proejto de lei é cadastrado
-	 * @param ementa descrição do que se refere o projeto
+	 * @param ano ano em que o proejto de lei e cadastrado
+	 * @param ementa descricao do que se refere o projeto
 	 * @param interesses os interesses do projeto de lei
 	 * @param url E o endereco de  um documento que descreve o teor, a lei e a sua justificativa
-	 * @param artigo Artigos da constituição sendo complementados ou emendados.
+	 * @param artigo Artigos da constituicao sendo complementados ou emendados.
 	 * @return retorna o codigo que foi gerado de acordo com a ordem de cadastro.
 	 */
 	public String cadastrarPLP(String dni, int ano, String ementa, String interesses, String url,String artigo) {
@@ -95,11 +99,11 @@ public class ProjetosDeLeiController {
 	 * Metodo onde se cadastra uma PEC
 	 * 
 	 * @param dni  numero indentificador do autor da Pec
-	 * @param ano  ano em que o proejto de lei é cadastrado
-	 * @param ementa descrição do que se refere o projeto
+	 * @param ano  ano em que o proejto de lei e cadastrado
+	 * @param ementa descricao do que se refere o projeto
 	 * @param interesses os interesses do projeto de lei
 	 * @param url E o endereco de  um documento que descreve o teor, a lei e a sua justificativa
-	 * @param artigo Artigos da constituição sendo complementados ou emendados.
+	 * @param artigo Artigos da constituicao sendo complementados ou emendados.
 	 * @return o codigo que foi gerado de acordo com a ordem de cadastro.
 	 */
 	public String cadastrarPEC(String dni, int ano, String ementa, String interesses, String url,String artigo) {
@@ -192,6 +196,88 @@ public class ProjetosDeLeiController {
 		if(this.dados.getProjetosLei().containsKey(codigo)) {
 			return this.getLei(codigo).exibirTramitacao();			
 		} else throw new NullPointerException("Erro ao exibir tramitacao: projeto inexistente");
+	}
+
+	
+	/**
+	 * Retorna o codigo da proposta mais relacionada com a pessoa cujo interesses e estrategia de ordenacao sao passados como parametro.
+	 * A estrategia de ordenacao da pessoa Ã© usada quando existe empate no maior numero de interesse em comum entre os projetos de lei e a pessoa.
+	 * 
+	 * @param interessesPessoa Interesses da pessoa.
+	 * @param estrategiaOrdenacaoPessoa Estrategia de ordenacao da pessoa utilizada em caso de empate.
+	 * 
+	 * @return Codigo do projeto de lei mas relacionado a pessoa.
+	 */
+	public String pegarPropostaRelacionada(List<String> interessesPessoa, EstrategiaOrdenacao estrategiaOrdenacaoPessoa) {
+		List<ProjetoDeLei> projetosDeLei = new ArrayList<>(); projetosDeLei.addAll(this.getProjetosLei());
+		List<LeiComparator> pojetosComInteressesEmComum = pojetosComInteressesEmComum(interessesPessoa, projetosDeLei);
+		
+		Collections.sort(pojetosComInteressesEmComum, new Interesses());
+		if(pojetosComInteressesEmComum.size()== 0) return "";
+		
+		List<LeiComparator> projetosMaioresInteressesEmpatados = projetosMaioresInteressesEmpatados(pojetosComInteressesEmComum);
+		if(projetosMaioresInteressesEmpatados.size() == 1) return projetosMaioresInteressesEmpatados.get(0).getCodigo();
+	
+		Collections.sort(projetosMaioresInteressesEmpatados, estrategiaOrdenacaoPessoa);
+		
+		List<LeiComparator> projetosEmpatadosEstrategiaOrdenacaoPessoa = estrategiaOrdenacaoPessoa.empatados(projetosMaioresInteressesEmpatados);
+		if(projetosEmpatadosEstrategiaOrdenacaoPessoa.size() == 1) return projetosEmpatadosEstrategiaOrdenacaoPessoa.get(0).getCodigo();
+		
+		Collections.sort(projetosEmpatadosEstrategiaOrdenacaoPessoa, new Idade());
+		return projetosEmpatadosEstrategiaOrdenacaoPessoa.get(0).getCodigo();
+	}
+	
+	/**
+	 * Retorna uma lista de objetos do tipo LeiComparator onde cada LeiComparator e referente a um projeto de lei 
+	 * que possue algum interesse em commun com os interesses de uma determinada pessoa.
+	 * 
+	 * @param interessesPessoa Interesses da pessoa.
+	 * @param projetosDeLei Projetos de lei.
+	 * 
+	 * @return lista de LeiComparator referente aos projetos de lei que possuem algum interesses em comum com os de uma determinada pessoa.
+	 */
+	private List<LeiComparator> pojetosComInteressesEmComum(List<String> interessesPessoa, List<ProjetoDeLei> projetosDeLei){
+		List<LeiComparator> list = new ArrayList<>();
+		for(ProjetoDeLei lei : projetosDeLei) {
+			if(lei.getStatus().equals(StatusDaLei.ENCERRADA)) continue;
+			List<String> interessesLei = Arrays.asList(lei.getInteresses().split(","));
+			int contInteresses = 0;
+			int contTramitacao = 0;
+			for(String interesseL : interessesLei) {
+				if(interessesPessoa.contains(interesseL)) contInteresses++;
+			}
+			for(String s : lei.getTramitacao()) {
+				if(s.equals("EM VOTACAO (Plenario - 2o turno)")) {
+					contTramitacao += 10000;
+				}else if(s.equals("EM VOTACAO (Plenario)")) {
+					contTramitacao += 10000;
+				}else if(s.equals("EM VOTACAO (Plenario - 1o turno)")) {
+					contTramitacao += 500;
+				}else contTramitacao++;
+			}
+			
+			if(contInteresses != 0) list.add(new LeiComparator(lei.getCodigo(), contInteresses, lei.getAprovacoes(), lei.getTipoDeLei(), contTramitacao, lei.getDataDeCadastro()));
+		}
+		return list;
+	}
+	
+	/**
+	 * Recebe uma lista de objetos do tipo LeiComparator ordenada apartir do atributo qtdInteresses do maior para o menor, 
+	 * e retorna uma lista de LeiComparator com os que estao empatados com o maior valor no atributo qtdInteresses.
+	 * 
+	 * @param pojetosComInteressesEmComum Lista de LeiComparator.
+	 * 
+	 * @return Lista de LeiComparator que estao empatados com o maior valor no atributo qtdInteresses.
+	 */
+	private List<LeiComparator> projetosMaioresInteressesEmpatados(List<LeiComparator> pojetosComInteressesEmComum){
+		List<LeiComparator> list = new ArrayList<>();
+		
+		for(int i = 0; i < pojetosComInteressesEmComum.size(); i++) {
+			if(pojetosComInteressesEmComum.get(i).getQtdInteresses() == pojetosComInteressesEmComum.get(0).getQtdInteresses()) {
+				list.add(pojetosComInteressesEmComum.get(i));
+			}
+		}
+		return list;
 	}
 	
 }

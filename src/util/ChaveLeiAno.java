@@ -3,12 +3,8 @@ package util;
 import java.io.Serializable;
 
 /**
- * @author Augusto Gomes dos Santos
- * @author Renildo Dantas Melo
- * @author Wander Medeiros de Brito Junior 
- *
- * Classe ultilizada como indentificador para os contadores ultilizados
- * gerar o codigo de indentificacao de cada lei.
+ * Classe ultilizada como indentificador para os contadores ultilizados para 
+ * gerar o codigo de indentificacao de cada projeto de lei.
  */
 public class ChaveLeiAno implements Serializable {
 	

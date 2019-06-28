@@ -1,15 +1,13 @@
-package entities;
+package entities.projetodelei;
 
 import enums.TipoDeLei;
 
 /**
- * @author Augusto Gomes dos Santos
- * @author Renildo Dantas Melo
- * @author Wander Medeiros de Brito Junior
- *
+ * Classe que representa um Projeto de Lei Complementar.
  */
 public class Plp extends ProjetoDeLei {
 	
+	private static final long serialVersionUID = 8468005664943636600L;
 	private String artigos;
 
 	/**

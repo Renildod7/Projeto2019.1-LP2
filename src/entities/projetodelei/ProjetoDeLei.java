@@ -1,4 +1,4 @@
-package entities;
+package entities.projetodelei;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,10 +10,7 @@ import enums.StatusPlenario;
 import enums.TipoDeLei;
 
 /**
- * @author Augusto Gomes dos Santos
- * @author Renildo Dantas Melo
- * @author Wander Medeiros de Brito Junior
- *
+ * Classe que representa um Projeto de Lei Abstrato.
  */
 public abstract class ProjetoDeLei implements Serializable {
 	
@@ -66,6 +63,7 @@ public abstract class ProjetoDeLei implements Serializable {
 		this.tramitacao.add(this.situacaoAtual);
 		this.aprovacoes = 0;
 		this.dataDeCadastro = new Date();
+		this.dataDeCadastro.toInstant();
 		
 	}
 	
@@ -147,6 +145,15 @@ public abstract class ProjetoDeLei implements Serializable {
 	 */
 	public List<String> getTramitacao(){
 		return this.tramitacao;
+	}
+	
+	/**
+	 * Retorna um Date com o momento em que o projeto de lei foi cadastrado no sistema.
+	 * 
+	 * @return Momento em que o projeto de lei foi cadastrado.
+	 */
+	public Date getDataDeCadastro() {
+		return this.dataDeCadastro;
 	}
 	
 	/**
@@ -248,10 +255,6 @@ public abstract class ProjetoDeLei implements Serializable {
 		this.situacaoAtual = "ARQUIVADO";
 	}
 	
-
-	/**
-	 * Hascode para comparacao adequadra com o equal.
-	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -261,11 +264,6 @@ public abstract class ProjetoDeLei implements Serializable {
 	}
 
 	
-	
-	/**
-	 * Metodo para comparacao de objetos ProjetoDeLei.
-	 *
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

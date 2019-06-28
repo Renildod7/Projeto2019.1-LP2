@@ -3,9 +3,9 @@ package controller;
 import java.util.Set;
 
 import entities.Comissao;
-import entities.Deputado;
+import entities.pessoa.Deputado;
 import entities.Plenario;
-import entities.ProjetoDeLei;
+import entities.projetodelei.ProjetoDeLei;
 import util.Dados;
 
 /**
@@ -25,6 +25,10 @@ public class CamaraController {
 		this.plenario = new Plenario(dados);
 	}
 
+	/**
+	 * Adiciona um deputado no plenario.
+	 * @param deputado Deputado que sera adicionado.
+	 */
 	public void cadastrarDeputado(Deputado deputado) {
 		this.dados.adicionaDeputado(deputado);	
 	}
@@ -51,9 +55,9 @@ public class CamaraController {
 	}  
 
 	/**
-	 * Metodo onde é feita a votacao de uma comissao.
+	 * Metodo onde e feita a votacao de uma comissao.
 	 * 
-	 * @param statusGovernista Se o é do governo, opisicao ou livre. 
+	 * @param statusGovernista Status do projeto projeto de lei em relacao ao governo atual. 
 	 * @param proximoLocal proximo local onde sera votada a comisssao.
 	 * @param lei a leia a ser votada pela comissao.
 	 * @param autorDaLei O autor da lei a ser votada.
@@ -68,9 +72,9 @@ public class CamaraController {
 	/**
 	 * Metodo onte se tem a votacao no plenario.
 	 * 
-	 * @param statusGovernista Se o é do governo, opisicao ou livre 
-	 * @param lei lei em votacao
-	 * @param autorDaLei autor da lei em votacao
+	 * @param statusGovernista Status do projeto projeto de lei em relacao ao governo atual 
+	 * @param lei ProjetoDeLei em votacao
+	 * @param autorDaLei autor da projeto de lei em votacao
 	 * @param deputadosPresentes Deputados presentes no plenario
 	 * @param base A base governista.
 	 * @return Retorna um boolean com true para aprovado e false para nao aprovado

@@ -1,33 +1,21 @@
 package controller;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import comparator.Aprovacao;
-import comparator.Conclusao;
-import comparator.Constitucional;
-import comparator.Idade;
-import comparator.Interesses;
-import entities.Deputado;
-import entities.Lei;
-import entities.ProjetoDeLei;
+import entities.pessoa.Deputado;
+import entities.projetodelei.ProjetoDeLei;
 import enums.StatusDaLei;
 import enums.StatusPlenario;
 import enums.TipoDeLei;
+import interfaces.EstrategiaOrdenacao;
 import util.Dados;
 import util.Validacao;
 
 /**
- * @author Augusto Gomes dos Santos
- * @author Renildo Dantas Melo
- * @author Wander Medeiros de Brito Junior
- *
+ * Controlador principal do sistema.
  */
 public class SystemController {
 
@@ -332,146 +320,31 @@ public class SystemController {
 	}
 	
 	/**
-	 * Metodo onde se retorna uma proposta Mais relacionada.
+	 * Retorna o projeto de lei mais relacionado com a pessoa que possui o dni passado como parametro.
 	 * 
-	 * @param dni dni da proposta a ser retornada.
-	 * @return E retornado o codigo da proposta mais relacionada
+	 * @param dni Dni da pessoa.
+	 * @return Codigo do projeto de lei mais relacionado com a pessoa.
 	 */
 	public String pegarPropostaRelacionada(String dni) {
-		Comparator estrategiaOrdenacao = this.pessoaCntrl.getPessoa(dni).getEstrategiaOrdenacao();
+		Validacao.validaString(dni, "Erro ao pegar proposta relacionada: pessoa nao pode ser vazia ou nula");
+		Validacao.validaDni(dni, "Erro ao pegar proposta relacionada: dni invalido");
 		
-		List<String> interessesPessoa = Arrays.asList(this.pessoaCntrl.getPessoa(dni).getInteresses().split(",")); // Interesses da Pessoa.
-		
-		List<ProjetoDeLei> projetosDelei = new ArrayList<>();
-		projetosDelei.addAll(this.projetoCntrl.getProjetosLei());
-		
-		List<Lei> leis = new ArrayList<>();
-		
-		for(ProjetoDeLei lei : projetosDelei) {
-			if(lei.getStatus().equals(StatusDaLei.ENCERRADA)) continue;
-			List<String> interessesLei = Arrays.asList(lei.getInteresses().split(","));
-			int contInteresses = 0;
-			int contTramitacao = 0;
-			for(String interesseL : interessesLei) {
-				if(interessesPessoa.contains(interesseL)) contInteresses++;
-			}
-			for(String s : lei.getTramitacao()) {
-				if(s.equals("EM VOTACAO (Plenario - 2o turno)")) {
-					contTramitacao += 10000;
-				}else if(s.equals("EM VOTACAO (Plenario)")) {
-					contTramitacao += 10000;
-				}else if(s.equals("EM VOTACAO (Plenario - 1o turno)")) {
-					contTramitacao += 500;
-				}else contTramitacao++;
-			}
-			
-			
-			
-			if(contInteresses != 0) leis.add(new Lei(lei.getCodigo(), contInteresses, lei.getAprovacoes(), lei.getTipoDeLei(), contTramitacao));
-		}
-		
-		Collections.sort(leis, new Interesses());
-		Collections.reverse(leis);
-		if(leis.size()== 0) return "";
-		
-		
-		List<Lei> maioresInteresses = new ArrayList<>();
-		
-		for(int i = 0; i < leis.size(); i++) {
-			if(leis.get(i).getQtdInteresses() == leis.get(0).getQtdInteresses()) maioresInteresses.add(leis.get(i));
-		}
-		
-		if(maioresInteresses.size() == 1) return maioresInteresses.get(0).getCodigo();
-	
-		Collections.sort(maioresInteresses, estrategiaOrdenacao);
-		Collections.reverse(maioresInteresses);
-		
-		
-		
-		List<Lei> a = new ArrayList<>();
-		
-		
-		if(estrategiaOrdenacao.getClass() == Constitucional.class) {
-			for (Lei lei : maioresInteresses) {
-				if(lei.geTipoDeLei().equals(maioresInteresses.get(0).geTipoDeLei())) {
-					a.add(lei);
-				}
-			}
-		}else if(estrategiaOrdenacao.getClass() == Conclusao.class){
-			for (Lei lei : maioresInteresses) {
-				if(lei.getTramitacao() == maioresInteresses.get(0).getTramitacao()) {
-					a.add(lei);
-				}
-			}
-		}else if((estrategiaOrdenacao.getClass() == Aprovacao.class)) {
-			for (Lei lei : maioresInteresses) {
-				if(lei.getAprovacoes() == maioresInteresses.get(0).getAprovacoes()) {
-					a.add(lei);
-				}
-			}
-		}
-		
-		Collections.sort(a, new Idade());
-
-		
-//		for(Lei l : a) {
-//			if(l.getCodigo().equals("PL 10/2016")) return "ta aki";
-//			if(l.getCodigo().equals("PLP 3/2016")) return "ta aki";
-//			if(l.getCodigo().equals("PL 9/2016")) return "ta aki";
-//
-//		}
-		
-		return a.get(0).getCodigo();
-
-	
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		//return maioresInteresses.get(0).getCodigo();
-
-		
+		EstrategiaOrdenacao estrategiaOrdenacaoPessoa = this.pessoaCntrl.getPessoa(dni).getEstrategiaOrdenacao();
+		List<String> interessesPessoa = Arrays.asList(this.pessoaCntrl.getPessoa(dni).getInteresses().split(","));
+		return this.projetoCntrl.pegarPropostaRelacionada(interessesPessoa, estrategiaOrdenacaoPessoa);
 	}
 
 	/**
-	 * Metodo onde se configura a estrategia, para pegar a proposta mais relacionada.
-	 * @param dni codigo indentificador da pessoa.
-	 * @param estrategia Nova estrategia a ser setada.
+	 * Altera a estrateria de ordenacao de uma pessoa utilizada durante um empate no metodo pegarPropostaRelacionada.
+	 * 
+	 * @param dni Dni da pessoa que tera a estrategia de ordenacao alterada.
+	 * @param estrategia Nova estrategia de ordenacao da pessoa.
 	 */
 	public void configurarEstrategiaPropostaRelacionada(String dni, String estrategia) {
-		Comparator estrategiaOrdenacao = new Conclusao();
-		switch (estrategia) {
-		case "CONCLUSAO":
-			estrategiaOrdenacao = new Conclusao();
-			break;
-			
-		case "APROVACAO":
-			estrategiaOrdenacao = new Aprovacao();
-			break;
-			
-		case "CONSTITUCIONAL":
-			estrategiaOrdenacao = new Constitucional();
-			break;
-
-		default:
-			break;
-		}
-		this.pessoaCntrl.getPessoa(dni).setEstrategia(estrategiaOrdenacao);
+		Validacao.validaString(dni, "Erro ao configurar estrategia: pessoa nao pode ser vazia ou nula");
+		Validacao.validaDni(dni, "Erro ao configurar estrategia: dni invalido");
+		Validacao.validaEstrategiaOrdenacao(estrategia);
+		this.pessoaCntrl.configurarEstrategiaPropostaRelacionada(dni, estrategia);
+		
 	}
-	
-	
-	
-	
 }

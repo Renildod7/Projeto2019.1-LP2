@@ -8,16 +8,12 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import entities.Comissao;
-import entities.Deputado;
-import entities.PessoaInterface;
-import entities.ProjetoDeLei;
+import entities.pessoa.Deputado;
+import entities.projetodelei.ProjetoDeLei;
+import interfaces.PessoaInterface;
 
 /**
- * @author Augusto Gomes dos Santos
- * @author Renildo Dantas Melo
- * @author Wander Medeiros de Brito Junior 
- 
- *
+ * Classe responsavel por gerenciar os dados do sistema.
  */
 public class Dados {
 	

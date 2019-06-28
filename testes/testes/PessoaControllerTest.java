@@ -6,14 +6,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import controller.PessoaController;
+import util.Dados;
 
 class PessoaControllerTest {
 	
+	private Dados dados;
 	PessoaController cntrl;
 	
 	@BeforeEach
 	void preparaTestes() {
-		this.cntrl = new PessoaController();
+		this.dados = new Dados();
+		this.cntrl = new PessoaController(this.dados);
 	}
 	
 	@Test

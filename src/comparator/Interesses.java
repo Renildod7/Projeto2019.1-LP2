@@ -3,21 +3,22 @@ package comparator;
 import java.io.Serializable;
 import java.util.Comparator;
 
-import entities.Lei;
+import entities.LeiComparator;
 
 /**
- * @author Augusto Gomes dos Santos
- * @author Renildo Dantas Melo
- * @author Wander Medeiros de Brito Junior 
- * 
- * Classe para comparar Leis de acordo com os interesses.
- *
+ * Classe para comparar objetos do tipo LeiComparator de acordo com o atributo interesses.
  */
-public class Interesses implements Comparator<Lei>, Serializable{
+public class Interesses implements Comparator<LeiComparator>, Serializable{
 
+	private static final long serialVersionUID = 342782454542657723L;
+	
+	/**
+	 * Comparador utilizado na ordenacao de objetos do tipo LeiComparator do maior para o menor de acordo com 
+	 * o atributo interesses.
+	 */
 	@Override
-	public int compare(Lei l1, Lei l2) {
-		return Integer.compare(l1.getQtdInteresses(), l2.getQtdInteresses());
+	public int compare(LeiComparator l1, LeiComparator l2) {
+		return Integer.compare(l1.getQtdInteresses(), l2.getQtdInteresses()) * -1;
 	}
 
 }

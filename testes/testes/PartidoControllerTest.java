@@ -6,13 +6,17 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import controller.PartidoController;
+import util.Dados;
 
 class PartidoControllerTest {
-
+	
+	Dados dados;
 	PartidoController cntrl;
+	
 	@BeforeEach
 	void preparaTest() {
-		this.cntrl = new PartidoController();
+		this.dados = new Dados();
+		this.cntrl = new PartidoController(this.dados);
 	}
 	
 	@Test

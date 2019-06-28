@@ -1,22 +1,16 @@
-package entities;
+package entities.pessoa;
 
-import java.util.Comparator;
 
 import comparator.Constitucional;
+import interfaces.EstrategiaOrdenacao;
+import interfaces.PessoaInterface;
 import util.Validacao;
 
 /**
  * Classe que representa uma pessoa.
- * 
- * @author Augusto Gomes dos Santos
- * @author Renildo Dantas Melo
- * @author Wander Medeiros de Brito Junior
  */
 public class PessoaCivil implements PessoaInterface{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 6709870141888454000L;
 
 	/**
@@ -48,7 +42,7 @@ public class PessoaCivil implements PessoaInterface{
 	/**
 	 * comparator para se usar a estrategia de ordenacao.
 	 */
-	private Comparator estrategiaOrdenacao;
+	private EstrategiaOrdenacao estrategiaOrdenacao;
 	
 
 	/**
@@ -185,7 +179,7 @@ public class PessoaCivil implements PessoaInterface{
 	 * Metodo onde se retorna a estrategia de ordenacao
 	 * @return E retornado a estrategia de ordenacao.
 	 */
-	public Comparator getEstrategiaOrdenacao() {
+	public EstrategiaOrdenacao getEstrategiaOrdenacao() {
 		return this.estrategiaOrdenacao;
 	}
 
@@ -195,7 +189,7 @@ public class PessoaCivil implements PessoaInterface{
 	 *
 	 */
 	@Override
-	public void setEstrategia(Comparator estrategiaOrdenacao) {
+	public void setEstrategia(EstrategiaOrdenacao estrategiaOrdenacao) {
 		this.estrategiaOrdenacao = estrategiaOrdenacao;
 		
 	}

@@ -5,10 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+import entities.pessoa.Deputado;
+import entities.projetodelei.Pl;
+import entities.projetodelei.ProjetoDeLei;
+
 /**
- * @author Augusto Gomes dos Santos
- * @author Renildo Dantas Melo
- * @author Wander Medeiros de Brito Junior
+ * Classe que representa uma comissao de deputados.
  */
 
 public class Comissao implements Serializable {
@@ -25,17 +27,18 @@ public class Comissao implements Serializable {
 	}
 	
 	/**
-	 * Metodo onde se Vota uma Comissao.
+	 * Realiza a votacao de um determinado projeto de lei.
 	 * 
-	 * @param statusGovernista estados se a comissao e da base governista ou nao.
-	 * @param proximoLocal proximo local a ser votado a comissao.
-	 * @param lei lei a ser votada na comissao.
-	 * @param autorDaLei autor da lei a ser votada
-	 * @param base os partidos que fazem parte
-	 * @return retorna se a lei foi aprovada ou nao.
+	 * @param statusGovernista Status do projeto de lei em relacao ao governo atual.
+	 * @param proximoLocal Proximo local onde o projeto de lei sera votado.
+	 * @param lei Projeto de lei que sera votado.
+	 * @param autorDaLei Autor do projeto de lei.
+	 * @param base Partidos que fazem parte da base do atual governo.
+	 * 
+	 * @return Boleano indicando se o projeto de lei foi aprovado ou nao na comissao.
 	 */
 	public boolean votarComissao(String statusGovernista, String proximoLocal, ProjetoDeLei lei, Deputado autorDaLei, Set<String> base) {
-		int votosAFavor = votar(this.deputados, base, lei, statusGovernista);	
+		int votosAFavor = votar(base, lei, statusGovernista);	
 		
 		switch (lei.getTipoDeLei()) {	
 		case PL:
@@ -88,17 +91,17 @@ public class Comissao implements Serializable {
 	}
 	
 	/**
-	 * Metodo onde se retorna os votos a Favor.
+	 * Contabiliza quantos votos a favor um projeto de lei possui na comissao.
 	 * 
-	 * @param deputados deputados que estao na comissao
-	 * @param base os partidos que fazem parte.
-	 * @param lei lei que sera votada na comissao.
-	 * @param statusGovernista Status onde idica se a comissao e da base governista ou nao.
-	 * @return retorna votos a favor da votacao de uma comissao.
+	 * @param base Partidos que fazem parte da base do governo
+	 * @param lei Projeto de lei que sera votado
+	 * @param statusGovernista Status do projeto de lei em relacao ao atual governo.
+	 * 
+	 * @return retorna Quantidade de votos a faver que o projeto de lei recebeu.
 	 */
-	private int votar(Set<Deputado> deputados, Set<String> base, ProjetoDeLei lei, String statusGovernista) {
+	private int votar(Set<String> base, ProjetoDeLei lei, String statusGovernista) {
 		int votosAFavor = 0;
-		for(Deputado d : deputados) {
+		for(Deputado d : this.deputados) {
 			String partidoDeputado = d.getPartido();
 			
 			switch (statusGovernista) {

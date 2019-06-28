@@ -6,11 +6,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import controller.SystemController;
-import entities.PessoaCivil;
+import entities.pessoa.PessoaCivil;
+import util.Dados;
 
 class SystemControllerTest {
 	
-	private SystemController sc;
+	Dados dados;
+	SystemController sc;
 	String plc;
 	String plnc;
 	String plp;
@@ -19,7 +21,8 @@ class SystemControllerTest {
 	
 	@BeforeEach
 	void setup() {
-		this.sc = new SystemController();
+		this.dados = new Dados();
+		this.sc = new SystemController(this.dados);
 		sc.cadastrarPessoa("Mateus Matia", "051222222-0", "PE", "", "ABC");
 		sc.cadastrarPessoa("Raposo naoPegue", "002325622-0", "PB", "", "DEF");
 		sc.cadastrarPessoa("Julio nagaita", "002324987-0", "PB", "", "DEF");

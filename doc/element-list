@@ -1,5 +1,8 @@
 comparator
 controller
 entities
+entities.pessoa
+entities.projetodelei
 enums
+interfaces
 util

@@ -5,13 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+import entities.pessoa.Deputado;
+import entities.projetodelei.ProjetoDeLei;
 import util.Dados;
 
 /**
- * @author Augusto Gomes dos Santos
- * @author Renildo Dantas Melo
- * @author Wander Medeiros de Brito Junior
- *
+ * Classe que representa o plenario.
  */
 public class Plenario implements Serializable {
 	

@@ -1,15 +1,11 @@
-package entities;
+package entities.pessoa;
 
-import java.util.Comparator;
-
+import interfaces.EstrategiaOrdenacao;
+import interfaces.PessoaInterface;
 import util.Validacao;
 
 /**
  * Classe que representa um deputado.
- * 
- * @author Augusto Gomes dos Santos
- * @author Renildo Dantas Melo
- * @author Wander Medeiros de Brito Junior
  */
 public class Deputado implements PessoaInterface {
 	
@@ -35,7 +31,7 @@ public class Deputado implements PessoaInterface {
 	 * Construtor de Deputado.
 	 * 
 	 * @param dataDeInicio A data de inicio do mandato.
-	 * @param pessoa pessoa a virar deputado.
+	 * @param pessoa Pessoa a virar deputado.
 	 */
 	public Deputado(String dataDeInicio, PessoaCivil pessoa) {
 		Validacao.validaString(dataDeInicio, "Erro ao cadastrar deputado: data nao pode ser vazio ou nulo");
@@ -64,7 +60,7 @@ public class Deputado implements PessoaInterface {
 
 	
 	/**
-	 * Metodo one se retorna a quantidade de leis aprovadas.
+	 * Metodo onde se retorna a quantidade de leis aprovadas.
 	 * 
 	 * @return retorna a quantidade de leis aprovadas. 
 	 */
@@ -83,7 +79,7 @@ public class Deputado implements PessoaInterface {
 
 	
 	/**
-	 * metodo onde se tem a representacao de um Deputado pessoa em formato de String.
+	 * Retorna a representacao em String de um deputado.
 	 *
 	 */
 	public String toString() {
@@ -108,12 +104,12 @@ public class Deputado implements PessoaInterface {
 	}
 
 	
-	public Comparator getEstrategiaOrdenacao() {
+	public EstrategiaOrdenacao getEstrategiaOrdenacao() {
 		return this.pessoa.getEstrategiaOrdenacao();
 	}
 
 	@Override
-	public void setEstrategia(Comparator estrategiaOrdenacao) {
+	public void setEstrategia(EstrategiaOrdenacao estrategiaOrdenacao) {
 		this.pessoa.setEstrategia(estrategiaOrdenacao);
 		
 	}

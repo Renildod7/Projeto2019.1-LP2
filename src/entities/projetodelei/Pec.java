@@ -1,15 +1,13 @@
-package entities;
+package entities.projetodelei;
 
 import enums.TipoDeLei;
 
 /**
- * @author Augusto Gomes dos Santos
- * @author Renildo Dantas Melo
- * @author Wander Medeiros de Brito Junior
- *
+ * Classe que representa um Projeto de Emenda Constitucional.
  */
 public class Pec extends ProjetoDeLei{
 
+	private static final long serialVersionUID = -1620140206533349294L;
 	private String artigos;
 
 	/**
@@ -28,7 +26,9 @@ public class Pec extends ProjetoDeLei{
 		this.artigos = artigos;
 	}
 
-	
+	/**
+	 * Retorna a representacao em String do projeto de lei.
+	 */
 	@Override
 	public String toString() {
 		return String.format("Projeto de Emenda Constitucional - %s - %s - %s - %s - %s", 

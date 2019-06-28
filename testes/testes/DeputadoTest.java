@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import entities.Deputado;
-import entities.PessoaCivil;
+import entities.pessoa.Deputado;
+import entities.pessoa.PessoaCivil;
 
 class DeputadoTest {
 	
