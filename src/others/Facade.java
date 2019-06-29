@@ -1,20 +1,16 @@
 package others;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 
 import controller.SystemController;
 import easyaccept.EasyAccept;
-import util.Dados;
 
 public class Facade {
 	
 	private SystemController systemCntrl;
-	private Dados dados;
 	
 	public Facade() {
-		this.dados = new Dados();
-		this.systemCntrl = new SystemController(dados);	
+		this.systemCntrl = new SystemController();	
 	}
 	
 	public static void main(String[] args) {
@@ -95,16 +91,16 @@ public class Facade {
 		return this.systemCntrl.pegarPropostaRelacionada(dni);
 	}
 	
-	public void limparSistema() throws FileNotFoundException {
-		this.dados.limparSistema();
+	public void limparSistema() throws FileNotFoundException  {
+		this.systemCntrl.limparSistema();
 	}
 	
 	public void salvarSistema() throws IOException {
-		this.dados.salvarSistema();
+		this.systemCntrl.salvarSistema();
 	}
 	
 	public void carregarSistema() throws ClassNotFoundException {
-		this.dados.carregarSistema();
+		this.systemCntrl.carregarSistema();
 	}
 	
 }

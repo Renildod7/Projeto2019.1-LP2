@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -18,6 +20,11 @@ import util.Validacao;
  * Controlador principal do sistema.
  */
 public class SystemController {
+	
+	/**
+	 * Simula um banco de dados.
+	 */
+	private Dados dados;
 
 	/**
 	 * Controlador de pessoas.
@@ -40,15 +47,14 @@ public class SystemController {
 	private ProjetosDeLeiController projetoCntrl;
 
 	/**
-	 * Construtor do controlador Principal
-	 * 
-	 * @param dados simulacao de um banco de dados.
+	 * Construtor do controlador Principal.
 	 */
-	public SystemController(Dados dados) {
-		this.pessoaCntrl = new PessoaController(dados);
-		this.partidoCntrl = new PartidoController(dados);
-		this.camaraCntrl = new CamaraController(dados);
-		this.projetoCntrl = new ProjetosDeLeiController(dados);
+	public SystemController() {
+		this.dados = new Dados();
+		this.pessoaCntrl = new PessoaController(this.dados);
+		this.partidoCntrl = new PartidoController(this.dados);
+		this.camaraCntrl = new CamaraController(this.dados);
+		this.projetoCntrl = new ProjetosDeLeiController(this.dados);
 	}
 
 	/**
@@ -360,6 +366,27 @@ public class SystemController {
 		Validacao.validaDni(dni, "Erro ao configurar estrategia: dni invalido");
 		Validacao.validaEstrategiaOrdenacao(estrategia);
 		this.pessoaCntrl.configurarEstrategiaPropostaRelacionada(dni, estrategia);	
+	}
+
+	/**
+	 * Metodo responsavel por limpar os dados persistidos do sistema.
+	 */
+	public void limparSistema() throws FileNotFoundException {
+		this.dados.limparSistema();		
+	}
+
+	/*
+	 * Metodo responsavel por salvar o sistema em arquivos.
+	 */
+	public void salvarSistema() throws IOException {
+		this.dados.salvarSistema();	
+	}
+
+	/**
+	 * Metodo responsavel por carregar os dados persistidos do sistema.
+	 */
+	public void carregarSistema() throws ClassNotFoundException {
+		this.dados.carregarSistema();
 	}
 	
 }

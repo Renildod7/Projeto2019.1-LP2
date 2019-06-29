@@ -21,8 +21,7 @@ class SystemControllerTest {
 	
 	@BeforeEach
 	void setup() {
-		this.dados = new Dados();
-		this.sc = new SystemController(this.dados);
+		this.sc = new SystemController();
 		sc.cadastrarPessoa("Mateus Matia", "051222222-0", "PE", "", "ABC");
 		sc.cadastrarPessoa("Raposo naoPegue", "002325622-0", "PB", "", "DEF");
 		sc.cadastrarPessoa("Julio nagaita", "002324987-0", "PB", "", "DEF");
@@ -293,10 +292,5 @@ class SystemControllerTest {
 		} catch (IllegalArgumentException iae) {
 		}
 	}
-	
-	
-	
-	
-
 	
 }
