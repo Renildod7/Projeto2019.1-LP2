@@ -8,7 +8,7 @@ import entities.LeiComparator;
 /**
  * Classe para comparar objetos do tipo LeiComparator de acordo com o atributo interesses.
  */
-public class Interesses implements Comparator<LeiComparator>, Serializable{
+public class OrdenacaoInteresses implements Comparator<LeiComparator>, Serializable{
 
 	private static final long serialVersionUID = 342782454542657723L;
 	

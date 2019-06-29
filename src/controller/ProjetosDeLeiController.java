@@ -6,8 +6,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import comparator.Idade;
-import comparator.Interesses;
+import comparator.OrdenacaoIdade;
+import comparator.OrdenacaoInteresses;
 import entities.LeiComparator;
 import entities.projetodelei.Pec;
 import entities.projetodelei.Pl;
@@ -212,7 +212,7 @@ public class ProjetosDeLeiController {
 		List<ProjetoDeLei> projetosDeLei = new ArrayList<>(); projetosDeLei.addAll(this.getProjetosLei());
 		List<LeiComparator> pojetosComInteressesEmComum = pojetosComInteressesEmComum(interessesPessoa, projetosDeLei);
 		
-		Collections.sort(pojetosComInteressesEmComum, new Interesses());
+		Collections.sort(pojetosComInteressesEmComum, new OrdenacaoInteresses());
 		if(pojetosComInteressesEmComum.size()== 0) return "";
 		
 		List<LeiComparator> projetosMaioresInteressesEmpatados = projetosMaioresInteressesEmpatados(pojetosComInteressesEmComum);
@@ -223,7 +223,7 @@ public class ProjetosDeLeiController {
 		List<LeiComparator> projetosEmpatadosEstrategiaOrdenacaoPessoa = estrategiaOrdenacaoPessoa.empatados(projetosMaioresInteressesEmpatados);
 		if(projetosEmpatadosEstrategiaOrdenacaoPessoa.size() == 1) return projetosEmpatadosEstrategiaOrdenacaoPessoa.get(0).getCodigo();
 		
-		Collections.sort(projetosEmpatadosEstrategiaOrdenacaoPessoa, new Idade());
+		Collections.sort(projetosEmpatadosEstrategiaOrdenacaoPessoa, new OrdenacaoIdade());
 		return projetosEmpatadosEstrategiaOrdenacaoPessoa.get(0).getCodigo();
 	}
 	

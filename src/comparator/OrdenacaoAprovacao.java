@@ -11,7 +11,7 @@ import interfaces.EstrategiaOrdenacao;
  * Classe para comparar objetos do tipo LeiComparator de acordo com seu atributo aprovacoes.
  */
 
-public class Aprovacao implements EstrategiaOrdenacao, Serializable{
+public class OrdenacaoAprovacao implements EstrategiaOrdenacao, Serializable{
 
 	private static final long serialVersionUID = -3725156571681134165L;
 	

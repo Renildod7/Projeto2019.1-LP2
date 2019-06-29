@@ -1,7 +1,7 @@
 package entities.pessoa;
 
 
-import comparator.Constitucional;
+import comparator.OrdenacaoConstitucional;
 import interfaces.EstrategiaOrdenacao;
 import interfaces.PessoaInterface;
 import util.Validacao;
@@ -61,7 +61,7 @@ public class PessoaCivil implements PessoaInterface{
 		this.estado = estado;
 		this.interesses = interesses;
 		this.partido = partido;
-		this.estrategiaOrdenacao = new Constitucional();
+		this.estrategiaOrdenacao = new OrdenacaoConstitucional();
 	}
 	
 	

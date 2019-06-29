@@ -3,9 +3,9 @@ package controller;
 import java.util.HashSet;
 import java.util.Set;
 
-import comparator.Aprovacao;
-import comparator.Conclusao;
-import comparator.Constitucional;
+import comparator.OrdenacaoAprovacao;
+import comparator.OrdenacaoConclusao;
+import comparator.OrdenacaoConstitucional;
 import entities.pessoa.Deputado;
 import entities.pessoa.PessoaCivil;
 import interfaces.EstrategiaOrdenacao;
@@ -151,18 +151,18 @@ public class PessoaController {
 	 * @param estrategia Nova estrategia de ordenacao da pessoa.
 	 */
 	public void configurarEstrategiaPropostaRelacionada(String dni, String estrategia) {
-		EstrategiaOrdenacao estrategiaOrdenacao = new Conclusao();
+		EstrategiaOrdenacao estrategiaOrdenacao = new OrdenacaoConclusao();
 		switch (estrategia) {
 		case "CONCLUSAO":
-			estrategiaOrdenacao = new Conclusao();
+			estrategiaOrdenacao = new OrdenacaoConclusao();
 			break;
 			
 		case "APROVACAO":
-			estrategiaOrdenacao = new Aprovacao();
+			estrategiaOrdenacao = new OrdenacaoAprovacao();
 			break;
 			
 		case "CONSTITUCIONAL":
-			estrategiaOrdenacao = new Constitucional();
+			estrategiaOrdenacao = new OrdenacaoConstitucional();
 			break;
 
 		default:

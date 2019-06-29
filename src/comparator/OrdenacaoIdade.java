@@ -8,7 +8,7 @@ import entities.LeiComparator;
 /**
  * Classe para comparar objetos do tipo LeiComparator de acordo com o momento em que foram criadas.
  */
-public class Idade implements Comparator<LeiComparator>, Serializable{
+public class OrdenacaoIdade implements Comparator<LeiComparator>, Serializable{
 
 	private static final long serialVersionUID = 2748872821359809637L;
 	
