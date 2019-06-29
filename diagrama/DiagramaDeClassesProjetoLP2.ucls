@@ -11,16 +11,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="controller.SystemController" project="Projeto2019.1-LP2" 
-    file="/Projeto2019.1-LP2/src/controller/SystemController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="580" y="918"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="controller.ProjetosDeLeiController" project="Projeto2019.1-LP2" 
+  <class id="2" language="java" name="controller.ProjetosDeLeiController" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/controller/ProjetosDeLeiController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1190" y="850"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -29,7 +20,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="controller.PessoaController" project="Projeto2019.1-LP2" 
+  <class id="3" language="java" name="controller.PessoaController" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/controller/PessoaController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="602" y="470"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -38,7 +29,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="controller.PartidoController" project="Projeto2019.1-LP2" 
+  <class id="4" language="java" name="controller.PartidoController" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/controller/PartidoController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="992" y="568"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -47,7 +38,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="controller.CamaraController" project="Projeto2019.1-LP2" 
+  <class id="5" language="java" name="controller.CamaraController" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/controller/CamaraController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="576" y="1268"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -56,7 +47,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="entities.Plenario" project="Projeto2019.1-LP2" 
+  <class id="6" language="java" name="entities.Plenario" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/entities/Plenario.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1144" y="1282"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -65,7 +56,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="util.Dados" project="Projeto2019.1-LP2" 
+  <class id="7" language="java" name="util.Dados" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/util/Dados.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="907" width="238" x="1797" y="329"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -74,7 +65,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="entities.Comissao" project="Projeto2019.1-LP2" 
+  <class id="8" language="java" name="entities.Comissao" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/entities/Comissao.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2326" y="710"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -83,7 +74,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="entities.pessoa.Deputado" project="Projeto2019.1-LP2" 
+  <class id="9" language="java" name="entities.pessoa.Deputado" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/entities/pessoa/Deputado.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2330" y="412"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -92,7 +83,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="entities.pessoa.PessoaCivil" project="Projeto2019.1-LP2" 
+  <class id="10" language="java" name="entities.pessoa.PessoaCivil" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/entities/pessoa/PessoaCivil.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2348" y="46"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -101,7 +92,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="entities.projetodelei.ProjetoDeLei" project="Projeto2019.1-LP2" 
+  <class id="11" language="java" name="entities.projetodelei.ProjetoDeLei" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/entities/projetodelei/ProjetoDeLei.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2280" y="1304"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -110,7 +101,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="entities.projetodelei.Plp" project="Projeto2019.1-LP2" 
+  <class id="12" language="java" name="entities.projetodelei.Plp" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/entities/projetodelei/Plp.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2588" y="924"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -119,7 +110,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="entities.projetodelei.Pl" project="Projeto2019.1-LP2" 
+  <class id="13" language="java" name="entities.projetodelei.Pl" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/entities/projetodelei/Pl.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2612" y="1156"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -128,7 +119,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="entities.projetodelei.Pec" project="Projeto2019.1-LP2" 
+  <class id="14" language="java" name="entities.projetodelei.Pec" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/entities/projetodelei/Pec.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2618" y="1316"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -137,7 +128,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <enumeration id="16" language="java" name="enums.StatusDaLei" project="Projeto2019.1-LP2" 
+  <enumeration id="15" language="java" name="enums.StatusDaLei" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/enums/StatusDaLei.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2628" y="1642"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -146,7 +137,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <enumeration id="17" language="java" name="enums.StatusPlenario" project="Projeto2019.1-LP2" 
+  <enumeration id="16" language="java" name="enums.StatusPlenario" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/enums/StatusPlenario.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2626" y="1786"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -155,7 +146,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <enumeration id="18" language="java" name="enums.TipoDeLei" project="Projeto2019.1-LP2" 
+  <enumeration id="17" language="java" name="enums.TipoDeLei" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/enums/TipoDeLei.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2632" y="1470"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -164,7 +155,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <interface id="19" language="java" name="interfaces.EstrategiaOrdenacao" project="Projeto2019.1-LP2" 
+  <interface id="18" language="java" name="interfaces.EstrategiaOrdenacao" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/interfaces/EstrategiaOrdenacao.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2704" y="62"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -173,7 +164,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="20" language="java" name="util.ChaveLeiAno" project="Projeto2019.1-LP2" 
+  <class id="19" language="java" name="util.ChaveLeiAno" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/util/ChaveLeiAno.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="3146" y="844"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -182,7 +173,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="util.Validacao" project="Projeto2019.1-LP2" 
+  <class id="20" language="java" name="util.Validacao" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/util/Validacao.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="3138" y="1106"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -191,7 +182,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="22" language="java" name="interfaces.PessoaInterface" project="Projeto2019.1-LP2" 
+  <interface id="21" language="java" name="interfaces.PessoaInterface" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/interfaces/PessoaInterface.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1958" y="138"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -200,7 +191,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="23" language="java" name="entities.LeiComparator" project="Projeto2019.1-LP2" 
+  <class id="22" language="java" name="entities.LeiComparator" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/entities/LeiComparator.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="3130" y="1476"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -209,7 +200,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="24" language="java" name="comparator.OrdenacaoAprovacao" project="Projeto2019.1-LP2" 
+  <class id="23" language="java" name="comparator.OrdenacaoAprovacao" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/comparator/OrdenacaoAprovacao.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="133" width="290" x="2994" y="-137"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -218,7 +209,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="25" language="java" name="comparator.OrdenacaoConclusao" project="Projeto2019.1-LP2" 
+  <class id="24" language="java" name="comparator.OrdenacaoConclusao" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/comparator/OrdenacaoConclusao.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="3136" y="111"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -227,7 +218,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="26" language="java" name="comparator.OrdenacaoConstitucional" project="Projeto2019.1-LP2" 
+  <class id="25" language="java" name="comparator.OrdenacaoConstitucional" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/comparator/OrdenacaoConstitucional.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="3135" y="289"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -236,7 +227,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="27" language="java" name="comparator.OrdenacaoIdade" project="Projeto2019.1-LP2" 
+  <class id="26" language="java" name="comparator.OrdenacaoIdade" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/comparator/OrdenacaoIdade.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="3131" y="652"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -245,7 +236,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="28" language="java" name="comparator.OrdenacaoInteresses" project="Projeto2019.1-LP2" 
+  <class id="27" language="java" name="comparator.OrdenacaoInteresses" project="Projeto2019.1-LP2" 
     file="/Projeto2019.1-LP2/src/comparator/OrdenacaoInteresses.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="3121" y="478"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -254,133 +245,124 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
+  <class id="28" language="java" name="controller.SystemController" project="Projeto2019.1-LP2" 
+    file="/Projeto2019.1-LP2/src/controller/SystemController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="457" width="313" x="486" y="632"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
   <association id="29">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="30" name="estrategiaOrdenacao">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="31" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
+    <bendpoint x="830" y="1046"/>    
+    <bendpoint x="1734" y="1038"/>    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="30" name="dados"/>      
+      <multiplicity id="31" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="32">    
-    <bendpoint x="1836" y="1284"/>    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="33" name="dados">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="34" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="35">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="22"/>  
+  <realization id="32">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="21"/>  
   </realization>  
-  <generalization id="36">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="12"/>  
+  <generalization id="33">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="11"/>  
   </generalization>  
-  <generalization id="37">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="12"/>  
-  </generalization>  
-  <association id="38">    
-    <bendpoint x="200" y="290"/>    
-    <bendpoint x="1788" y="286"/>    
+  <association id="34">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="39" name="dados">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="40" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
+      <attribute id="35" name="systemCntrl"/>      
+      <multiplicity id="36" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
+    <end type="TARGET" refId="28" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="41">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="42" name="pessoaCntrl">        
+  <association id="37">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="38" name="tipoDeLei">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="43" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="44">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="22"/>  
-  </realization>  
-  <association id="45">    
-    <bendpoint x="1270" y="470"/>    
-    <bendpoint x="1772" y="474"/>    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="46" name="dados">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="47" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="48">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="49" name="systemCntrl">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="50" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="51">    
-    <bendpoint x="2472" y="1708"/>    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="52" name="statusPlenario">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="53" minimum="0" maximum="1">        
+      <multiplicity id="39" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="17" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="54">    
-    <bendpoint x="880" y="1164"/>    
-    <bendpoint x="1766" y="1146"/>    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="55" name="dados">        
+  <association id="40">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="41" name="plenario">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="56" minimum="0" maximum="1">        
+      <multiplicity id="42" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
+    <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="57">    
-    <bendpoint x="1768" y="556"/>    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="58" name="dados">        
+  <association id="43">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="44" name="partidoCntrl"/>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="46">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="47" name="tipoDeLei">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="59" minimum="0" maximum="1">        
+      <multiplicity id="48" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="49">    
+    <bendpoint x="1738" y="816"/>    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="50" name="dados">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="51" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="52">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="18"/>  
+  </realization>  
+  <association id="53">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="54" name="projetosLei">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="55" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="56">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="18"/>  
+  </realization>  
+  <association id="57">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="58" name="comissoes">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="59" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
@@ -388,113 +370,113 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="60">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="61" name="pessoas">        
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="61" name="plenario">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="62" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="22" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="63">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="64" name="partidoCntrl">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="65" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="66">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="67" name="projetoCntrl">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="68" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="69">    
-    <bendpoint x="1738" y="816"/>    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="70" name="dados">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="71" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="72">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="73" name="pessoa">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="74" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="75">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="76" name="camaraCntrl">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="77" minimum="0" maximum="1">        
+      <multiplicity id="62" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="78">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="79" name="tipoDeLei">        
+  <association id="63">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="64" name="deputados">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="80" minimum="0" maximum="1">        
+      <multiplicity id="65" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
+    <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="81">    
-    <end type="SOURCE" refId="24"/>    
-    <end type="TARGET" refId="19"/>  
+  <realization id="66">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="18"/>  
   </realization>  
-  <generalization id="82">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="12"/>  
+  <generalization id="67">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="11"/>  
   </generalization>  
-  <association id="83">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="84" name="projetosLei">        
+  <association id="68">    
+    <bendpoint x="2472" y="1708"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="69" name="statusPlenario">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="85" minimum="0" maximum="2147483647">        
+      <multiplicity id="70" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="71">    
+    <bendpoint x="1768" y="556"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="72" name="dados">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="73" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="74">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="75" name="statusDaLei">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="76" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="77">    
+    <bendpoint x="1836" y="1284"/>    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="78" name="dados">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="79" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="80">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="81" name="camaraCntrl"/>      
+      <multiplicity id="82" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="83">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="84" name="pessoa">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="85" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="86">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="87" name="plenario">        
+    <bendpoint x="880" y="1164"/>    
+    <bendpoint x="1766" y="1146"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="87" name="dados">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="88" minimum="0" maximum="1">        
@@ -505,73 +487,67 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="89">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="90" name="deputados">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="91" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="90" name="pessoaCntrl"/>      
+      <multiplicity id="91" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="92">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="93" name="tipoDeLei">        
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="93" name="projetoCntrl"/>      
+      <multiplicity id="94" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="95">    
+    <bendpoint x="1270" y="470"/>    
+    <bendpoint x="1772" y="474"/>    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="96" name="dados">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="94" minimum="0" maximum="1">        
+      <multiplicity id="97" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="98">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="21"/>  
+  </realization>  
+  <generalization id="99">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <association id="100">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="101" name="estrategiaOrdenacao">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="102" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="18" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="95">    
-    <end type="SOURCE" refId="25"/>    
-    <end type="TARGET" refId="19"/>  
-  </realization>  
-  <association id="96">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="97" name="comissoes">        
+  <association id="103">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="104" name="pessoas">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="98" minimum="0" maximum="2147483647">        
+      <multiplicity id="105" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
+    <end type="TARGET" refId="21" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="99">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="100" name="statusDaLei">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="101" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="102">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="103" name="plenario">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="104" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="105">    
-    <end type="SOURCE" refId="26"/>    
-    <end type="TARGET" refId="19"/>  
-  </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
