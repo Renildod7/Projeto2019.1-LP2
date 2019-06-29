@@ -11,10 +11,6 @@ import enums.StatusDaLei;
 
 /**
  * Classe responsavel pela validacao de atributos. 
- * 
- * @author Augusto Gomes dos Santos
- * @author Renildo Dantas Melo
- * @author Wander Medeiros de Brito Junior
  */
 public class Validacao {
 	

@@ -7,15 +7,22 @@ import enums.TipoDeLei;
  */
 public class Plp extends ProjetoDeLei {
 	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 8468005664943636600L;
+	
+	/**
+	 * Artigos emendados ou complementados pela PEC.
+	 */
 	private String artigos;
 
 	/**
 	 * Construtor da PLP
 	 * 
-	 * @param dni indentificador unico do criador da plp.
+	 * @param dni identificador unico do criador da plp.
 	 * @param ano ano em que a pl foi criada.
-	 * @param codigo codigo de indentificao de uma plp
+	 * @param codigo codigo de identificao de uma plp.
 	 * @param ementa descricao ao que se refere o projeto de lei.
 	 * @param interesses interesses relacionados a lei, ex: saude, educacao etc..
 	 * @param url endereco do documento onde se descreve o teor do projeto de lei.

@@ -2,7 +2,6 @@ package interfaces;
 
 import java.io.Serializable;
 
-
 /**
  * Interface de classes que representam uma pessoa.
  */

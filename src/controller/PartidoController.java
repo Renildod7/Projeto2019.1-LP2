@@ -10,14 +10,22 @@ import util.Validacao;
  */
 public class PartidoController {
 	
+	/**
+	 * Simula um banco de dados.
+	 */
 	private Dados dados;
 	
+	/**
+	 * Construtor de partidoController.
+	 * 
+	 * @param dados simulacao de um banco de dados.
+	 */
 	public PartidoController(Dados dados) {
 		this.dados = dados;
 	}
 	
 	/**
-	 * Metodo onde se Cadastra um Partido.
+	 * Metodo onde se cadastra um Partido.
 	 * 
 	 * @param nome E o nome que o partido assumira na sua criacao.
 	 */
@@ -31,7 +39,7 @@ public class PartidoController {
 	}
 	
 	/**
-	 * Metodo Onde Exibe os Partidos.
+	 * Metodo onde exibe os a base governista.
 	 * 
 	 * @return Retorna uma String com os nomes dos Partidos Existentes de forma ordenada.
 	 */

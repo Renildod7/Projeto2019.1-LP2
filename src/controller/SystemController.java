@@ -19,9 +19,24 @@ import util.Validacao;
  */
 public class SystemController {
 
+	/**
+	 * Controlador de pessoas.
+	 */
 	private PessoaController pessoaCntrl;
+	
+	/**
+	 * Controlador de partidos.
+	 */
 	private PartidoController partidoCntrl;
+	
+	/**
+	 * Controlador de Comissao e Plenario.
+	 */
 	private CamaraController camaraCntrl;
+	
+	/**
+	 * Controlador de Projeto de Lei.
+	 */
 	private ProjetosDeLeiController projetoCntrl;
 
 	/**
@@ -40,7 +55,7 @@ public class SystemController {
 	 * Metodo onde se cadastra uma pessoa
 	 * 
 	 * @param nome nome da pessoa a ser cadastrada
-	 * @param dni indentificacao da pessoa a ser cadastrada
+	 * @param dni identificacao da pessoa a ser cadastrada
 	 * @param estado estado de origem da pessoa
 	 * @param interesses interesses em tipos de lei que a pessoa tem, ex educacao, saude etc..
 	 * @param partido partido em que a pessoa esta afiliado
@@ -53,7 +68,7 @@ public class SystemController {
 	 * Metodo onde se cadastra uma pessoa sem partido.
 	 * 
 	 * @param nome nome da pessoa a ser cadastrada
-	 * @param dni indentificacao da pessoa a ser cadastrada
+	 * @param dni identificacao da pessoa a ser cadastrada
 	 * @param estado estado de origem da pessoa
 	 * @param interesses interesses em tipos de lei que a pessoa tem, ex educacao, saude etc..
 	 */
@@ -82,7 +97,7 @@ public class SystemController {
 	/**
 	 * Metodo onde se cadastra um Deputado
 	 * 
-	 * @param dni indentificacao unica de um deputado.
+	 * @param dni identificacao unica de um deputado.
 	 * @param dataDeInicio data de inicio do mandato do Deputado.
 	 */
 	public void cadastrarDeputado(String dni, String dataDeInicio) {
@@ -91,7 +106,7 @@ public class SystemController {
 
 	/**
 	 * Metodo onde se exibe determinada pessoa pelo indentificador unico.
-	 * @param dni indentificador unico de um Pessoa.
+	 * @param dni identificador unico de um Pessoa.
 	 * @return Retorna a representacao de uma pessoa em formato de String.
 	 */
 	public String exibirPessoa(String dni) {
@@ -129,7 +144,7 @@ public class SystemController {
 	/**
 	 * Metodo onde se Cadastra um projeto de lei PL.
 	 * 
-	 * @param dni indentificador unico de quem criou a pl.
+	 * @param dni identificador unico de quem criou a pl.
 	 * @param ano ano de cadastro da pl
 	 * @param ementa descricao ao que se refere o projeto de lei.
 	 * @param interesses interesses relacionados a lei, ex: saude, educacao etc..
@@ -160,7 +175,7 @@ public class SystemController {
 	/**
 	 * Metodo onde se cadastra uma PLP
 	 * 
-	 * @param dni indentificador unico de quem criou a pl.
+	 * @param dni identificador unico de quem criou a pl.
 	 * @param ano ano de cadastro da plp
 	 * @param ementa descricao ao que se refere o projeto de lei.
 	 * @param interesses interesses relacionados a lei, ex: saude, educacao etc..
@@ -191,7 +206,7 @@ public class SystemController {
 	/**
 	 * Metodo onde se cadastra uma PEC.
 	 * 
-	 * @param dni indentificador unico de quem criou a pl.
+	 * @param dni identificador unico de quem criou a pl.
 	 * @param ano ano de cadastro da PEC
 	 * @param ementa descricao ao que se refere o projeto de lei.
 	 * @param interesses interesses relacionados a lei, ex: saude, educacao etc..
@@ -222,7 +237,7 @@ public class SystemController {
 	/**
 	 * Metodo onde se exibe um projeto de lei
 	 * 
-	 * @param codigo codigo indentificador para busca do projeto de lei
+	 * @param codigo codigo identificador para busca do projeto de lei
 	 * @return Retorna a Representacao de um projeto de lei em formato de String.
 	 */
 	public String exibirProjeto(String codigo) {
@@ -232,7 +247,7 @@ public class SystemController {
 	/**
 	 * Metodo onde se tem a simulacao de uma votacao de uma comissao.
 	 * 
-	 * @param codigo codigo de indentificacao da comissao a ser votada.
+	 * @param codigo codigo de identificacao da comissao a ser votada.
 	 * @param statusGovernista Status onde idica se a comissao e da base governista ou nao.
 	 * @param proximoLocal proximo local de votacao a ser votado.
 	 * @return retorna um boolean se foi aprovada ou rejeitada a votacao.
@@ -344,7 +359,7 @@ public class SystemController {
 		Validacao.validaString(dni, "Erro ao configurar estrategia: pessoa nao pode ser vazia ou nula");
 		Validacao.validaDni(dni, "Erro ao configurar estrategia: dni invalido");
 		Validacao.validaEstrategiaOrdenacao(estrategia);
-		this.pessoaCntrl.configurarEstrategiaPropostaRelacionada(dni, estrategia);
-		
+		this.pessoaCntrl.configurarEstrategiaPropostaRelacionada(dni, estrategia);	
 	}
+	
 }

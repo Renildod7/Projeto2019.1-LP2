@@ -12,9 +12,23 @@ public class ChaveLeiAno implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Identificador do tipo de lei.
+	 */
 	private String lei;
+	
+	/**
+	 * Ano de criacao da lei.
+	 */
 	private int ano;
 
+	/**
+	 * Construtor de ChaveLeiAno.
+	 * 
+	 * @param lei Tipo da lei para o qual a chave esta sendo criada.
+	 * @param ano Ano de criacao da lei.
+	 */
 	public ChaveLeiAno(String lei, int ano) {
 		this.lei = lei.toUpperCase();
 		this.ano = ano;

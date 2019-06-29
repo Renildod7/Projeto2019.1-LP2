@@ -7,15 +7,22 @@ import enums.TipoDeLei;
  */
 public class Pec extends ProjetoDeLei{
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = -1620140206533349294L;
+	
+	/**
+	 * Artigos emendados ou complementados pela PEC.
+	 */
 	private String artigos;
 
 	/**
 	 * Construtor da Pec
 	 * 
-	 * @param dni numero indentificador do autor da pec
+	 * @param dni numero identificador do autor da pec
 	 * @param ano ano em que a pec foi criada.
-	 * @param codigo codigo de indentificacao da pec.
+	 * @param codigo codigo de identificacao da pec.
 	 * @param ementa descricao ao que se refere o projeto de lei.
 	 * @param interesses interesses relacionados a lei, ex: saude, educacao etc..
 	 * @param url endereco do documento onde se descreve o teor do projeto de lei.

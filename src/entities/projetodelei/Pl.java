@@ -7,14 +7,21 @@ import enums.TipoDeLei;
  */
 public class Pl extends ProjetoDeLei {
 	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 4814979164453871679L;
+	
+	/**
+	 * Tramitacao conclusiva do PL: true ou false.
+	 */
 	private boolean conclusivo;
 
 	/**
 	 * Cosntrutor de uma pl.
-	 * @param dni codigo indentificador unico de quem criou a pl.
+	 * @param dni codigo identificador unico de quem criou a pl.
 	 * @param ano ano em que a pl foi criada.
-	 * @param codigo codigo de indentificacao de uma pl.
+	 * @param codigo codigo de identificacao de uma pl.
 	 * @param ementa descricao ao que se refere o projeto de lei.
 	 * @param interesses interesses relacionados a lei, ex: saude, educacao etc..
 	 * @param url endereco do documento onde se descreve o teor do projeto de lei.

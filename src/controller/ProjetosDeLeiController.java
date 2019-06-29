@@ -24,6 +24,9 @@ import util.Validacao;
  */
 public class ProjetosDeLeiController {
 
+	/**
+	 * Simulacao de um banco de dados
+	 */
 	private Dados dados;
 
 	/**
@@ -38,7 +41,7 @@ public class ProjetosDeLeiController {
 	/**
 	 * Metodo onde se cadastra um projeto de Lei PL.
 	 * 
-	 * @param dni numero indentificador do autor da pl
+	 * @param dni numero identificador do autor da pl
 	 * @param ano ano em que o proejto de lei e cadastrado
 	 * @param ementa descricao do que se refere o projeto
 	 * @param interesses os interesses do projeto de lei
@@ -67,7 +70,7 @@ public class ProjetosDeLeiController {
 	/**
 	 * Metodo onde se cadastra uma PLP
 	 * 
-	 * @param dni numero indentificador do autor da Plp
+	 * @param dni numero identificador do autor da Plp
 	 * @param ano ano em que o proejto de lei e cadastrado
 	 * @param ementa descricao do que se refere o projeto
 	 * @param interesses os interesses do projeto de lei
@@ -98,7 +101,7 @@ public class ProjetosDeLeiController {
 	/**
 	 * Metodo onde se cadastra uma PEC
 	 * 
-	 * @param dni  numero indentificador do autor da Pec
+	 * @param dni  numero identificador do autor da Pec
 	 * @param ano  ano em que o proejto de lei e cadastrado
 	 * @param ementa descricao do que se refere o projeto
 	 * @param interesses os interesses do projeto de lei
@@ -197,7 +200,6 @@ public class ProjetosDeLeiController {
 			return this.getLei(codigo).exibirTramitacao();			
 		} else throw new NullPointerException("Erro ao exibir tramitacao: projeto inexistente");
 	}
-
 	
 	/**
 	 * Retorna o codigo da proposta mais relacionada com a pessoa cujo interesses e estrategia de ordenacao sao passados como parametro.
@@ -229,7 +231,7 @@ public class ProjetosDeLeiController {
 	
 	/**
 	 * Retorna uma lista de objetos do tipo LeiComparator onde cada LeiComparator e referente a um projeto de lei 
-	 * que possue algum interesse em commun com os interesses de uma determinada pessoa.
+	 * que possue algum interesse em comum com os interesses de uma determinada pessoa.
 	 * 
 	 * @param interessesPessoa Interesses da pessoa.
 	 * @param projetosDeLei Projetos de lei.

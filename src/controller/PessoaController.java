@@ -18,10 +18,13 @@ import util.Validacao;
  */
 public class PessoaController {
 	
+	/**
+	 * Simulacao de um banco de dados.
+	 */
 	private Dados dados;
 	
 	/**
-	 * Construtor de PessoaController. Cria um novo HashMap.
+	 * Construtor de PessoaController.
 	 *
 	 * @param dados simulacao de um banco de dados.
 	 */

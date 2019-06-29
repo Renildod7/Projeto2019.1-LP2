@@ -15,26 +15,79 @@ import enums.TipoDeLei;
 public abstract class ProjetoDeLei implements Serializable {
 	
 	/**
-	 * Usado para gravar os dados simulando um banco de dados.
+	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2894486412350307305L;
 	
+	/**
+	 * DNI do autor da proposta.
+	 */
 	protected String dni;
+	
+	/**
+	 * Ano em que o projeto de lei foi criado.
+	 */
 	private int ano;
+	
+	/**
+	 * Codigo do projeto de lei.
+	 */
 	protected String codigo;
+	
+	/**
+	 * Descricao ao que se refere o projeto de lei.
+	 */
 	protected String ementa;
+	
+	/**
+	 * Interesses relacionados a lei.
+	 */
 	private String interesses;
+	
+	/**
+	 * Atual estado do projeto de lei. 
+	 */
 	protected String situacaoAtual;
+	
+	/**
+	 * Endereco do documento onde se descreve o teor do projeto de lei.
+	 */
 	private String url;
+	
+	/**
+	 * Local de votacao inicial. Toda lei comeca sendo votada na CCJC.
+	 */
 	private String localDeVotacao;
+	
+	/**
+	 * Tipo da lei em questao.
+	 */
 	private TipoDeLei tipoDeLei;
+	
+	/**
+	 * Status atual da lei.
+	 */
 	private StatusDaLei statusDaLei;
+	
+	/**
+	 * Status do projeto de lei no plenario.
+	 */
 	private StatusPlenario statusPlenario;
+	
+	/**
+	 * Armazena toda a tramitacao do projeto(locais por onde o projeto passou).
+	 */
 	private List<String> tramitacao;
+	
+	/**
+	 * Quantidade de aprovacoes de um projeto de lei.
+	 */
 	private int aprovacoes;
+	
+	/**
+	 * Data de cadastro do projeto de lei.
+	 */
 	private Date dataDeCadastro;
-	
-	
 	
 	/**
 	 * Construtor de um Projeto de Lei

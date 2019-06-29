@@ -14,9 +14,13 @@ import util.Dados;
  */
 public class Plenario implements Serializable {
 	
-	private static final long serialVersionUID = -7651392946211906477L;
 	/**
-	 * simula um banco de dados.
+	 * 
+	 */
+	private static final long serialVersionUID = -7651392946211906477L;
+	
+	/**
+	 * Simula um banco de dados.
 	 */
 	private Dados dados;
 	
@@ -122,7 +126,7 @@ public class Plenario implements Serializable {
 	 * 
 	 * @param deputados set com os deputados.
 	 * @param base os partidos que fazem parte.
-	 * @param lei lei a ser votada
+	 * @param lei lei a ser votada.
 	 * @param statusGovernista Status onde idica se a comissao e da base governista ou nao.
 	 * @return retorna um inteiro com o numero de votos a favor.
 	 */
@@ -158,4 +162,5 @@ public class Plenario implements Serializable {
 		}			
 		return votosAFavor;
 	}
+	
 }

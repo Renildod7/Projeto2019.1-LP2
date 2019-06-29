@@ -13,11 +13,19 @@ import util.Dados;
  */
 public class CamaraController {
 
+	/**
+	 * Simula um banco de dados.
+	 */
 	private Dados dados;
+	
+	/**
+	 * Plenario onde fica os deputados.
+	 */
 	private Plenario plenario;
 	
 	/**
-	 * Construtor do controlador. Cria um novo HashMap.
+	 * Construtor do camaraController.
+	 * 
 	 * @param dados simulacao de um banco de dados.
 	 */
 	public CamaraController(Dados dados) {
@@ -27,6 +35,7 @@ public class CamaraController {
 
 	/**
 	 * Adiciona um deputado no plenario.
+	 * 
 	 * @param deputado Deputado que sera adicionado.
 	 */
 	public void cadastrarDeputado(Deputado deputado) {
@@ -63,6 +72,7 @@ public class CamaraController {
 	 * @param autorDaLei O autor da lei a ser votada.
 	 * @param localDeVotacao O local onde a votacao sera votada.
 	 * @param base A base governista.
+	 * 
 	 * @return Retorna se o projeto de lei foi aprovada ou rejeitada.
 	 */
 	public boolean votarComissao(String statusGovernista, String proximoLocal, ProjetoDeLei lei, Deputado autorDaLei, String localDeVotacao, Set<String> base) {
@@ -77,6 +87,7 @@ public class CamaraController {
 	 * @param autorDaLei autor da projeto de lei em votacao
 	 * @param deputadosPresentes Deputados presentes no plenario
 	 * @param base A base governista.
+	 * 
 	 * @return Retorna um boolean com true para aprovado e false para nao aprovado
 	 */
 	public boolean votarPlenario(String statusGovernista, ProjetoDeLei lei, Deputado autorDaLei, Set<Deputado> deputadosPresentes, Set<String> base) {

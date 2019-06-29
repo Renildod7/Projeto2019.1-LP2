@@ -1,5 +1,8 @@
 package others;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import controller.SystemController;
 import easyaccept.EasyAccept;
 import util.Dados;
@@ -92,18 +95,16 @@ public class Facade {
 		return this.systemCntrl.pegarPropostaRelacionada(dni);
 	}
 	
-	public void limparSistema() {
+	public void limparSistema() throws FileNotFoundException {
 		this.dados.limparSistema();
 	}
 	
-	public void salvarSistema() {
+	public void salvarSistema() throws IOException {
 		this.dados.salvarSistema();
 	}
 	
 	public void carregarSistema() throws ClassNotFoundException {
 		this.dados.carregarSistema();
 	}
-	
-	
 	
 }

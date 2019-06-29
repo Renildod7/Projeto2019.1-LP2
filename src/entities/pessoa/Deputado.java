@@ -10,7 +10,7 @@ import util.Validacao;
 public class Deputado implements PessoaInterface {
 	
 	/**
-	 * usado para o banco de dados.
+	 * Usado para o banco de dados.
 	 */
 	private static final long serialVersionUID = 7861222841082267736L;
 
@@ -24,7 +24,9 @@ public class Deputado implements PessoaInterface {
 	 */
 	private int leisAprovadas;
 	
-	
+	/**
+	 * Pessoa que foi usada como base para a criacao do deputado.
+	 */
 	private PessoaCivil pessoa;
 	
 	/**
@@ -57,7 +59,6 @@ public class Deputado implements PessoaInterface {
 		}
 		return retorno;
 	}
-
 	
 	/**
 	 * Metodo onde se retorna a quantidade de leis aprovadas.
@@ -75,9 +76,7 @@ public class Deputado implements PessoaInterface {
 	public void adicionaLeiAprovada() {
 		this.leisAprovadas += 1;
 	}
-	
-
-	
+		
 	/**
 	 * Retorna a representacao em String de um deputado.
 	 *
@@ -89,20 +88,16 @@ public class Deputado implements PessoaInterface {
 		return String.format("POL: %s - %s (%s) - %s%s - %s - %d Leis", this.pessoa.getNome(), this.pessoa.getDni(), this.pessoa.getEstado(), 
 				this.pessoa.getPartido(), interesses, getDataDeInicio(), leisAprovadas);
 	}
-
-	
 	
 	@Override
 	public String getPartido() {
 		return this.pessoa.getPartido();
 	}
-
 	
 	@Override
 	public String getInteresses() {
 		return this.pessoa.getInteresses();
 	}
-
 	
 	public EstrategiaOrdenacao getEstrategiaOrdenacao() {
 		return this.pessoa.getEstrategiaOrdenacao();
