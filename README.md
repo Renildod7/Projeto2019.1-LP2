@@ -1,1 +1,1 @@
-# Projeto2019.1-LP2
+# Projeto da Disciplina LP2 - UFCG.
